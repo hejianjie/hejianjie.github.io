@@ -43,4 +43,27 @@
         <tag>note</tag>
       </tags>
   </entry>
+  <entry>
+    <title></title>
+    <url>/2020/09/29/%E6%8E%A5%E5%8F%A3%E8%A7%84%E8%8C%83Swagger/</url>
+    <content><![CDATA[<h2 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h2><p>​        通过这套规范，你只需要按照它的规范去定义接口及接口相关的信息。再通过Swagger衍生出来的一系列项目和工具，就可以做到生成各种格式的接口文档，生成多种语言的客户端和服务端的代码，以及在线接口调试页面等等。这样，如果按照新的开发模式，在开发新版本或者迭代版本的时候，只需要更新Swagger描述文件，就可以自动生成接口文档和客户端服务端代码，做到调用端代码、服务端代码以及接口文档的一致性。</p>
+<p>​        Spring将Swagger规范纳入自身的标准，建立了Spring-swagger项目，后面改成了现在的Springfox。通过在项目中引入Springfox，可以扫描相关的代码，生成该描述文件，进而生成与代码一致的接口文档和客户端代码。这种通过代码生成接口文档的形式，在后面需求持续迭代的项目中，显得尤为重要和高效。</p>
+<h4 id="注解及其说明"><a href="#注解及其说明" class="headerlink" title="注解及其说明"></a>注解及其说明</h4><p><img src="https://upload-images.jianshu.io/upload_images/14266602-e1e54aee6db55ea6?imageMogr2/auto-orient/strip%7CimageView2/2/w/800/format/webp" alt="img"></p>
+<p>@Api : 用在类上，说明该类的主要作用。</p>
+<p>@ApiOperation：用在方法上，给API增加方法说明。</p>
+<p>@ApiImplicitParams : 用在方法上，包含一组参数说明。</p>
+<p>@ApiImplicitParam：用来注解来给方法入参增加说明。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14526729-96858d81051a5c02.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/725/format/webp" alt="img"></p>
+<p>@ApiResponses：用于表示一组响应。</p>
+<p>@ApiResponse：用在@ApiResponses中，一般用于表达一个错误的响应信息</p>
+<p> l <strong>code</strong>：数字，例如400</p>
+<p> l <strong>message</strong>：信息，例如”请求参数没填好”</p>
+<p> l <strong>response</strong>：抛出异常的类</p>
+<p>@ApiModel：用在返回对象类上，描述一个Model的信息（一般用在请求参数无法使用@ApiImplicitParam注解进行描述的时候）</p>
+<p> l <strong>@ApiModelProperty</strong>：描述一个model的属性</p>
+<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><p>总结一下就是通过下面这两种流程中的一种，可以做到代码和接口文档的一致性，服务端开发再也不用花费精力去维护接口文档。</p>
+<h5 id="流程一"><a href="#流程一" class="headerlink" title="流程一"></a>流程一</h5><p><img src="https://upload-images.jianshu.io/upload_images/813533-1879ce94558a8553.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<h5 id="流程二"><a href="#流程二" class="headerlink" title="流程二"></a>流程二</h5><p><img src="https://upload-images.jianshu.io/upload_images/813533-ffc262914e89f87d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+]]></content>
+  </entry>
 </search>
