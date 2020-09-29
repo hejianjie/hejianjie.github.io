@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>renren-fast使用笔记</title>
+    <url>/2020/09/29/renren-fast%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1>]]></content>
+      <categories>
+        <category>模板&amp;框架</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo使用笔记</title>
     <url>/2020/09/28/hexo%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="Hexo个人使用笔记"><a href="#Hexo个人使用笔记" class="headerlink" title="Hexo个人使用笔记"></a>Hexo个人使用笔记</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        通过网上教程以Hexo与Github自建个人博客，谨以此文纪念，同时对于使用过程中出现的问题以及学到的相关知识进行记录。</p>
@@ -71,17 +82,6 @@
 <h3 id="相关插件"><a href="#相关插件" class="headerlink" title="相关插件"></a>相关插件</h3>]]></content>
       <categories>
         <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>renren-fast使用笔记</title>
-    <url>/2020/09/29/renren-fast%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1>]]></content>
-      <categories>
-        <category>模板&amp;框架</category>
       </categories>
       <tags>
         <tag>note</tag>
