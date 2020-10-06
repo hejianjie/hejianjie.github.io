@@ -410,6 +410,7 @@
 
 
       
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -513,6 +514,26 @@
   
 
   
+
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('https://unpkg.com/gitalk@latest/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4c99316f6b94b245e4cf',
+      clientSecret: '7d0a2d0e01dc8ba64e06e566ad48b40294578c83',
+      repo        : 'ForBlogIssue',
+      owner       : 'hejianjie',
+      admin       : ['hejianjie'],
+      id          : '459c59af8cac52474c3a59de31fd57a9',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
