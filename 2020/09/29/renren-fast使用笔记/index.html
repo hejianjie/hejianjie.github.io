@@ -30,7 +30,7 @@
 <meta property="og:description" content="前言renren-fast是人人开源的一个快速开发平台的框架，实现了前后端分离，后台为Spring Boot，前端为Vue。整体分为三个部分：renren-fast（后台），renren-fast-vue（前端），renren-gennerator（代码生成器）。 目前个人使用这套框架搭建了一个管理系统，当然仅仅是搭建起来了，对于项目中集成的多种技术以及整体的开发逻辑还在艰难学习中。谨以此文记录一">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-09-29T01:07:22.000Z">
-<meta property="article:modified_time" content="2020-10-07T04:20:26.405Z">
+<meta property="article:modified_time" content="2020-10-07T04:30:11.308Z">
 <meta property="article:author" content="何熙">
 <meta property="article:tag" content="note">
 <meta name="twitter:card" content="summary">
@@ -309,7 +309,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-07 12:20:26" itemprop="dateModified" datetime="2020-10-07T12:20:26+08:00">2020-10-07</time>
+        <time title="修改时间：2020-10-07 12:30:11" itemprop="dateModified" datetime="2020-10-07T12:30:11+08:00">2020-10-07</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -373,7 +373,16 @@
 
 <p>选择需要生成的数据库表，执行完成后，会生成对应的代码文件。内部包含后台以及前端代码，分别加入对应的文件夹即可。前端列表出现无文字的菜单是因为未命名，在菜单管理处添加名称即可。</p>
 <h1 id="项目发布"><a href="#项目发布" class="headerlink" title="项目发布"></a>项目发布</h1><p>项目发布我在另一篇<a target="_blank" rel="noopener" href="https://hejianjie.github.io/2020/10/05/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83-Spring-boot-Vue/">文章</a>有写，需要注意的是项目的后台接口需要开启代理解决跨域问题。</p>
+<p>此外，在上述文章中未提及的是，在前端执行项目打包时可能会报以下错误：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">fs.js:35 &#125; &#x3D; primordials; </span><br><span class="line">ReferenceError: primordials is not defined</span><br></pre></td></tr></table></figure>
 
+<p>这个问题gulp版本导致的，可以查看<code>package.json</code>，发现gulp版本是3.9.1，我个人的node是12，因此会出现版本不匹配引起的报错，可以选择升级gulp版本到4以上，或node回退到10版本。</p>
+<p>此外，在网上找到有不用升级或回退的方法，个人并未实践，在此附上</p>
+<p>在renren-fast-vue目录，新建<code>npm-shrinkwrap.json</code>文件，输入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;dependencies&quot;: &#123;</span><br><span class="line">        &quot;graceful-fs&quot;: &#123;</span><br><span class="line">            &quot;version&quot;: &quot;4.2.2&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>随后，执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install	#再次安装依赖</span><br><span class="line">npm run build	#打包</span><br></pre></td></tr></table></figure>
     </div>
 
     

@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo评论插件</title>
+    <url>/2020/10/06/hexo%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="Hexo评论插件"><a href="#Hexo评论插件" class="headerlink" title="Hexo评论插件"></a>Hexo评论插件</h1><p>大致对比了网上已有的评论插件，在考虑简便性以及成本的基础上，我个人选择使用gitalk用于博客搭建。Gitalk 是一个基于 Github Issue 和 Preact 开发的评论插件。</p>
+<p>这里放一个Next主题下的评论系统的<a href="https://theme-next.js.org/docs/third-party-services/comments.html">官方链接</a>，感兴趣可以自行参考。</p>
+<h2 id="构建方式"><a href="#构建方式" class="headerlink" title="构建方式"></a>构建方式</h2><ol>
+<li><p>首先<a href="https://github.com/settings/applications/new">申请</a>一个新的OAuth Application，注册成功后会得到一个<code>Client ID</code>和<code>Client Secret</code>，这两项会在后续配置中用到，需要记一下。</p>
+<img  src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006090056.png" alt="image-20201006090046855" style="zoom: 67%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006090412.png" alt="image-20201006090409686" style="zoom:67%;" />
+</li>
+<li><p>建立评论仓库</p>
+<p>建立由于存放评论的内容，设置中打开issues，默认应该是打开的</p>
+<a id="more"></a>
+</li>
+<li><p>添加代码</p>
+<p>通常情况下只要将对应的代码嵌入页面之中即可使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;gitalk&#x2F;dist&#x2F;gitalk.css&quot;&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;gitalk@latest&#x2F;dist&#x2F;gitalk.min.js&quot;&gt;&lt;&#x2F;script&gt; </span><br><span class="line"></span><br><span class="line">&lt;div id&#x3D;&quot;gitalk-container&quot;&gt;&lt;&#x2F;div&gt;     </span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    var gitalk &#x3D; new Gitalk(&#123;</span><br><span class="line">    &#x2F;&#x2F; gitalk的主要参数</span><br><span class="line">      clientID: &#39;&#39;,   &#x2F;&#x2F;上面获取到的值</span><br><span class="line">      clientSecret: &#39;&#39;,&#x2F;&#x2F;上面获取到的值</span><br><span class="line">      repo: &#39;&#39;,  &#x2F;&#x2F;你刚才建立仓库的名字</span><br><span class="line">      owner: &#39;&#39;,   &#x2F;&#x2F;你的GitHub用户名字</span><br><span class="line">      admin:&#39;&#39;,  &#x2F;&#x2F;你的GitHub用户的名字</span><br><span class="line">      id: &#39;&#39;, &#x2F;&#x2F;id不能重复</span><br><span class="line">        &#125;);</span><br><span class="line">      gitalk.render(&#39;gitalk-container&#39;);</span><br><span class="line">&lt;&#x2F;script&gt; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Next主题配置</p>
+<p>我个人使用的是Next主题，Next有对应的集成插件，修改主题_config.yml配置即可。Next以往版本内部为gitment参数，8.0版本修改为gitalk参数。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006093609.png" alt="image-20201006092628245"></p>
+<p>但配置项基本一致，重点是之前申请所得的两个参数。</p>
+<p>此外还需要引入对应的js与css否则不会显示评论模块。</p>
+<img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006100142.png" alt="image-20201006100140723" style="zoom: 80%;" />
+
+<p>加载完成后需要注册Github Application的账号登录评论模块，进行手动初始化评论才能让其他用户进行评论</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>hexo使用笔记</title>
     <url>/2020/09/28/hexo%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        通过网上教程以Hexo与Github自建个人博客，谨以此文纪念，同时对于使用过程中出现的问题以及学到的相关知识进行记录。</p>
@@ -117,46 +154,18 @@
 
 <p>选择需要生成的数据库表，执行完成后，会生成对应的代码文件。内部包含后台以及前端代码，分别加入对应的文件夹即可。前端列表出现无文字的菜单是因为未命名，在菜单管理处添加名称即可。</p>
 <h1 id="项目发布"><a href="#项目发布" class="headerlink" title="项目发布"></a>项目发布</h1><p>项目发布我在另一篇<a href="https://hejianjie.github.io/2020/10/05/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83-Spring-boot-Vue/">文章</a>有写，需要注意的是项目的后台接口需要开启代理解决跨域问题。</p>
-]]></content>
+<p>此外，在上述文章中未提及的是，在前端执行项目打包时可能会报以下错误：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fs.js:35 &#125; &#x3D; primordials; </span><br><span class="line">ReferenceError: primordials is not defined</span><br></pre></td></tr></table></figure>
+
+<p>这个问题gulp版本导致的，可以查看<code>package.json</code>，发现gulp版本是3.9.1，我个人的node是12，因此会出现版本不匹配引起的报错，可以选择升级gulp版本到4以上，或node回退到10版本。</p>
+<p>此外，在网上找到有不用升级或回退的方法，个人并未实践，在此附上</p>
+<p>在renren-fast-vue目录，新建<code>npm-shrinkwrap.json</code>文件，输入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;dependencies&quot;: &#123;</span><br><span class="line">        &quot;graceful-fs&quot;: &#123;</span><br><span class="line">            &quot;version&quot;: &quot;4.2.2&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>随后，执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install	#再次安装依赖</span><br><span class="line">npm run build	#打包</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>模板&amp;框架</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo评论插件</title>
-    <url>/2020/10/06/hexo%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="Hexo评论插件"><a href="#Hexo评论插件" class="headerlink" title="Hexo评论插件"></a>Hexo评论插件</h1><p>大致对比了网上已有的评论插件，在考虑简便性以及成本的基础上，我个人选择使用gitalk用于博客搭建。Gitalk 是一个基于 Github Issue 和 Preact 开发的评论插件。</p>
-<p>这里放一个Next主题下的评论系统的<a href="https://theme-next.js.org/docs/third-party-services/comments.html">官方链接</a>，感兴趣可以自行参考。</p>
-<h2 id="构建方式"><a href="#构建方式" class="headerlink" title="构建方式"></a>构建方式</h2><ol>
-<li><p>首先<a href="https://github.com/settings/applications/new">申请</a>一个新的OAuth Application，注册成功后会得到一个<code>Client ID</code>和<code>Client Secret</code>，这两项会在后续配置中用到，需要记一下。</p>
-<img  src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006090056.png" alt="image-20201006090046855" style="zoom: 67%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006090412.png" alt="image-20201006090409686" style="zoom:67%;" />
-</li>
-<li><p>建立评论仓库</p>
-<p>建立由于存放评论的内容，设置中打开issues，默认应该是打开的</p>
-<a id="more"></a>
-</li>
-<li><p>添加代码</p>
-<p>通常情况下只要将对应的代码嵌入页面之中即可使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;gitalk&#x2F;dist&#x2F;gitalk.css&quot;&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;gitalk@latest&#x2F;dist&#x2F;gitalk.min.js&quot;&gt;&lt;&#x2F;script&gt; </span><br><span class="line"></span><br><span class="line">&lt;div id&#x3D;&quot;gitalk-container&quot;&gt;&lt;&#x2F;div&gt;     </span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    var gitalk &#x3D; new Gitalk(&#123;</span><br><span class="line">    &#x2F;&#x2F; gitalk的主要参数</span><br><span class="line">      clientID: &#39;&#39;,   &#x2F;&#x2F;上面获取到的值</span><br><span class="line">      clientSecret: &#39;&#39;,&#x2F;&#x2F;上面获取到的值</span><br><span class="line">      repo: &#39;&#39;,  &#x2F;&#x2F;你刚才建立仓库的名字</span><br><span class="line">      owner: &#39;&#39;,   &#x2F;&#x2F;你的GitHub用户名字</span><br><span class="line">      admin:&#39;&#39;,  &#x2F;&#x2F;你的GitHub用户的名字</span><br><span class="line">      id: &#39;&#39;, &#x2F;&#x2F;id不能重复</span><br><span class="line">        &#125;);</span><br><span class="line">      gitalk.render(&#39;gitalk-container&#39;);</span><br><span class="line">&lt;&#x2F;script&gt; </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Next主题配置</p>
-<p>我个人使用的是Next主题，Next有对应的集成插件，修改主题_config.yml配置即可。Next以往版本内部为gitment参数，8.0版本修改为gitalk参数。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006093609.png" alt="image-20201006092628245"></p>
-<p>但配置项基本一致，重点是之前申请所得的两个参数。</p>
-<p>此外还需要引入对应的js与css否则不会显示评论模块。</p>
-<img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006100142.png" alt="image-20201006100140723" style="zoom: 80%;" />
-
-<p>加载完成后需要注册Github Application的账号登录评论模块，进行手动初始化评论才能让其他用户进行评论</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Hexo</category>
       </categories>
       <tags>
         <tag>note</tag>
