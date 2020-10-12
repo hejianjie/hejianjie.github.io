@@ -38,6 +38,8 @@
 <h2 id="箭头函数（Arrow-Functions）"><a href="#箭头函数（Arrow-Functions）" class="headerlink" title="箭头函数（Arrow Functions）"></a>箭头函数（Arrow Functions）</h2><p>ES6中新增箭头操作符用于简化函数的写法，操作符左边为参数，右边为具体操作和返回值。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var sum &#x3D; (num1, num2) &#x3D;&gt; &#123; return num1 + num2; &#125;</span><br><span class="line">&#x2F;&#x2F;等同于</span><br><span class="line">var sum &#x3D; function(num1, num2) &#123;</span><br><span class="line">    return num1 + num2;</span><br><span class="line"> &#125;;</span><br></pre></td></tr></table></figure>
 
+
+<a id="more"></a>
 <p>箭头函数类似匿名函数，并且简化了函数定义。箭头函数有两种格式，一种只包含一个表达式，省略掉了{ … }和return。还有一种可以包含多条语句，这时候就不能省略{ … }和return。上例可继续简写为：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">(num1, num2) &#x3D;&gt; num1 + num2</span><br></pre></td></tr></table></figure>
 
