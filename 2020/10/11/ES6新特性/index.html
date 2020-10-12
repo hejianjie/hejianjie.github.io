@@ -22,31 +22,34 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="得之我幸，失之我命">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Enkidu">
-<meta property="og:url" content="http://example.com/index.html">
+  <meta name="description" content="官方文档ES6文档，下面给出用到的较多的新特性。 变量声明ES6推荐使用let声明局部变量，相比之前的var（Hoisting特性：无论声明在何处，都会被视为声明在函数的最顶部）  let与var  let具有块级作用域的概念，不存在Hoisting特性，即在最靠近的一个块中（花括号内）有效；  let不允许在同一作用域内重复声明同一个变量。    let与const  let用于声明局部变量，而">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ES6新特性整理">
+<meta property="og:url" content="http://example.com/2020/10/11/ES6%E6%96%B0%E7%89%B9%E6%80%A7/index.html">
 <meta property="og:site_name" content="Enkidu">
-<meta property="og:description" content="得之我幸，失之我命">
+<meta property="og:description" content="官方文档ES6文档，下面给出用到的较多的新特性。 变量声明ES6推荐使用let声明局部变量，相比之前的var（Hoisting特性：无论声明在何处，都会被视为声明在函数的最顶部）  let与var  let具有块级作用域的概念，不存在Hoisting特性，即在最靠近的一个块中（花括号内）有效；  let不允许在同一作用域内重复声明同一个变量。    let与const  let用于声明局部变量，而">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-11T11:16:23.000Z">
+<meta property="article:modified_time" content="2020-10-12T02:50:32.928Z">
 <meta property="article:author" content="何熙">
+<meta property="article:tag" content="note">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/">
+<link rel="canonical" href="http://example.com/2020/10/11/ES6%E6%96%B0%E7%89%B9%E6%80%A7/">
 
 
 <script class="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Enkidu</title>
+  <title>ES6新特性整理 | Enkidu</title>
   
 
 
@@ -194,7 +197,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -206,6 +209,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="nav-number">1.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E"><span class="nav-number">2.</span> <span class="nav-text">变量声明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%AD%E5%A4%B4%E5%87%BD%E6%95%B0%EF%BC%88Arrow-Functions%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">箭头函数（Arrow Functions）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC%EF%BC%88Destructuring%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">解构赋值（Destructuring）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%AD%97%E7%AC%A6%E4%B8%B2%EF%BC%88Template-String%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">模板字符串（Template String）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#iterable%E7%B1%BB%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">iterable类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%B6%E5%B1%95-%E5%89%A9%E4%BD%99%E6%93%8D%E4%BD%9C%E7%AC%A6%EF%BC%88Spread-Rest-Operator%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">延展&#x2F;剩余操作符（Spread &#x2F; Rest Operator）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%93%E8%A2%AB%E7%94%A8%E4%BA%8E%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%AD%E6%97%B6%EF%BC%8C%E5%AE%83%E6%98%AF%E4%B8%80%E4%B8%AA-Spread-%E6%93%8D%E4%BD%9C%E7%AC%A6%EF%BC%9A"><span class="nav-number">7.1.</span> <span class="nav-text">当被用于迭代器中时，它是一个 Spread 操作符：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BD%93%E8%A2%AB%E7%94%A8%E4%BA%8E%E5%87%BD%E6%95%B0%E4%BC%A0%E5%8F%82%E6%97%B6%EF%BC%8C%E6%98%AF%E4%B8%80%E4%B8%AA-Rest-%E6%93%8D%E4%BD%9C%E7%AC%A6%EF%BC%9A"><span class="nav-number">7.2.</span> <span class="nav-text">当被用于函数传参时，是一个 Rest 操作符：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%94%BE%E5%9C%A8%E8%A2%AB%E8%B5%8B%E5%80%BC%E4%B8%80%E6%96%B9%E6%98%AFrest-%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%82%E6%94%BE%E5%9C%A8%E8%B5%8B%E5%80%BC%E4%B8%80%E6%96%B9%E5%BC%8F-spread%E8%BF%90%E7%AE%97%E7%AC%A6%E3%80%82"><span class="nav-number">7.2.0.0.1.</span> <span class="nav-text">放在被赋值一方是rest  运算符。放在赋值一方式 spread运算符。</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC"><span class="nav-number">8.</span> <span class="nav-text">函数参数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B1%BB%EF%BC%88Class%EF%BC%89"><span class="nav-number">9.</span> <span class="nav-text">类（Class）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E8%B6%85%E7%B1%BB"><span class="nav-number">10.</span> <span class="nav-text">对象超类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%92%8C%E5%85%AB%E8%BF%9B%E5%88%B6%E5%AD%97%E9%9D%A2%E9%87%8F"><span class="nav-number">11.</span> <span class="nav-text">二进制和八进制字面量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96%EF%BC%88export-amp-import%EF%BC%89"><span class="nav-number">12.</span> <span class="nav-text">模块化（export &amp; import）</span></a></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -261,11 +265,12 @@
 </noscript>
 
 
-    <div class="main-inner index posts-expand">
+    <div class="main-inner post posts-expand">
       
 
       
-    
+
+  
 
 
 <div class="post-block">
@@ -285,10 +290,9 @@
       <meta itemprop="name" content="Enkidu">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/11/ES6%E6%96%B0%E7%89%B9%E6%80%A7/" class="post-title-link" itemprop="url">ES6新特性整理</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          ES6新特性整理
+        </h1>
 
         <div class="post-meta-container">
           <div class="post-meta">
@@ -318,6 +322,13 @@
     </span>
 
   
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
         </div>
@@ -327,7 +338,7 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><p><a target="_blank" rel="noopener" href="http://caibaojian.com/es6/">ES6文档</a>，下面给出用到的较多的新特性。</p>
+        <h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><p><a target="_blank" rel="noopener" href="http://caibaojian.com/es6/">ES6文档</a>，下面给出用到的较多的新特性。</p>
 <h2 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h2><p>ES6推荐使用let声明局部变量，相比之前的var（Hoisting特性：无论声明在何处，都会被视为声明在函数的最顶部）</p>
 <ul>
 <li><p>let与var</p>
@@ -464,7 +475,6 @@
 
 <p>另一个用途是提示字符串格式。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&#39;12&#39;.padStart(10, &#39;YYYY-MM-DD&#39;) &#x2F;&#x2F; &quot;YYYY-MM-12&quot;</span><br><span class="line">&#39;09-12&#39;.padStart(10, &#39;YYYY-MM-DD&#39;) &#x2F;&#x2F; &quot;YYYY-09-12&quot;</span><br></pre></td></tr></table></figure>
-      
     </div>
 
     
@@ -472,585 +482,21 @@
     
 
     <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
+          <div class="post-tags">
+              <a href="/tags/note/" rel="tag"># note</a>
+          </div>
 
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/08/Vue%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.jpg">
-      <meta itemprop="name" content="何熙">
-      <meta itemprop="description" content="得之我幸，失之我命">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enkidu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/08/Vue%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">Vue知识整理</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-08 09:19:30" itemprop="dateCreated datePublished" datetime="2020-10-08T09:19:30+08:00">2020-10-08</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-11 17:55:42" itemprop="dateModified" datetime="2020-10-11T17:55:42+08:00">2020-10-11</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="vue基础"><a href="#vue基础" class="headerlink" title="vue基础"></a>vue基础</h1><h2 id="el：挂载点"><a href="#el：挂载点" class="headerlink" title="el：挂载点"></a>el：挂载点</h2><ul>
-<li>el是用来设置Vue实例挂载（管理）的元素</li>
-<li>Vue会管理el选项命中的元素及其内部的后代元素</li>
-<li>可以使用其他选择器，但是建议使用ID选择器，避免歧义</li>
-<li>可以使用其他双标签，不能使用HTML和BODY</li>
-</ul>
-<h2 id="data：数据对象"><a href="#data：数据对象" class="headerlink" title="data：数据对象"></a>data：数据对象</h2><ul>
-<li>Vue中用到的数据定义在data中</li>
-<li>data中可以写复杂的数据</li>
-<li>渲染复杂类型时遵循js语法即可</li>
-</ul>
-<h2 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h2><h3 id="v-text"><a href="#v-text" class="headerlink" title="v-text"></a>v-text</h3><ul>
-<li><code>v-text</code>指令的作用：设置标签的内容（textContent）</li>
-<li>默认写法会替换标签内的全部内容，使用插值表达式<code>&#123;&#123;&#125;&#125;</code>可以替换指定内容</li>
-<li>v-text指令的内容只会解析为文本</li>
-<li>无插值表达式的闪烁问题</li>
-</ul>
-<h3 id="v-cloak"><a href="#v-cloak" class="headerlink" title="v-cloak"></a>v-cloak</h3><ul>
-<li><code>v-cloak</code>指令的作用：保持在元素上直到关联实例结束编译</li>
-<li>和 css规则如 <code>[v-cloak] &#123; display: none &#125;</code> 一起用时，解决插值表达式闪烁问题，隐藏未编译的 Mustache 标签直到实例准备完毕。</li>
-</ul>
-<h3 id="v-html"><a href="#v-html" class="headerlink" title="v-html"></a>v-html</h3><ul>
-<li><code>v-html</code>指令的作用：设置元素的innerHTML</li>
-<li>内容中有html结构会被解析为标签</li>
-</ul>
-<hr>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/08/Vue%E5%9F%BA%E7%A1%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/07/%E8%BD%AC%E8%BD%BD%E6%94%B6%E8%97%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.jpg">
-      <meta itemprop="name" content="何熙">
-      <meta itemprop="description" content="得之我幸，失之我命">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enkidu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/07/%E8%BD%AC%E8%BD%BD%E6%94%B6%E8%97%8F/" class="post-title-link" itemprop="url">转载收藏</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2020-10-07 14:41:39 / 修改时间：14:43:55" itemprop="dateCreated datePublished" datetime="2020-10-07T14:41:39+08:00">2020-10-07</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%BD%AC%E8%BD%BD/" itemprop="url" rel="index"><span itemprop="name">转载</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_29677867/article/details/90112120">nginx系列</a>（原文转自<a target="_blank" rel="noopener" href="https://www.cnblogs.com/biglittleant/p/8979966.html">此处</a>）</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/06/hexo%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.jpg">
-      <meta itemprop="name" content="何熙">
-      <meta itemprop="description" content="得之我幸，失之我命">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enkidu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/06/hexo%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/" class="post-title-link" itemprop="url">hexo评论插件</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-      
-
-      <time title="创建时间：2020-10-06 08:33:40 / 修改时间：10:43:06" itemprop="dateCreated datePublished" datetime="2020-10-06T08:33:40+08:00">2020-10-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Hexo评论插件"><a href="#Hexo评论插件" class="headerlink" title="Hexo评论插件"></a>Hexo评论插件</h1><p>大致对比了网上已有的评论插件，在考虑简便性以及成本的基础上，我个人选择使用gitalk用于博客搭建。Gitalk 是一个基于 Github Issue 和 Preact 开发的评论插件。</p>
-<p>这里放一个Next主题下的评论系统的<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/third-party-services/comments.html">官方链接</a>，感兴趣可以自行参考。</p>
-<h2 id="构建方式"><a href="#构建方式" class="headerlink" title="构建方式"></a>构建方式</h2><ol>
-<li><p>首先<a target="_blank" rel="noopener" href="https://github.com/settings/applications/new">申请</a>一个新的OAuth Application，注册成功后会得到一个<code>Client ID</code>和<code>Client Secret</code>，这两项会在后续配置中用到，需要记一下。</p>
-<img  src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006090056.png" alt="image-20201006090046855" style="zoom: 67%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006090412.png" alt="image-20201006090409686" style="zoom:67%;" />
-</li>
-<li><p>建立评论仓库</p>
-<p>建立由于存放评论的内容，设置中打开issues，默认应该是打开的</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/06/hexo%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/08/Vue%E5%9F%BA%E7%A1%80/" rel="prev" title="Vue知识整理">
+                  <i class="fa fa-chevron-left"></i> Vue知识整理
+                </a>
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/05/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83-Spring-boot-Vue/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.jpg">
-      <meta itemprop="name" content="何熙">
-      <meta itemprop="description" content="得之我幸，失之我命">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enkidu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/10/05/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83-Spring-boot-Vue/" class="post-title-link" itemprop="url">前后端分离项目发布(Spring-boot/Vue)</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-10-05 08:46:38" itemprop="dateCreated datePublished" datetime="2020-10-05T08:46:38+08:00">2020-10-05</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-07 10:14:18" itemprop="dateModified" datetime="2020-10-07T10:14:18+08:00">2020-10-07</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%A8%A1%E6%9D%BF-%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">模板&框架</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="基于Spring-boot与Vue的前后端分离项目发布"><a href="#基于Spring-boot与Vue的前后端分离项目发布" class="headerlink" title="基于Spring-boot与Vue的前后端分离项目发布"></a>基于Spring-boot与Vue的前后端分离项目发布</h1><p>项目源码为人人开源的Spring-boot/Vue项目，本文对项目完成后的项目部署实践进行学习记录。</p>
-<h2 id="前端部署"><a href="#前端部署" class="headerlink" title="前端部署"></a>前端部署</h2><p>首先在服务器上配置Nginx。Nginx是一个web服务器也可以用来做负载均衡及反向代理使用。我个人参照<a target="_blank" rel="noopener" href="https://www.cnblogs.com/taiyonghai/p/6728707.html">这篇文章</a>进行配置。文中的pcre的链接（第四个组件）个人测试连接超时，更换为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget  https:&#x2F;&#x2F;netix.dl.sourceforge.net&#x2F;project&#x2F;pcre&#x2F;pcre&#x2F;8.40&#x2F;pcre-8.40.tar.gz</span><br></pre></td></tr></table></figure>
-
-<h3 id="程序打包"><a href="#程序打包" class="headerlink" title="程序打包"></a>程序打包</h3><p>使用命令<code>npm run build</code>进行程序打包，项目会将封装好的内容存放在新生成的dist文件夹中。然后将打包的文件通过Xshell或者MobaXterm等工具将文件上传至服务器的文件夹中，我个人使用的是后者。</p>
-<h3 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h3><p>此处推荐一篇使用 Nginx 部署 Vue 项目的<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/99521ae2fa19">文章</a>。</p>
-<p>通常来说，在nginx的conf文件夹中的配置文件nginx.conf 即可，具体的配置方式在上述文章中都有描述。此外，对于nginx部署，还有半自动与自动部署，目前尚未了解，暂且记录，之后再学习。</p>
-<p>nginx相关命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">nginx #启动 Nginx 服务</span><br><span class="line"></span><br><span class="line">nginx -s stop #停止 Nginx 服务</span><br><span class="line"></span><br><span class="line">nginx -s reload #重新加载 Nginx 的配置文件</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/10/05/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83-Spring-boot-Vue/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
+            <div class="post-nav-item">
             </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/29/renren-fast%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.jpg">
-      <meta itemprop="name" content="何熙">
-      <meta itemprop="description" content="得之我幸，失之我命">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enkidu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/29/renren-fast%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">renren-fast使用笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-09-29 09:07:22" itemprop="dateCreated datePublished" datetime="2020-09-29T09:07:22+08:00">2020-09-29</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-07 12:32:51" itemprop="dateModified" datetime="2020-10-07T12:32:51+08:00">2020-10-07</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%A8%A1%E6%9D%BF-%E6%A1%86%E6%9E%B6/" itemprop="url" rel="index"><span itemprop="name">模板&框架</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>renren-fast是人人开源的一个快速开发平台的框架，实现了前后端分离，后台为Spring Boot，前端为Vue。整体分为三个部分：renren-fast（后台），renren-fast-vue（前端），renren-gennerator（代码生成器）。</p>
-<p>目前个人使用这套框架搭建了一个管理系统，当然仅仅是搭建起来了，对于项目中集成的多种技术以及整体的开发逻辑还在艰难学习中。谨以此文记录一下项目搭建过程中遇到的一些问题。</p>
-<p>同时附上一篇网上找到的<a target="_blank" rel="noopener" href="https://blog.csdn.net/zd1007129657/article/details/82698854">踩坑记录</a>，里面有不少有用的解决方案。</p>
-<h1 id="renren-fast"><a href="#renren-fast" class="headerlink" title="renren-fast"></a>renren-fast</h1><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>后端部署就是常规的git操作，环境要求是JDK1.8 、 MySQL5.5+，然后等待依赖导入完成就可以更改具体的配置了。</p>
-<p>项目的DB文件夹中是用于生成项目的SQL文件，自行创建数据库初始化数据，数据库编码为 UTF-8。创建完成后修改application-dev.yml配置文件 ，更新数据库账号和密码，然后运行 io.renren.RenrenApplication.java 的 main 方法，则可启动项目。总体来说，后端的部署基本不会出现什么问题，不能部署可以找一下项目环境相关的问题，例如jdk，maven，镜像之类的问题等。</p>
-<h2 id="开发时的接口测试"><a href="#开发时的接口测试" class="headerlink" title="开发时的接口测试"></a>开发时的接口测试</h2><p>我个人是前后端都搭建完成之后，前端验证后台接口的数据。除此之外，项目中提供了mock本地模拟数据，详情在上文提到的踩坑记录文章中有描述，我个人没有实践过。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/29/renren-fast%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/09/28/hexo%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/me.jpg">
-      <meta itemprop="name" content="何熙">
-      <meta itemprop="description" content="得之我幸，失之我命">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Enkidu">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/09/28/hexo%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">hexo使用笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-09-28 19:58:59" itemprop="dateCreated datePublished" datetime="2020-09-28T19:58:59+08:00">2020-09-28</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2020-10-08 20:12:01" itemprop="dateModified" datetime="2020-10-08T20:12:01+08:00">2020-10-08</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>​        通过网上教程以Hexo与Github自建个人博客，谨以此文纪念，同时对于使用过程中出现的问题以及学到的相关知识进行记录。</p>
-<h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo: 5.2.0</span><br><span class="line">hexo-cli: 4.2.0</span><br><span class="line">os: Windows_NT 10.0.18362 win32 x64</span><br><span class="line">node: 12.18.1</span><br><span class="line">NexT version 8.0.0</span><br></pre></td></tr></table></figure>
-
-<h2 id="Hexo相关知识点"><a href="#Hexo相关知识点" class="headerlink" title="Hexo相关知识点"></a>Hexo相关知识点</h2><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
-<li><p>很多命令既可以用Windows的cmd来完成，也可以使用git bash来完成，但是部分命令会有一些问题，为避免不必要的问题，建议全部使用git bash来执行；</p>
-</li>
-<li><p>hexo不同版本差别比较大，网上很多文章的配置信息都是基于2.x的，所以注意不要被误导；同时我个人使用的主题Next也有多个版本，截止此文撰写最新的版本为 8.0.0，往期的旧版本已停止维护，很多文章的对应配置信息也与新的版本有所出入，需要自行甄别；</p>
-</li>
-<li><p>hexo有2种<code>_config.yml</code>文件，一个是根目录下的全局的<code>_config.yml</code>，一个是各个<code>theme</code>下的；</p>
-</li>
-<li><p>有的教程会让配置SSH密钥，SSH密钥可以为了防止其他人恶意部署文件到你的仓库，使用以后每次部署文件都需要登录Github账号，通过下述配置可比避免每次登录：</p>
-<p>修改配置文件的deploy属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">    type: git</span><br><span class="line">    repo: git@github.com:xxxxx&#x2F;xxxxx.github.io.git</span><br><span class="line">    branch: master</span><br></pre></td></tr></table></figure>
-
-<p>当然在网上也看到有人将登录信息写在环境变量里或者修改git的配置信息，此处不做详细说明。</p>
-</li>
-</ol>
-<h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><h4 id="写文章"><a href="#写文章" class="headerlink" title="写文章"></a>写文章</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n [layout] &lt;title&gt;</span><br><span class="line">#新建文章</span><br><span class="line">#layout 可选参数，用于选取文章的布局模板，若省略则为默认post布局</span><br><span class="line">#title 必填参数，用以指定文章标题，如果参数值中含有空格，则需要使用双引号包围</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-p  #自定义新文章的路径</span><br><span class="line">-r #如果存在同名文章，将其替换</span><br><span class="line">-s #文章的 Slug，作为新文章的文件名和发布后的 URL</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/09/28/hexo%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
+          </div>
     </footer>
   </article>
 </div>
@@ -1059,11 +505,9 @@
 
 
 
-  
-
-
 
       
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -1168,6 +612,25 @@
 
   
 
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('https://unpkg.com/gitalk@latest/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4c99316f6b94b245e4cf',
+      clientSecret: '7d0a2d0e01dc8ba64e06e566ad48b40294578c83',
+      repo        : 'ForBlogIssue',
+      owner       : 'hejianjie',
+      admin       : ['hejianjie'],
+      id          : '7cfcd4c83b0b74d38d13f2c0a90c2539',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
