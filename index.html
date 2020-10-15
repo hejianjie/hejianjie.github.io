@@ -297,10 +297,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2020-10-14 20:57:37 / 修改时间：20:58:27" itemprop="dateCreated datePublished" datetime="2020-10-14T20:57:37+08:00">2020-10-14</time>
+      <time title="创建时间：2020-10-14 20:57:37" itemprop="dateCreated datePublished" datetime="2020-10-14T20:57:37+08:00">2020-10-14</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-10-15 16:13:14" itemprop="dateModified" datetime="2020-10-15T16:13:14+08:00">2020-10-15</time>
+      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
@@ -321,7 +327,25 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1>
+          <h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1><p>对于单页应用程序，主要通过URL中的Hash(#)来实现不同页面之间的切换，同时，hash有一个特点：HTTP请求中不会包含hash相关的内容。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>模块化编程需要调用Vue.use(VueRouter)</li>
+<li>直接在页面中引用js不需要激活，直接使用即可</li>
+</ul>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>创建一个路由对象，并为构造函数传递一个配置对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">const router &#x3D; new Router(&#123;</span><br><span class="line">  mode: &#39;hash&#39;,</span><br><span class="line">  scrollBehavior: () &#x3D;&gt; (&#123; y: 0 &#125;),</span><br><span class="line">  isAddDynamicMenuRoutes: false, &#x2F;&#x2F; 是否已经添加动态(菜单)路由</span><br><span class="line">  routes:[&#x2F;&#x2F;路由匹配规则</span><br><span class="line">  	&#123;&#x2F;&#x2F;每个路由规则都是一个规则对象，包含path与component两个属性</span><br><span class="line">  		path:&#39;&#39;,&#x2F;&#x2F;表示监听的路由地址</span><br><span class="line">  		component:&#123;&#125;&#x2F;&#x2F;表示对应path的组件，属性值为组件模板对象而非名称</span><br><span class="line">  	&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">var vm&#x3D;new Vue(&#123;</span><br><span class="line">    ···</span><br><span class="line">    router:router&#x2F;&#x2F;将路由规则注册到Vue实例上	</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;同时还需要在页面中使用&lt;router-view&gt;&lt;&#x2F;router-view&gt;用于展示对应组件</span><br><span class="line">&lt;router-view&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;页面中跳转除了使用&lt;a&gt;标签，还可使用&lt;router-link&gt;</span><br><span class="line">&lt;a href&#x3D;&#39;#&#x2F;name&#39;&gt;&lt;&#x2F;a&gt;</span><br><span class="line">&#x2F;&#x2F;&lt;router-link&gt;默认渲染为&lt;a&gt;标签，可以使用tag指定对应标签</span><br><span class="line">&lt;router-link to&#x3D;&#39;&#x2F;name&#39;&gt;&lt;&#x2F;router-link&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在路由规则中定义参数"><a href="#在路由规则中定义参数" class="headerlink" title="在路由规则中定义参数"></a>在路由规则中定义参数</h2><ul>
+<li><p>直接在跳转路径上添加参数，使用<code>this.$route</code>获取添加的参数</p>
+</li>
+<li><p>修改router实例中的routes属性中的规则对象的path属性，使用<code>this.$route</code>获取添加的参数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const router &#x3D; new Router(&#123;</span><br><span class="line"> ···</span><br><span class="line">  routes:</span><br><span class="line">  	&#123;</span><br><span class="line">  		path:&#39;&#x2F;name&#x2F;:id&#39;,</span><br><span class="line">  		component:&#123;&#125;</span><br><span class="line">  	&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;使用时在对应路径后传参即可</span><br><span class="line">&lt;router-link to&#x3D;&#39;&#x2F;name&#x2F;10&#39;&gt;&lt;&#x2F;router-link&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="路由的嵌套"><a href="#路由的嵌套" class="headerlink" title="路由的嵌套"></a>路由的嵌套</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">const router &#x3D; new Router(&#123;</span><br><span class="line"> ···</span><br><span class="line">  routes:</span><br><span class="line">  	&#123;</span><br><span class="line">  		path:&#39;&#x2F;parent&#39;,</span><br><span class="line">  		component:&#123;</span><br><span class="line">  			 template: &#96;</span><br><span class="line">                &lt;div class&#x3D;&quot;user&quot;&gt;</span><br><span class="line">    			  &lt;router-view&gt;&lt;&#x2F;router-view&gt;&#x2F;&#x2F;父组件要预留对应的位置用于子路由的渲染</span><br><span class="line"> 			   &lt;&#x2F;div&gt;</span><br><span class="line">             &#96;</span><br><span class="line">  		&#125;，</span><br><span class="line">  		children:[</span><br><span class="line">  			&#123;</span><br><span class="line">  				path:&#39;children&#39;&#x2F;&#x2F;此处路径不带&#39;&#x2F;&#39;,否则永远以根目录开始请求</span><br><span class="line">  				component:&#123;&#125;</span><br><span class="line">  			&#125;</span><br><span class="line">  		]</span><br><span class="line">  	&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+
       
     </div>
 

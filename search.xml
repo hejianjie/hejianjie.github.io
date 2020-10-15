@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Tools</title>
+    <url>/2020/10/12/Tools/</url>
+    <content><![CDATA[<p><a href="http://www.animate.net.cn/">Animate.css</a></p>
+]]></content>
+      <categories>
+        <category>tools</category>
+      </categories>
+      <tags>
+        <tag>tools</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue路由</title>
+    <url>/2020/10/14/Vue%E8%B7%AF%E7%94%B1/</url>
+    <content><![CDATA[<h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1><p>对于单页应用程序，主要通过URL中的Hash(#)来实现不同页面之间的切换，同时，hash有一个特点：HTTP请求中不会包含hash相关的内容。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ul>
+<li>模块化编程需要调用Vue.use(VueRouter)</li>
+<li>直接在页面中引用js不需要激活，直接使用即可</li>
+</ul>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>创建一个路由对象，并为构造函数传递一个配置对象。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const router &#x3D; new Router(&#123;</span><br><span class="line">  mode: &#39;hash&#39;,</span><br><span class="line">  scrollBehavior: () &#x3D;&gt; (&#123; y: 0 &#125;),</span><br><span class="line">  isAddDynamicMenuRoutes: false, &#x2F;&#x2F; 是否已经添加动态(菜单)路由</span><br><span class="line">  routes:[&#x2F;&#x2F;路由匹配规则</span><br><span class="line">  	&#123;&#x2F;&#x2F;每个路由规则都是一个规则对象，包含path与component两个属性</span><br><span class="line">  		path:&#39;&#39;,&#x2F;&#x2F;表示监听的路由地址</span><br><span class="line">  		component:&#123;&#125;&#x2F;&#x2F;表示对应path的组件，属性值为组件模板对象而非名称</span><br><span class="line">  	&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">var vm&#x3D;new Vue(&#123;</span><br><span class="line">    ···</span><br><span class="line">    router:router&#x2F;&#x2F;将路由规则注册到Vue实例上	</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;同时还需要在页面中使用&lt;router-view&gt;&lt;&#x2F;router-view&gt;用于展示对应组件</span><br><span class="line">&lt;router-view&gt;&lt;&#x2F;router-view&gt;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;页面中跳转除了使用&lt;a&gt;标签，还可使用&lt;router-link&gt;</span><br><span class="line">&lt;a href&#x3D;&#39;#&#x2F;name&#39;&gt;&lt;&#x2F;a&gt;</span><br><span class="line">&#x2F;&#x2F;&lt;router-link&gt;默认渲染为&lt;a&gt;标签，可以使用tag指定对应标签</span><br><span class="line">&lt;router-link to&#x3D;&#39;&#x2F;name&#39;&gt;&lt;&#x2F;router-link&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="在路由规则中定义参数"><a href="#在路由规则中定义参数" class="headerlink" title="在路由规则中定义参数"></a>在路由规则中定义参数</h2><ul>
+<li><p>直接在跳转路径上添加参数，使用<code>this.$route</code>获取添加的参数</p>
+</li>
+<li><p>修改router实例中的routes属性中的规则对象的path属性，使用<code>this.$route</code>获取添加的参数</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const router &#x3D; new Router(&#123;</span><br><span class="line"> ···</span><br><span class="line">  routes:</span><br><span class="line">  	&#123;</span><br><span class="line">  		path:&#39;&#x2F;name&#x2F;:id&#39;,</span><br><span class="line">  		component:&#123;&#125;</span><br><span class="line">  	&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;使用时在对应路径后传参即可</span><br><span class="line">&lt;router-link to&#x3D;&#39;&#x2F;name&#x2F;10&#39;&gt;&lt;&#x2F;router-link&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="路由的嵌套"><a href="#路由的嵌套" class="headerlink" title="路由的嵌套"></a>路由的嵌套</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">const router &#x3D; new Router(&#123;</span><br><span class="line"> ···</span><br><span class="line">  routes:</span><br><span class="line">  	&#123;</span><br><span class="line">  		path:&#39;&#x2F;parent&#39;,</span><br><span class="line">  		component:&#123;</span><br><span class="line">  			 template: &#96;</span><br><span class="line">                &lt;div class&#x3D;&quot;user&quot;&gt;</span><br><span class="line">    			  &lt;router-view&gt;&lt;&#x2F;router-view&gt;&#x2F;&#x2F;父组件要预留对应的位置用于子路由的渲染</span><br><span class="line"> 			   &lt;&#x2F;div&gt;</span><br><span class="line">             &#96;</span><br><span class="line">  		&#125;，</span><br><span class="line">  		children:[</span><br><span class="line">  			&#123;</span><br><span class="line">  				path:&#39;children&#39;&#x2F;&#x2F;此处路径不带&#39;&#x2F;&#39;,否则永远以根目录开始请求</span><br><span class="line">  				component:&#123;&#125;</span><br><span class="line">  			&#125;</span><br><span class="line">  		]</span><br><span class="line">  	&#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ES6新特性整理</title>
     <url>/2020/10/11/ES6%E6%96%B0%E7%89%B9%E6%80%A7/</url>
     <content><![CDATA[<h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><p><a href="http://caibaojian.com/es6/">ES6文档</a>，下面给出用到的较多的新特性。</p>
@@ -150,18 +191,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Tools</title>
-    <url>/2020/10/12/Tools/</url>
-    <content><![CDATA[<p><a href="http://www.animate.net.cn/">Animate.css</a></p>
-]]></content>
-      <categories>
-        <category>tools</category>
-      </categories>
-      <tags>
-        <tag>tools</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue组件</title>
     <url>/2020/10/12/Vue%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 定义一个名为 button-counter 的新组件</span><br><span class="line">Vue.component(&#39;button-counter&#39;, &#123;</span><br><span class="line">  data: function () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      count: 0</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template: &#39;&lt;button v-on:click&#x3D;&quot;count++&quot;&gt;You clicked me &#123;&#123; count &#125;&#125; times.&lt;&#x2F;button&gt;&#39;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -223,17 +252,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Vue路由</title>
-    <url>/2020/10/14/Vue%E8%B7%AF%E7%94%B1/</url>
-    <content><![CDATA[<h1 id="Vue路由"><a href="#Vue路由" class="headerlink" title="Vue路由"></a>Vue路由</h1>]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue问题整理1</title>
     <url>/2020/10/12/Vue%E9%97%AE%E9%A2%98%E6%95%B4%E7%90%861/</url>
     <content><![CDATA[<h1 id="vue-use和vue-prototype-xxx的区别"><a href="#vue-use和vue-prototype-xxx的区别" class="headerlink" title="vue.use和vue.prototype.$xxx的区别"></a>vue.use和vue.prototype.$xxx的区别</h1><h2 id="Vue-use"><a href="#Vue-use" class="headerlink" title="Vue.use"></a>Vue.use</h2><h2 id="vue-prototype-xxx"><a href="#vue-prototype-xxx" class="headerlink" title="vue.prototype.$xxx"></a>vue.prototype.$xxx</h2>]]></content>
@@ -243,6 +261,62 @@
       <tags>
         <tag>Vue</tag>
         <tag>question</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>前后端分离项目发布(Spring-boot/Vue)</title>
+    <url>/2020/10/05/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83-Spring-boot-Vue/</url>
+    <content><![CDATA[<h1 id="基于Spring-boot与Vue的前后端分离项目发布"><a href="#基于Spring-boot与Vue的前后端分离项目发布" class="headerlink" title="基于Spring-boot与Vue的前后端分离项目发布"></a>基于Spring-boot与Vue的前后端分离项目发布</h1><p>项目源码为人人开源的Spring-boot/Vue项目，本文对项目完成后的项目部署实践进行学习记录。</p>
+<h2 id="前端部署"><a href="#前端部署" class="headerlink" title="前端部署"></a>前端部署</h2><p>首先在服务器上配置Nginx。Nginx是一个web服务器也可以用来做负载均衡及反向代理使用。我个人参照<a href="https://www.cnblogs.com/taiyonghai/p/6728707.html">这篇文章</a>进行配置。文中的pcre的链接（第四个组件）个人测试连接超时，更换为</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget  https:&#x2F;&#x2F;netix.dl.sourceforge.net&#x2F;project&#x2F;pcre&#x2F;pcre&#x2F;8.40&#x2F;pcre-8.40.tar.gz</span><br></pre></td></tr></table></figure>
+
+<h3 id="程序打包"><a href="#程序打包" class="headerlink" title="程序打包"></a>程序打包</h3><p>使用命令<code>npm run build</code>进行程序打包，项目会将封装好的内容存放在新生成的dist文件夹中。然后将打包的文件通过Xshell或者MobaXterm等工具将文件上传至服务器的文件夹中，我个人使用的是后者。</p>
+<h3 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h3><p>此处推荐一篇使用 Nginx 部署 Vue 项目的<a href="https://www.jianshu.com/p/99521ae2fa19">文章</a>。</p>
+<p>通常来说，在nginx的conf文件夹中的配置文件nginx.conf 即可，具体的配置方式在上述文章中都有描述。此外，对于nginx部署，还有半自动与自动部署，目前尚未了解，暂且记录，之后再学习。</p>
+<p>nginx相关命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx #启动 Nginx 服务</span><br><span class="line"></span><br><span class="line">nginx -s stop #停止 Nginx 服务</span><br><span class="line"></span><br><span class="line">nginx -s reload #重新加载 Nginx 的配置文件</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="后端部署"><a href="#后端部署" class="headerlink" title="后端部署"></a>后端部署</h2><h3 id="程序打包-1"><a href="#程序打包-1" class="headerlink" title="程序打包"></a>程序打包</h3><p>后端为Spring Boot项目，内置Tomcat，推荐打包成jar包的形式进行部署，对于部署状态可在打包之前在配置文件中进行更改。（对于生成war包，原理上与传统spring项目发布类似，此处为个人猜测，并未实践）</p>
+<p>在windows下部署，只需打开cmd窗口，输入如下命令： </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -jar renren-fast-1.2.0.jar --spring.profiles.active&#x3D;pro </span><br></pre></td></tr></table></figure>
+
+<p>在Linux下部署，只需输入如下命令，即可在Linux后台运行，还可以放到/etc/rc.local里， 每次重启Linux时，项目都会自动起来：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup java -jar renren-fast-1.2.0.jar --spring.profiles.active&#x3D;pro</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>--spring.profiles.active=pro</code>需要项目本身具有对应的配置，需根据自己的项目进行修改。</p>
+<p>一些相关的命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kill -9 22899 #杀死端口号，关闭程序。</span><br><span class="line"></span><br><span class="line">ps -ef | grep java #查看java 运行的几个端口号</span><br></pre></td></tr></table></figure>
+
+<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><p>我使用的是部署在阿里云上的Linux服务器，安装的系统为centos_7_7_x64，默认貌似未开启防火墙，常见的几个端口都放行了，而我个人仅使用了数据库，所以一直未配置安全组与防火墙，此次部署设置安全组后依旧无法成功部署，于是配置服务器防火墙。一开始找到的资料都是配置iptables，但是尝试过后并无效果，直到查到<strong>centos7中的防火墙改成了firewall，使用iptables无作用</strong>才停止了无用功。于是我们可以通过配置firewall来修改网络端口监听。</p>
+<h4 id="firewall相关命令"><a href="#firewall相关命令" class="headerlink" title="firewall相关命令"></a>firewall相关命令</h4><h5 id="查看防火墙状态"><a href="#查看防火墙状态" class="headerlink" title="查看防火墙状态"></a>查看防火墙状态</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl status firewalld</span><br></pre></td></tr></table></figure>
+
+<h5 id="开启、关闭防火墙"><a href="#开启、关闭防火墙" class="headerlink" title="开启、关闭防火墙"></a>开启、关闭防火墙</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 开启</span><br><span class="line">systemctl start firewalld</span><br><span class="line"></span><br><span class="line"># 关闭</span><br><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
+
+<h5 id="开放指定端口"><a href="#开放指定端口" class="headerlink" title="开放指定端口"></a>开放指定端口</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;1935&#x2F;tcp --permanent</span><br><span class="line">命令含义：</span><br><span class="line">--zone #作用域</span><br><span class="line">--add-port&#x3D;1935&#x2F;tcp #添加端口，格式为：端口&#x2F;通讯协议</span><br><span class="line">--permanent #永久生效，没有此参数重启后失效</span><br></pre></td></tr></table></figure>
+
+<h5 id="firewalld刷新生效"><a href="#firewalld刷新生效" class="headerlink" title="firewalld刷新生效"></a>firewalld刷新生效</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h5 id="查看监听-Listen-的端口"><a href="#查看监听-Listen-的端口" class="headerlink" title="查看监听(Listen)的端口"></a>查看监听(Listen)的端口</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -lntp</span><br></pre></td></tr></table></figure>
+
+<h5 id="查看开启的端口"><a href="#查看开启的端口" class="headerlink" title="查看开启的端口"></a>查看开启的端口</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --zone&#x3D;public --list-ports</span><br></pre></td></tr></table></figure>
+
+<h5 id="firewalld常用命令"><a href="#firewalld常用命令" class="headerlink" title="firewalld常用命令"></a>firewalld常用命令</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># 查看所有放行端口</span><br><span class="line">firewall-cmd --zone&#x3D;public --list-ports</span><br><span class="line"> </span><br><span class="line"># 禁止IP访问机器</span><br><span class="line">firewall-cmd --permanent --add-rich-rule&#x3D;&#39;rule family&#x3D;ipv4 source address&#x3D;&quot;192.168.0.1&quot; drop&#39;</span><br><span class="line"> </span><br><span class="line"># 禁止一个IP段，比如禁止192.168.*.*</span><br><span class="line">firewall-cmd --permanent --add-rich-rule&#x3D;&#39;rule family&#x3D;ipv4 source address&#x3D;&quot;192.168.0.1&#x2F;16&quot; drop&#39;</span><br><span class="line"> </span><br><span class="line"># 禁止一个IP段，比如禁止192.168.0.*</span><br><span class="line">firewall-cmd --permanent --add-rich-rule&#x3D;&#39;rule family&#x3D;ipv4 source address&#x3D;&quot;192.168.0.1&#x2F;24&quot; drop&#39;</span><br><span class="line"> </span><br><span class="line"># 禁止机器IP从防火墙中删除</span><br><span class="line">firewall-cmd --permanent --remove-rich-rule&#x3D;&#39;rule family&#x3D;ipv4 source address&#x3D;&quot;192.168.0.1&quot; drop&#39;</span><br><span class="line"> </span><br><span class="line"># 允许http服务(对应服务策略目录：&#x2F;usr&#x2F;lib&#x2F;firewalld&#x2F;services&#x2F;)</span><br><span class="line">firewall-cmd --permanent --add-service&#x3D;http</span><br><span class="line"> </span><br><span class="line"># 关闭http服务(对应服务策略目录：&#x2F;usr&#x2F;lib&#x2F;firewalld&#x2F;services&#x2F;)</span><br><span class="line">firewall-cmd --permanent --remove-service&#x3D;http</span><br><span class="line"> </span><br><span class="line"># 允许端口:3306</span><br><span class="line">firewall-cmd --permanent --add-port&#x3D;3306&#x2F;tcp</span><br><span class="line"> </span><br><span class="line"># 允许端口:1-3306</span><br><span class="line">firewall-cmd --permanent --add-port&#x3D;1-3306&#x2F;tcp</span><br><span class="line"> </span><br><span class="line"># 关闭放行中端口:3306</span><br><span class="line">firewall-cmd --permanent --remove-port&#x3D;3306&#x2F;tcp</span><br><span class="line"> </span><br><span class="line"># 查看firewall的状态</span><br><span class="line">firewall-cmd --state    </span><br><span class="line"> </span><br><span class="line"># 查看防火墙规则（只显示&#x2F;etc&#x2F;firewalld&#x2F;zones&#x2F;public.xml中防火墙策略）</span><br><span class="line">firewall-cmd --list-all</span><br><span class="line"> </span><br><span class="line"># 查看所有的防火墙策略（即显示&#x2F;etc&#x2F;firewalld&#x2F;zones&#x2F;下的所有策略）</span><br><span class="line">firewall-cmd --list-all-zones</span><br><span class="line"> </span><br><span class="line"># 重新加载配置文件</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"> </span><br><span class="line"># 更改配置后一定要重新加载配置文件</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="运行jar包时指定端口号"><a href="#运行jar包时指定端口号" class="headerlink" title="运行jar包时指定端口号"></a>运行jar包时指定端口号</h4><h5 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h5><p>更改application.yml文件配置，更改端口号；<br>重新打包、部署；<br>运行cmd 执行命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -jar XXX.jar</span><br></pre></td></tr></table></figure>
+
+<h5 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h5><p>不在原项目上更改配置文件，运行cmd 时指定端口号</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -jar XXX.jar --server.port&#x3D;9098</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>模板&amp;框架</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Springboot</tag>
       </tags>
   </entry>
   <entry>
@@ -325,43 +399,6 @@
       </tags>
   </entry>
   <entry>
-    <title>hexo评论插件</title>
-    <url>/2020/10/06/hexo%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="Hexo评论插件"><a href="#Hexo评论插件" class="headerlink" title="Hexo评论插件"></a>Hexo评论插件</h1><p>大致对比了网上已有的评论插件，在考虑简便性以及成本的基础上，我个人选择使用gitalk用于博客搭建。Gitalk 是一个基于 Github Issue 和 Preact 开发的评论插件。</p>
-<p>这里放一个Next主题下的评论系统的<a href="https://theme-next.js.org/docs/third-party-services/comments.html">官方链接</a>，感兴趣可以自行参考。</p>
-<h2 id="构建方式"><a href="#构建方式" class="headerlink" title="构建方式"></a>构建方式</h2><ol>
-<li><p>首先<a href="https://github.com/settings/applications/new">申请</a>一个新的OAuth Application，注册成功后会得到一个<code>Client ID</code>和<code>Client Secret</code>，这两项会在后续配置中用到，需要记一下。</p>
-<img  src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006090056.png" alt="image-20201006090046855" style="zoom: 67%;" />
-
-<img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006090412.png" alt="image-20201006090409686" style="zoom:67%;" />
-</li>
-<li><p>建立评论仓库</p>
-<p>建立由于存放评论的内容，设置中打开issues，默认应该是打开的</p>
-<a id="more"></a>
-</li>
-<li><p>添加代码</p>
-<p>通常情况下只要将对应的代码嵌入页面之中即可使用</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;gitalk&#x2F;dist&#x2F;gitalk.css&quot;&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;gitalk@latest&#x2F;dist&#x2F;gitalk.min.js&quot;&gt;&lt;&#x2F;script&gt; </span><br><span class="line"></span><br><span class="line">&lt;div id&#x3D;&quot;gitalk-container&quot;&gt;&lt;&#x2F;div&gt;     </span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    var gitalk &#x3D; new Gitalk(&#123;</span><br><span class="line">    &#x2F;&#x2F; gitalk的主要参数</span><br><span class="line">      clientID: &#39;&#39;,   &#x2F;&#x2F;上面获取到的值</span><br><span class="line">      clientSecret: &#39;&#39;,&#x2F;&#x2F;上面获取到的值</span><br><span class="line">      repo: &#39;&#39;,  &#x2F;&#x2F;你刚才建立仓库的名字</span><br><span class="line">      owner: &#39;&#39;,   &#x2F;&#x2F;你的GitHub用户名字</span><br><span class="line">      admin:&#39;&#39;,  &#x2F;&#x2F;你的GitHub用户的名字</span><br><span class="line">      id: &#39;&#39;, &#x2F;&#x2F;id不能重复</span><br><span class="line">        &#125;);</span><br><span class="line">      gitalk.render(&#39;gitalk-container&#39;);</span><br><span class="line">&lt;&#x2F;script&gt; </span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Next主题配置</p>
-<p>我个人使用的是Next主题，Next有对应的集成插件，修改主题_config.yml配置即可。Next以往版本内部为gitment参数，8.0版本修改为gitalk参数。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006093609.png" alt="image-20201006092628245"></p>
-<p>但配置项基本一致，重点是之前申请所得的两个参数。</p>
-<p>此外还需要引入对应的js与css否则不会显示评论模块。</p>
-<img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006100142.png" alt="image-20201006100140723" style="zoom: 80%;" />
-
-<p>加载完成后需要注册Github Application的账号登录评论模块，进行手动初始化评论才能让其他用户进行评论</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-      <tags>
-        <tag>note</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>renren-fast使用笔记</title>
     <url>/2020/09/29/renren-fast%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>renren-fast是人人开源的一个快速开发平台的框架，实现了前后端分离，后台为Spring Boot，前端为Vue。整体分为三个部分：renren-fast（后台），renren-fast-vue（前端），renren-gennerator（代码生成器）。</p>
@@ -419,59 +456,40 @@
       </tags>
   </entry>
   <entry>
-    <title>前后端分离项目发布(Spring-boot/Vue)</title>
-    <url>/2020/10/05/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83-Spring-boot-Vue/</url>
-    <content><![CDATA[<h1 id="基于Spring-boot与Vue的前后端分离项目发布"><a href="#基于Spring-boot与Vue的前后端分离项目发布" class="headerlink" title="基于Spring-boot与Vue的前后端分离项目发布"></a>基于Spring-boot与Vue的前后端分离项目发布</h1><p>项目源码为人人开源的Spring-boot/Vue项目，本文对项目完成后的项目部署实践进行学习记录。</p>
-<h2 id="前端部署"><a href="#前端部署" class="headerlink" title="前端部署"></a>前端部署</h2><p>首先在服务器上配置Nginx。Nginx是一个web服务器也可以用来做负载均衡及反向代理使用。我个人参照<a href="https://www.cnblogs.com/taiyonghai/p/6728707.html">这篇文章</a>进行配置。文中的pcre的链接（第四个组件）个人测试连接超时，更换为</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">wget  https:&#x2F;&#x2F;netix.dl.sourceforge.net&#x2F;project&#x2F;pcre&#x2F;pcre&#x2F;8.40&#x2F;pcre-8.40.tar.gz</span><br></pre></td></tr></table></figure>
+    <title>hexo评论插件</title>
+    <url>/2020/10/06/hexo%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="Hexo评论插件"><a href="#Hexo评论插件" class="headerlink" title="Hexo评论插件"></a>Hexo评论插件</h1><p>大致对比了网上已有的评论插件，在考虑简便性以及成本的基础上，我个人选择使用gitalk用于博客搭建。Gitalk 是一个基于 Github Issue 和 Preact 开发的评论插件。</p>
+<p>这里放一个Next主题下的评论系统的<a href="https://theme-next.js.org/docs/third-party-services/comments.html">官方链接</a>，感兴趣可以自行参考。</p>
+<h2 id="构建方式"><a href="#构建方式" class="headerlink" title="构建方式"></a>构建方式</h2><ol>
+<li><p>首先<a href="https://github.com/settings/applications/new">申请</a>一个新的OAuth Application，注册成功后会得到一个<code>Client ID</code>和<code>Client Secret</code>，这两项会在后续配置中用到，需要记一下。</p>
+<img  src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006090056.png" alt="image-20201006090046855" style="zoom: 67%;" />
 
-<h3 id="程序打包"><a href="#程序打包" class="headerlink" title="程序打包"></a>程序打包</h3><p>使用命令<code>npm run build</code>进行程序打包，项目会将封装好的内容存放在新生成的dist文件夹中。然后将打包的文件通过Xshell或者MobaXterm等工具将文件上传至服务器的文件夹中，我个人使用的是后者。</p>
-<h3 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h3><p>此处推荐一篇使用 Nginx 部署 Vue 项目的<a href="https://www.jianshu.com/p/99521ae2fa19">文章</a>。</p>
-<p>通常来说，在nginx的conf文件夹中的配置文件nginx.conf 即可，具体的配置方式在上述文章中都有描述。此外，对于nginx部署，还有半自动与自动部署，目前尚未了解，暂且记录，之后再学习。</p>
-<p>nginx相关命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx #启动 Nginx 服务</span><br><span class="line"></span><br><span class="line">nginx -s stop #停止 Nginx 服务</span><br><span class="line"></span><br><span class="line">nginx -s reload #重新加载 Nginx 的配置文件</span><br></pre></td></tr></table></figure>
-
+<img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006090412.png" alt="image-20201006090409686" style="zoom:67%;" />
+</li>
+<li><p>建立评论仓库</p>
+<p>建立由于存放评论的内容，设置中打开issues，默认应该是打开的</p>
 <a id="more"></a>
+</li>
+<li><p>添加代码</p>
+<p>通常情况下只要将对应的代码嵌入页面之中即可使用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;gitalk&#x2F;dist&#x2F;gitalk.css&quot;&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;unpkg.com&#x2F;gitalk@latest&#x2F;dist&#x2F;gitalk.min.js&quot;&gt;&lt;&#x2F;script&gt; </span><br><span class="line"></span><br><span class="line">&lt;div id&#x3D;&quot;gitalk-container&quot;&gt;&lt;&#x2F;div&gt;     </span><br><span class="line">&lt;script type&#x3D;&quot;text&#x2F;javascript&quot;&gt;</span><br><span class="line">    var gitalk &#x3D; new Gitalk(&#123;</span><br><span class="line">    &#x2F;&#x2F; gitalk的主要参数</span><br><span class="line">      clientID: &#39;&#39;,   &#x2F;&#x2F;上面获取到的值</span><br><span class="line">      clientSecret: &#39;&#39;,&#x2F;&#x2F;上面获取到的值</span><br><span class="line">      repo: &#39;&#39;,  &#x2F;&#x2F;你刚才建立仓库的名字</span><br><span class="line">      owner: &#39;&#39;,   &#x2F;&#x2F;你的GitHub用户名字</span><br><span class="line">      admin:&#39;&#39;,  &#x2F;&#x2F;你的GitHub用户的名字</span><br><span class="line">      id: &#39;&#39;, &#x2F;&#x2F;id不能重复</span><br><span class="line">        &#125;);</span><br><span class="line">      gitalk.render(&#39;gitalk-container&#39;);</span><br><span class="line">&lt;&#x2F;script&gt; </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Next主题配置</p>
+<p>我个人使用的是Next主题，Next有对应的集成插件，修改主题_config.yml配置即可。Next以往版本内部为gitment参数，8.0版本修改为gitalk参数。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006093609.png" alt="image-20201006092628245"></p>
+<p>但配置项基本一致，重点是之前申请所得的两个参数。</p>
+<p>此外还需要引入对应的js与css否则不会显示评论模块。</p>
+<img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/20201006100142.png" alt="image-20201006100140723" style="zoom: 80%;" />
 
-<h2 id="后端部署"><a href="#后端部署" class="headerlink" title="后端部署"></a>后端部署</h2><h3 id="程序打包-1"><a href="#程序打包-1" class="headerlink" title="程序打包"></a>程序打包</h3><p>后端为Spring Boot项目，内置Tomcat，推荐打包成jar包的形式进行部署，对于部署状态可在打包之前在配置文件中进行更改。（对于生成war包，原理上与传统spring项目发布类似，此处为个人猜测，并未实践）</p>
-<p>在windows下部署，只需打开cmd窗口，输入如下命令： </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -jar renren-fast-1.2.0.jar --spring.profiles.active&#x3D;pro </span><br></pre></td></tr></table></figure>
-
-<p>在Linux下部署，只需输入如下命令，即可在Linux后台运行，还可以放到/etc/rc.local里， 每次重启Linux时，项目都会自动起来：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nohup java -jar renren-fast-1.2.0.jar --spring.profiles.active&#x3D;pro</span><br></pre></td></tr></table></figure>
-
-<p>其中 <code>--spring.profiles.active=pro</code>需要项目本身具有对应的配置，需根据自己的项目进行修改。</p>
-<p>一些相关的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">kill -9 22899 #杀死端口号，关闭程序。</span><br><span class="line"></span><br><span class="line">ps -ef | grep java #查看java 运行的几个端口号</span><br></pre></td></tr></table></figure>
-
-<h2 id="服务器配置"><a href="#服务器配置" class="headerlink" title="服务器配置"></a>服务器配置</h2><p>我使用的是部署在阿里云上的Linux服务器，安装的系统为centos_7_7_x64，默认貌似未开启防火墙，常见的几个端口都放行了，而我个人仅使用了数据库，所以一直未配置安全组与防火墙，此次部署设置安全组后依旧无法成功部署，于是配置服务器防火墙。一开始找到的资料都是配置iptables，但是尝试过后并无效果，直到查到<strong>centos7中的防火墙改成了firewall，使用iptables无作用</strong>才停止了无用功。于是我们可以通过配置firewall来修改网络端口监听。</p>
-<h4 id="firewall相关命令"><a href="#firewall相关命令" class="headerlink" title="firewall相关命令"></a>firewall相关命令</h4><h5 id="查看防火墙状态"><a href="#查看防火墙状态" class="headerlink" title="查看防火墙状态"></a>查看防火墙状态</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">systemctl status firewalld</span><br></pre></td></tr></table></figure>
-
-<h5 id="开启、关闭防火墙"><a href="#开启、关闭防火墙" class="headerlink" title="开启、关闭防火墙"></a>开启、关闭防火墙</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 开启</span><br><span class="line">systemctl start firewalld</span><br><span class="line"></span><br><span class="line"># 关闭</span><br><span class="line">systemctl start firewalld</span><br></pre></td></tr></table></figure>
-
-<h5 id="开放指定端口"><a href="#开放指定端口" class="headerlink" title="开放指定端口"></a>开放指定端口</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone&#x3D;public --add-port&#x3D;1935&#x2F;tcp --permanent</span><br><span class="line">命令含义：</span><br><span class="line">--zone #作用域</span><br><span class="line">--add-port&#x3D;1935&#x2F;tcp #添加端口，格式为：端口&#x2F;通讯协议</span><br><span class="line">--permanent #永久生效，没有此参数重启后失效</span><br></pre></td></tr></table></figure>
-
-<h5 id="firewalld刷新生效"><a href="#firewalld刷新生效" class="headerlink" title="firewalld刷新生效"></a>firewalld刷新生效</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<h5 id="查看监听-Listen-的端口"><a href="#查看监听-Listen-的端口" class="headerlink" title="查看监听(Listen)的端口"></a>查看监听(Listen)的端口</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">netstat -lntp</span><br></pre></td></tr></table></figure>
-
-<h5 id="查看开启的端口"><a href="#查看开启的端口" class="headerlink" title="查看开启的端口"></a>查看开启的端口</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --zone&#x3D;public --list-ports</span><br></pre></td></tr></table></figure>
-
-<h5 id="firewalld常用命令"><a href="#firewalld常用命令" class="headerlink" title="firewalld常用命令"></a>firewalld常用命令</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"># 查看所有放行端口</span><br><span class="line">firewall-cmd --zone&#x3D;public --list-ports</span><br><span class="line"> </span><br><span class="line"># 禁止IP访问机器</span><br><span class="line">firewall-cmd --permanent --add-rich-rule&#x3D;&#39;rule family&#x3D;ipv4 source address&#x3D;&quot;192.168.0.1&quot; drop&#39;</span><br><span class="line"> </span><br><span class="line"># 禁止一个IP段，比如禁止192.168.*.*</span><br><span class="line">firewall-cmd --permanent --add-rich-rule&#x3D;&#39;rule family&#x3D;ipv4 source address&#x3D;&quot;192.168.0.1&#x2F;16&quot; drop&#39;</span><br><span class="line"> </span><br><span class="line"># 禁止一个IP段，比如禁止192.168.0.*</span><br><span class="line">firewall-cmd --permanent --add-rich-rule&#x3D;&#39;rule family&#x3D;ipv4 source address&#x3D;&quot;192.168.0.1&#x2F;24&quot; drop&#39;</span><br><span class="line"> </span><br><span class="line"># 禁止机器IP从防火墙中删除</span><br><span class="line">firewall-cmd --permanent --remove-rich-rule&#x3D;&#39;rule family&#x3D;ipv4 source address&#x3D;&quot;192.168.0.1&quot; drop&#39;</span><br><span class="line"> </span><br><span class="line"># 允许http服务(对应服务策略目录：&#x2F;usr&#x2F;lib&#x2F;firewalld&#x2F;services&#x2F;)</span><br><span class="line">firewall-cmd --permanent --add-service&#x3D;http</span><br><span class="line"> </span><br><span class="line"># 关闭http服务(对应服务策略目录：&#x2F;usr&#x2F;lib&#x2F;firewalld&#x2F;services&#x2F;)</span><br><span class="line">firewall-cmd --permanent --remove-service&#x3D;http</span><br><span class="line"> </span><br><span class="line"># 允许端口:3306</span><br><span class="line">firewall-cmd --permanent --add-port&#x3D;3306&#x2F;tcp</span><br><span class="line"> </span><br><span class="line"># 允许端口:1-3306</span><br><span class="line">firewall-cmd --permanent --add-port&#x3D;1-3306&#x2F;tcp</span><br><span class="line"> </span><br><span class="line"># 关闭放行中端口:3306</span><br><span class="line">firewall-cmd --permanent --remove-port&#x3D;3306&#x2F;tcp</span><br><span class="line"> </span><br><span class="line"># 查看firewall的状态</span><br><span class="line">firewall-cmd --state    </span><br><span class="line"> </span><br><span class="line"># 查看防火墙规则（只显示&#x2F;etc&#x2F;firewalld&#x2F;zones&#x2F;public.xml中防火墙策略）</span><br><span class="line">firewall-cmd --list-all</span><br><span class="line"> </span><br><span class="line"># 查看所有的防火墙策略（即显示&#x2F;etc&#x2F;firewalld&#x2F;zones&#x2F;下的所有策略）</span><br><span class="line">firewall-cmd --list-all-zones</span><br><span class="line"> </span><br><span class="line"># 重新加载配置文件</span><br><span class="line">firewall-cmd --reload</span><br><span class="line"> </span><br><span class="line"># 更改配置后一定要重新加载配置文件</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><h4 id="运行jar包时指定端口号"><a href="#运行jar包时指定端口号" class="headerlink" title="运行jar包时指定端口号"></a>运行jar包时指定端口号</h4><h5 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h5><p>更改application.yml文件配置，更改端口号；<br>重新打包、部署；<br>运行cmd 执行命令</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -jar XXX.jar</span><br></pre></td></tr></table></figure>
-
-<h5 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h5><p>不在原项目上更改配置文件，运行cmd 时指定端口号</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -jar XXX.jar --server.port&#x3D;9098</span><br></pre></td></tr></table></figure>
-
+<p>加载完成后需要注册Github Application的账号登录评论模块，进行手动初始化评论才能让其他用户进行评论</p>
+</li>
+</ol>
 ]]></content>
       <categories>
-        <category>模板&amp;框架</category>
+        <category>Hexo</category>
       </categories>
       <tags>
-        <tag>Vue</tag>
-        <tag>Springboot</tag>
+        <tag>note</tag>
       </tags>
   </entry>
   <entry>
