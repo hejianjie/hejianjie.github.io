@@ -153,6 +153,7 @@
     <title>Tools</title>
     <url>/2020/10/12/Tools/</url>
     <content><![CDATA[<p><a href="http://www.animate.net.cn/">Animate.css</a></p>
+<p><a href="https://blog.csdn.net/weixin_38654336/article/details/80790698">Vue-Devtools</a></p>
 ]]></content>
       <categories>
         <category>tools</category>
@@ -213,7 +214,7 @@
 <h3 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h3><ul>
 <li>在父子组件通过事件绑定交互时，子组件通过<code>this.&amp;emit()</code>方法触发定义的方法，同时将子组件内的数据通过方法参数的形式传递给父组件。</li>
 </ul>
-<h3 id="通过ref获取DOM元素与组件引用"><a href="#通过ref获取DOM元素与组件引用" class="headerlink" title="通过ref获取DOM元素与组件引用"></a>通过ref获取DOM元素与组件引用</h3><p>在元素节点或者组件上添加<code>ref=&#39;name&#39;</code>属性，在Vue实例中通过<code>this.$refs.name</code>按名称获取节点元素，并通过获取到的元素对内部数据以及方法等进行操作。</p>
+<h3 id="通过ref获取DOM元素与组件引用"><a href="#通过ref获取DOM元素与组件引用" class="headerlink" title="通过ref获取DOM元素与组件引用"></a>通过ref获取DOM元素与组件引用</h3><p>在元素节点或者组件上添加<code>ref=&#39;name&#39;</code>属性，在Vue实例中通过<code>this.$refs.name</code>按名称获取节点元素，并通过获取到的元素对内部数据以及方法等进行操作。ref</p>
 ]]></content>
       <categories>
         <category>学习</category>
@@ -410,7 +411,8 @@
 <h3 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h3><p>此处推荐一篇使用 Nginx 部署 Vue 项目的<a href="https://www.jianshu.com/p/99521ae2fa19">文章</a>。</p>
 <p>通常来说，在nginx的conf文件夹中的配置文件nginx.conf 即可，具体的配置方式在上述文章中都有描述。此外，对于nginx部署，还有半自动与自动部署，目前尚未了解，暂且记录，之后再学习。</p>
 <p>nginx相关命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nginx #启动 Nginx 服务</span><br><span class="line"></span><br><span class="line">nginx -s stop #停止 Nginx 服务</span><br><span class="line"></span><br><span class="line">nginx -s reload #重新加载 Nginx 的配置文件</span><br></pre></td></tr></table></figure>
+<p>nginx/sbin/ 目录下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.&#x2F;nginx #启动 Nginx 服务</span><br><span class="line"></span><br><span class="line">.&#x2F;nginx -s stop #停止 Nginx 服务</span><br><span class="line"></span><br><span class="line">.&#x2F;nginx -s reload #重新加载 Nginx 的配置文件</span><br></pre></td></tr></table></figure>
 
 <a id="more"></a>
 
@@ -844,6 +846,87 @@
       </categories>
       <tags>
         <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Vue插槽</title>
+    <url>/2020/10/27/Vue%E6%8F%92%E6%A7%BD/</url>
+    <content><![CDATA[<h1 id="Vue插槽"><a href="#Vue插槽" class="headerlink" title="Vue插槽"></a>Vue插槽</h1><p>组件的插槽让封装的组件具有扩展性</p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>使用slot封装一类组件：具有共性，又有所不同。在封装组件时，抽取共性于组件中，对不同的部分预留为插槽，后续使用时按需填入。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template id&#x3D;&quot;&quot;&gt;&#x2F;&#x2F;使用id绑定要使用的组件</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;slot&gt;&lt;&#x2F;slot&gt; </span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;template&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;slot name&#x3D;&quot;&quot;&gt;&lt;&#x2F;slot&gt; &#x2F;&#x2F;使用name命名插槽</span><br><span class="line"></span><br><span class="line">&lt;mycpn slot&#x3D;&quot;&quot;&gt;&lt;&#x2F;mycpn&gt;&#x2F;&#x2F;使用时必须对写入对应的名称方  可填入指定内容</span><br></pre></td></tr></table></figure>
+
+<h2 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h2><p>编译作用域：父组件模板的所有东西都在父子作用域内编译；子组件模板的所有东西都会在自己作用域编译。</p>
+<p>作用域插槽的目的：父组件替换插槽的标签，但内容由子组件提供，即作用域插槽需要拿到子组件提供的数据，使用父组件的模板进行展示。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;slot :data&#x3D;&quot;&quot;&gt;&lt;&#x2F;slot&gt; &#x2F;&#x2F;使用data绑定子组建的数据，可使用自定义名称绑定</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;template slot-scope&#x3D;&quot;&quot;&gt;&#x2F;&#x2F;父组件中使用slot-scope绑定接收的数据，命名自定义，但在内部保持命名一致</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Webpack</title>
+    <url>/2020/10/16/Webpack/</url>
+    <content><![CDATA[<h1 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h1><p>Webpack 是一个基于Node.js的前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。</p>
+<p>在使用时，需要先全局安装，再在项目中安装。 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install webpack -g  &#x2F;&#x2F;全局</span><br><span class="line">npm install webpack-dev-server -g  &#x2F;&#x2F;本地</span><br></pre></td></tr></table></figure>
+
+<p>Webpack默认打包处理js文件，在webpack.config.js配置文件中的module对象中的rules属性，存放了所有第三方文件的匹配预处理规则。</p>
+<blockquote>
+<p>Webpack与Gulp：</p>
+<p>​    Gulp是基于task任务的</p>
+<p>​    Webpack是基于整个项目构建的</p>
+</blockquote>
+<h2 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h2><p>使用webpack-dev-server工具自动打包编译</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i webpack-dev-server -D</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;查看webpack 版本信息</span><br><span class="line">$ npm info webpack</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>依赖webpack运行，使用时需要在项目本地安装webpack</p>
+<p>webpack-dev-server打包生成的bundle.js并未存放到实际的物理磁盘上，而是直接托管到了电脑内存中</p>
+</blockquote>
+<h3 id="webpack-dev-server常用指令"><a href="#webpack-dev-server常用指令" class="headerlink" title="webpack-dev-server常用指令"></a>webpack-dev-server常用指令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">--open &#x2F;&#x2F;自动打开浏览器到根目录</span><br><span class="line"></span><br><span class="line">--port 3000 &#x2F;&#x2F;用哪个端口打开</span><br><span class="line"></span><br><span class="line">--contentBase src &#x2F;&#x2F;自动跳转根目录下某个目录</span><br><span class="line"></span><br><span class="line">--hot &#x2F;&#x2F;让更新的内容作为补丁，而非重新生成缓存文件</span><br></pre></td></tr></table></figure>
+
+<p>webpack-dev-server有两种模式支持自动刷新——iframe模式和inline模式</p>
+<ul>
+<li>在iframe模式下：页面是嵌套在一个iframe下的，在代码发生改动的时候，这个iframe会重新加载</li>
+<li>在inline模式下：一个小型的webpack-dev-server客户端会作为入口文件打包，这个客户端会在后端代码改变的时候刷新页面</li>
+</ul>
+<p>使用iframe模式，无需额外配置，只需在浏览器输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;webpack-dev-server&#x2F;index.html</span><br></pre></td></tr></table></figure>
+
+<p>使用inline模式有两种方式：命令行和nodejs API</p>
+<ol>
+<li><p>命令行： 在运行时，加上 –inline 选项</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ webpack-dev-server --inline</span><br></pre></td></tr></table></figure>
+
+<p>访问，通过<code>http://localhost:8080</code> 就可以访问</p>
+</li>
+<li><p>nodejs API 方式 ，需要手动把 webpack-dev-server/client?<a href="http://localhost:8080/">http://localhost:8080</a> 加到配置文件的入口文件处</p>
+</li>
+</ol>
+<h2 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h2><p>自动在内存中根据页面生成一个内存的页面</p>
+<p>自动把打包好的bundle.js追加到页面中去安装</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save-dev html-webpack-plugin</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>该插件将为你生成一个 HTML5 文件， 其中包括使用 <code>script</code> 标签的 body 中的所有 webpack 包。 只需添加插件到你的 webpack 配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var HtmlWebpackPlugin &#x3D; require(&#39;html-webpack-plugin&#39;);</span><br><span class="line">var path &#x3D; require(&#39;path&#39;);</span><br><span class="line"></span><br><span class="line">var webpackConfig &#x3D; &#123;</span><br><span class="line">  entry: &#39;index.js&#39;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &#39;.&#x2F;dist&#39;),</span><br><span class="line">    filename: &#39;index_bundle.js&#39;</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [new HtmlWebpackPlugin()]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这将会产生一个包含以下内容的文件 <code>dist/index.html</code>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;webpack App&lt;&#x2F;title&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;index_bundle.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果你有多个 webpack 入口点， 他们都会在生成的HTML文件中的 <code>script</code> 标签内。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>webpack</tag>
       </tags>
   </entry>
 </search>

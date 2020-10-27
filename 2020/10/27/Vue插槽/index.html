@@ -22,18 +22,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"8.0.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}};
   </script>
 
-  <meta name="description" content="得之我幸，失之我命">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Enkidu">
-<meta property="og:url" content="http://example.com/tags/tools/index.html">
+  <meta name="description" content="Vue插槽组件的插槽让封装的组件具有扩展性 基本使用使用slot封装一类组件：具有共性，又有所不同。在封装组件时，抽取共性于组件中，对不同的部分预留为插槽，后续使用时按需填入。 12345&lt;template id&#x3D;&quot;&quot;&gt;&#x2F;&#x2F;使用id绑定要使用的组件	&lt;div&gt;		&lt;slot&gt;&lt;&#x2F;slot&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue插槽">
+<meta property="og:url" content="http://example.com/2020/10/27/Vue%E6%8F%92%E6%A7%BD/index.html">
 <meta property="og:site_name" content="Enkidu">
-<meta property="og:description" content="得之我幸，失之我命">
+<meta property="og:description" content="Vue插槽组件的插槽让封装的组件具有扩展性 基本使用使用slot封装一类组件：具有共性，又有所不同。在封装组件时，抽取共性于组件中，对不同的部分预留为插槽，后续使用时按需填入。 12345&lt;template id&#x3D;&quot;&quot;&gt;&#x2F;&#x2F;使用id绑定要使用的组件	&lt;div&gt;		&lt;slot&gt;&lt;&#x2F;slot&gt;">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-27T08:58:44.000Z">
+<meta property="article:modified_time" content="2020-10-27T12:48:45.982Z">
 <meta property="article:author" content="何熙">
+<meta property="article:tag" content="Vue">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://example.com/tags/tools/">
+<link rel="canonical" href="http://example.com/2020/10/27/Vue%E6%8F%92%E6%A7%BD/">
 
 
 <script class="page-configurations">
@@ -41,12 +44,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>标签: tools | Enkidu</title>
+  <title>Vue插槽 | Enkidu</title>
   
 
 
@@ -194,7 +197,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -206,6 +209,7 @@
 
       <!--noindex-->
       <section class="post-toc-wrap sidebar-panel">
+          <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Vue%E6%8F%92%E6%A7%BD"><span class="nav-number">1.</span> <span class="nav-text">Vue插槽</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="nav-number">1.1.</span> <span class="nav-text">基本使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B7%E5%90%8D%E6%8F%92%E6%A7%BD"><span class="nav-number">1.2.</span> <span class="nav-text">具名插槽</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F%E6%8F%92%E6%A7%BD"><span class="nav-number">1.3.</span> <span class="nav-text">作用域插槽</span></a></li></ol></li></ol></div>
       </section>
       <!--/noindex-->
 
@@ -261,78 +265,117 @@
 </noscript>
 
 
-    <div class="main-inner tag posts-collapse">
+    <div class="main-inner post posts-expand">
       
 
       
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <h2 class="collection-header">tools
-          <small>标签</small>
-        </h2>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/27/Vue%E6%8F%92%E6%A7%BD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/me.jpg">
+      <meta itemprop="name" content="何熙">
+      <meta itemprop="description" content="得之我幸，失之我命">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Enkidu">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vue插槽
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2020</span>
+
+      <time title="创建时间：2020-10-27 16:58:44 / 修改时间：20:48:45" itemprop="dateCreated datePublished" datetime="2020-10-27T16:58:44+08:00">2020-10-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Vue插槽"><a href="#Vue插槽" class="headerlink" title="Vue插槽"></a>Vue插槽</h1><p>组件的插槽让封装的组件具有扩展性</p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>使用slot封装一类组件：具有共性，又有所不同。在封装组件时，抽取共性于组件中，对不同的部分预留为插槽，后续使用时按需填入。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;template id&#x3D;&quot;&quot;&gt;&#x2F;&#x2F;使用id绑定要使用的组件</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;slot&gt;&lt;&#x2F;slot&gt; </span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;template&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;slot name&#x3D;&quot;&quot;&gt;&lt;&#x2F;slot&gt; &#x2F;&#x2F;使用name命名插槽</span><br><span class="line"></span><br><span class="line">&lt;mycpn slot&#x3D;&quot;&quot;&gt;&lt;&#x2F;mycpn&gt;&#x2F;&#x2F;使用时必须对写入对应的名称方  可填入指定内容</span><br></pre></td></tr></table></figure>
+
+<h2 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h2><p>编译作用域：父组件模板的所有东西都在父子作用域内编译；子组件模板的所有东西都会在自己作用域编译。</p>
+<p>作用域插槽的目的：父组件替换插槽的标签，但内容由子组件提供，即作用域插槽需要拿到子组件提供的数据，使用父组件的模板进行展示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;slot :data&#x3D;&quot;&quot;&gt;&lt;&#x2F;slot&gt; &#x2F;&#x2F;使用data绑定子组建的数据，可使用自定义名称绑定</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;template slot-scope&#x3D;&quot;&quot;&gt;&#x2F;&#x2F;父组件中使用slot-scope绑定接收的数据，命名自定义，但在内部保持命名一致</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-10-16T10:18:01+08:00"
-              content="2020-10-16">
-          10-16
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/10/16/nrm%E9%95%9C%E5%83%8F%E6%BA%90%E7%AE%A1%E7%90%86%E5%B7%A5%E5%85%B7/" itemprop="url">
-            <span itemprop="name">nrm镜像源管理工具</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Vue/" rel="tag"># Vue</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/16/Webpack/" rel="prev" title="Webpack">
+                  <i class="fa fa-chevron-left"></i> Webpack
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
+</div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2020-10-12T15:23:39+08:00"
-              content="2020-10-12">
-          10-12
-        </time>
-      </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2020/10/12/Tools/" itemprop="url">
-            <span itemprop="name">Tools</span>
-          </a>
-      </div>
 
-      
-    </header>
-  </article>
-
-    </div>
-  </div>
-  
-  
-  
-
-  
 
 
 
       
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -437,6 +480,25 @@
 
   
 
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+
+<script>
+NexT.utils.loadComments('#gitalk-container', () => {
+  NexT.utils.getScript('https://unpkg.com/gitalk@latest/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '4c99316f6b94b245e4cf',
+      clientSecret: '7d0a2d0e01dc8ba64e06e566ad48b40294578c83',
+      repo        : 'ForBlogIssue',
+      owner       : 'hejianjie',
+      admin       : ['hejianjie'],
+      id          : 'f00c68fb6f3db2549fe83179d0927f3b',
+        language: 'zh-CN',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
