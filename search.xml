@@ -969,6 +969,7 @@
 <p>此处使用的是对应的web模块正常运行所以来的组件</p>
 </blockquote>
 <h3 id="在项目中编写启动主程序"><a href="#在项目中编写启动主程序" class="headerlink" title="在项目中编写启动主程序"></a>在项目中编写启动主程序</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//@SpringBootApplication来标注一个主程序类，说明这是一个Spring Boot应用 </span></span><br><span class="line"><span class="meta">@SpringBootApplication</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainApplication</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// Spring应用启动</span></span><br><span class="line">        SpringApplication.run(MainApplication.class,args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 
 <blockquote>
 <p>//@SpringBootApplication是一个组合注解</p>
