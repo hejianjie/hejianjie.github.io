@@ -300,6 +300,22 @@
 
       <time title="创建时间：2020-11-15 16:51:25" itemprop="dateCreated datePublished" datetime="2020-11-15T16:51:25+08:00">2020-11-15</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2020-11-16 20:34:36" itemprop="dateModified" datetime="2020-11-16T20:34:36+08:00">2020-11-16</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">学习</span></a>
+        </span>
+    </span>
 
   
 </div>
@@ -311,7 +327,21 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h1 id="SpringBoot与缓存"><a href="#SpringBoot与缓存" class="headerlink" title="SpringBoot与缓存"></a>SpringBoot与缓存</h1><h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>缓存用于提升系统的性能，特别适用于一些对资源需求比较高的操作。例如一些高频访问的热点数据或是一些临时性的数据等。</p>
+<h2 id="Jsr107缓存规范"><a href="#Jsr107缓存规范" class="headerlink" title="Jsr107缓存规范"></a>Jsr107缓存规范</h2><p>Java Caching定义了5个核心接口，分别是<strong>CachingProvider</strong>, <strong>CacheManager</strong>, <strong>Cache</strong>, <strong>Entry</strong>和 <strong>Expiry</strong>。 </p>
+<p>• <strong>CachingProvider</strong>定义了创建、配置、获取、管理和控制多个<strong>CacheManager</strong>。一个应用可以在运行期访问多个CachingProvider。 </p>
+<p>• <strong>CacheManager</strong>定义了创建、配置、获取、管理和控制多个唯一命名的<strong>Cache</strong>，这些Cache存在于CacheManager的上下文中。一个CacheManager仅被一个CachingProvider所拥有。</p>
+<p>• <strong>Cache</strong>是一个类似Map的数据结构并临时存储以Key为索引的值。一个Cache仅被一个CacheManager所拥有。</p>
+<p>• <strong>Entry</strong>是一个存储在Cache中的key-value对。</p>
+<p>• <strong>Expiry</strong> 每一个存储在Cache中的条目有一个定义的有效期。一旦超过这个时间，条目为过期的状态。一旦过期，条目将不可访问、更新和删除。缓存有效期可以通过ExpiryPolicy设置。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/11/15/SpringBoot%E9%AB%98%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
