@@ -163,6 +163,27 @@
       </tags>
   </entry>
   <entry>
+    <title>Vue插槽</title>
+    <url>/2020/10/27/Vue%E6%8F%92%E6%A7%BD/</url>
+    <content><![CDATA[<h1 id="Vue插槽"><a href="#Vue插槽" class="headerlink" title="Vue插槽"></a>Vue插槽</h1><p>组件的插槽让封装的组件具有扩展性</p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>使用slot封装一类组件：具有共性，又有所不同。在封装组件时，抽取共性于组件中，对不同的部分预留为插槽，后续使用时按需填入。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template id&#x3D;&quot;&quot;&gt;&#x2F;&#x2F;使用id绑定要使用的组件</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;slot&gt;&lt;&#x2F;slot&gt; </span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;template&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;slot name&#x3D;&quot;&quot;&gt;&lt;&#x2F;slot&gt; &#x2F;&#x2F;使用name命名插槽</span><br><span class="line"></span><br><span class="line">&lt;mycpn slot&#x3D;&quot;&quot;&gt;&lt;&#x2F;mycpn&gt;&#x2F;&#x2F;使用时必须对写入对应的名称方  可填入指定内容</span><br></pre></td></tr></table></figure>
+
+<h2 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h2><p>编译作用域：父组件模板的所有东西都在父子作用域内编译；子组件模板的所有东西都会在自己作用域编译。</p>
+<p>作用域插槽的目的：父组件替换插槽的标签，但内容由子组件提供，即作用域插槽需要拿到子组件提供的数据，使用父组件的模板进行展示。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;slot :data&#x3D;&quot;&quot;&gt;&lt;&#x2F;slot&gt; &#x2F;&#x2F;使用data绑定子组建的数据，可使用自定义名称绑定</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;template slot-scope&#x3D;&quot;&quot;&gt;&#x2F;&#x2F;父组件中使用slot-scope绑定接收的数据，命名自定义，但在内部保持命名一致</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue组件</title>
     <url>/2020/10/12/Vue%E7%BB%84%E4%BB%B6/</url>
     <content><![CDATA[<h1 id="Vue组件"><a href="#Vue组件" class="headerlink" title="Vue组件"></a>Vue组件</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 定义一个名为 button-counter 的新组件</span><br><span class="line">Vue.component(&#39;button-counter&#39;, &#123;</span><br><span class="line">  data: function () &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      count: 0</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  template: &#39;&lt;button v-on:click&#x3D;&quot;count++&quot;&gt;You clicked me &#123;&#123; count &#125;&#125; times.&lt;&#x2F;button&gt;&#39;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
@@ -264,6 +285,66 @@
       <tags>
         <tag>Vue</tag>
         <tag>question</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Webpack</title>
+    <url>/2020/10/16/Webpack/</url>
+    <content><![CDATA[<h1 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h1><p>Webpack 是一个基于Node.js的前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。</p>
+<p>在使用时，需要先全局安装，再在项目中安装。 </p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install webpack -g  &#x2F;&#x2F;全局</span><br><span class="line">npm install webpack-dev-server -g  &#x2F;&#x2F;本地</span><br></pre></td></tr></table></figure>
+
+<p>Webpack默认打包处理js文件，在webpack.config.js配置文件中的module对象中的rules属性，存放了所有第三方文件的匹配预处理规则。</p>
+<blockquote>
+<p>Webpack与Gulp：</p>
+<p>​    Gulp是基于task任务的</p>
+<p>​    Webpack是基于整个项目构建的</p>
+</blockquote>
+<h2 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h2><p>使用webpack-dev-server工具自动打包编译</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i webpack-dev-server -D</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;查看webpack 版本信息</span><br><span class="line">$ npm info webpack</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>依赖webpack运行，使用时需要在项目本地安装webpack</p>
+<p>webpack-dev-server打包生成的bundle.js并未存放到实际的物理磁盘上，而是直接托管到了电脑内存中</p>
+</blockquote>
+<h3 id="webpack-dev-server常用指令"><a href="#webpack-dev-server常用指令" class="headerlink" title="webpack-dev-server常用指令"></a>webpack-dev-server常用指令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">--open &#x2F;&#x2F;自动打开浏览器到根目录</span><br><span class="line"></span><br><span class="line">--port 3000 &#x2F;&#x2F;用哪个端口打开</span><br><span class="line"></span><br><span class="line">--contentBase src &#x2F;&#x2F;自动跳转根目录下某个目录</span><br><span class="line"></span><br><span class="line">--hot &#x2F;&#x2F;让更新的内容作为补丁，而非重新生成缓存文件</span><br></pre></td></tr></table></figure>
+
+<p>webpack-dev-server有两种模式支持自动刷新——iframe模式和inline模式</p>
+<ul>
+<li>在iframe模式下：页面是嵌套在一个iframe下的，在代码发生改动的时候，这个iframe会重新加载</li>
+<li>在inline模式下：一个小型的webpack-dev-server客户端会作为入口文件打包，这个客户端会在后端代码改变的时候刷新页面</li>
+</ul>
+<p>使用iframe模式，无需额外配置，只需在浏览器输入</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;webpack-dev-server&#x2F;index.html</span><br></pre></td></tr></table></figure>
+
+<p>使用inline模式有两种方式：命令行和nodejs API</p>
+<ol>
+<li><p>命令行： 在运行时，加上 –inline 选项</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ webpack-dev-server --inline</span><br></pre></td></tr></table></figure>
+
+<p>访问，通过<code>http://localhost:8080</code> 就可以访问</p>
+</li>
+<li><p>nodejs API 方式 ，需要手动把 webpack-dev-server/client?<a href="http://localhost:8080/">http://localhost:8080</a> 加到配置文件的入口文件处</p>
+</li>
+</ol>
+<h2 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h2><p>自动在内存中根据页面生成一个内存的页面</p>
+<p>自动把打包好的bundle.js追加到页面中去安装</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save-dev html-webpack-plugin</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>该插件将为你生成一个 HTML5 文件， 其中包括使用 <code>script</code> 标签的 body 中的所有 webpack 包。 只需添加插件到你的 webpack 配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var HtmlWebpackPlugin &#x3D; require(&#39;html-webpack-plugin&#39;);</span><br><span class="line">var path &#x3D; require(&#39;path&#39;);</span><br><span class="line"></span><br><span class="line">var webpackConfig &#x3D; &#123;</span><br><span class="line">  entry: &#39;index.js&#39;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &#39;.&#x2F;dist&#39;),</span><br><span class="line">    filename: &#39;index_bundle.js&#39;</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [new HtmlWebpackPlugin()]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>这将会产生一个包含以下内容的文件 <code>dist/index.html</code>：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;webpack App&lt;&#x2F;title&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;index_bundle.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果你有多个 webpack 入口点， 他们都会在生成的HTML文件中的 <code>script</code> 标签内。</p>
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>webpack</tag>
       </tags>
   </entry>
   <entry>
@@ -401,6 +482,63 @@
       </tags>
   </entry>
   <entry>
+    <title>renren-fast使用笔记</title>
+    <url>/2020/09/29/renren-fast%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>renren-fast是人人开源的一个快速开发平台的框架，实现了前后端分离，后台为Spring Boot，前端为Vue。整体分为三个部分：renren-fast（后台），renren-fast-vue（前端），renren-gennerator（代码生成器）。</p>
+<p>目前个人使用这套框架搭建了一个管理系统，当然仅仅是搭建起来了，对于项目中集成的多种技术以及整体的开发逻辑还在艰难学习中。谨以此文记录一下项目搭建过程中遇到的一些问题。</p>
+<p>同时附上一篇网上找到的<a href="https://blog.csdn.net/zd1007129657/article/details/82698854">踩坑记录</a>，里面有不少有用的解决方案。</p>
+<h1 id="renren-fast"><a href="#renren-fast" class="headerlink" title="renren-fast"></a>renren-fast</h1><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>后端部署就是常规的git操作，环境要求是JDK1.8 、 MySQL5.5+，然后等待依赖导入完成就可以更改具体的配置了。</p>
+<p>项目的DB文件夹中是用于生成项目的SQL文件，自行创建数据库初始化数据，数据库编码为 UTF-8。创建完成后修改application-dev.yml配置文件 ，更新数据库账号和密码，然后运行 io.renren.RenrenApplication.java 的 main 方法，则可启动项目。总体来说，后端的部署基本不会出现什么问题，不能部署可以找一下项目环境相关的问题，例如jdk，maven，镜像之类的问题等。</p>
+<h2 id="开发时的接口测试"><a href="#开发时的接口测试" class="headerlink" title="开发时的接口测试"></a>开发时的接口测试</h2><p>我个人是前后端都搭建完成之后，前端验证后台接口的数据。除此之外，项目中提供了mock本地模拟数据，详情在上文提到的踩坑记录文章中有描述，我个人没有实践过。</p>
+<a id="more"></a>
+
+<h1 id="renren-fast-1"><a href="#renren-fast-1" class="headerlink" title="renren-fast"></a>renren-fast</h1><p>前端的环境要求是node.js，npm等，开发工具我个人使用的是VS Code。</p>
+<p>官方的文档为github仓库的<a href="https://github.com/renrenio/renren-fast-vue/wiki">wiki</a>，一些常规的问题都有描述，此外项目中的其他问题大多可以在项目的ithub仓库或者gitee仓库的Issues中找到，我会在下文给出一些常见的问题，未给出的可以自行去查找</p>
+<p>前端部署依旧是常规的git操作，然后安装依赖，启动服务：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 克隆项目</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;daxiongYang&#x2F;renren-fast-vue.git</span><br><span class="line"># 安装依赖</span><br><span class="line">npm install</span><br><span class="line"># 启动服务</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+
+<p>可能会出现的问题：</p>
+<ul>
+<li>node版本和sass的对应问题</li>
+</ul>
+<p>node是8以上，可以把vue项目中package.json中的sass依赖版本改为4.14.1</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i node-sass --sass_binary_site&#x3D;https:&#x2F;&#x2F;npm.taobao.org&#x2F;mirrors&#x2F;node-sass&#x2F;	</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>chromedriver ERR</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install chromedriver --chromedriver_cdnurl&#x3D;http:&#x2F;&#x2F;cdn.npm.taobao.org&#x2F;dist&#x2F;chromedriver</span><br></pre></td></tr></table></figure>
+
+<p>我个人只遇到了上述问题，其他问题可以自己去Issues中查找一下。</p>
+<p>项目启动后会进入登录界面，如果没有同时部署后台，验证码图片不会加载，后端接口的配置在config/index.js中修改，官方wiki中有具体介绍。</p>
+<h1 id="renren-generator"><a href="#renren-generator" class="headerlink" title="renren-generator"></a>renren-generator</h1><p>代码生成器用于快速搭建符合框架整体风格的代码，在<a href="https://www.renren.io/guide#func">官方文档</a>有具体描述，这里直接截取官方文档中的相关内容。</p>
+<p>代码生成器是Spring Boot开发的项目，通过git clone把项目下载到本地后，直接运行main方法，就可以通过<a href="http://localhost打开，配置文件如下所示：">http://localhost打开，配置文件如下所示：</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#配置文件：generator.properties</span><br><span class="line">    #包名</span><br><span class="line">    package&#x3D;io.renren.modules.generator</span><br><span class="line">    #作者</span><br><span class="line">    author&#x3D;chenshun</span><br><span class="line">    #Email</span><br><span class="line">    email&#x3D;sunlightcs@gmail.com</span><br><span class="line">    #表前缀(类名不会包含表前缀)</span><br><span class="line">    tablePrefix&#x3D;tb_</span><br><span class="line">    #类型转换，配置信息</span><br><span class="line">    tinyint&#x3D;Integer</span><br><span class="line">    smallint&#x3D;Integer</span><br><span class="line">    mediumint&#x3D;Integer</span><br><span class="line">    int&#x3D;Integer</span><br><span class="line">    integer&#x3D;Integer</span><br><span class="line">    bigint&#x3D;Long</span><br><span class="line">    float&#x3D;Float</span><br><span class="line">    double&#x3D;Double</span><br><span class="line">    decimal&#x3D;BigDecimal</span><br><span class="line">    bit&#x3D;Boolean</span><br><span class="line">    char&#x3D;String</span><br><span class="line">    varchar&#x3D;String</span><br><span class="line">    tinytext&#x3D;String</span><br><span class="line">    text&#x3D;String</span><br><span class="line">    mediumtext&#x3D;String</span><br><span class="line">    longtext&#x3D;String</span><br><span class="line">    date&#x3D;Date</span><br><span class="line">    datetime&#x3D;Date</span><br><span class="line">    timestamp&#x3D;Date</span><br></pre></td></tr></table></figure>
+
+<p>上面的配置文件，可以配置包名、作者信息、表前缀、类型转换。其中，类型转换是指，MySQL中的类型与JavaBean中的类型，是怎么一个对应关系。如果有缺少的类型，可自行在generator.properties文件中补充。</p>
+<p>再看看application.yml配置文件，只要修改数据库名、账号、密码，就可以了。其中，数据库名是指待生成的表，所在的数据库。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Tomcat</span><br><span class="line"> server:</span><br><span class="line">     tomcat:</span><br><span class="line">         max-threads: 10</span><br><span class="line">         min-spare-threads: 10</span><br><span class="line">     port: 80</span><br><span class="line"> # mysql</span><br><span class="line"> spring:</span><br><span class="line">     datasource:</span><br><span class="line">         type: com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">         driverClassName: com.mysql.jdbc.Driver</span><br><span class="line">         url: jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;renren_fast?useUnicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8</span><br><span class="line">         username: renren</span><br><span class="line">         password: 123456</span><br><span class="line">     jackson:</span><br><span class="line">         time-zone: GMT+8</span><br><span class="line">         date-format: yyyy-MM-dd HH:mm:ss</span><br><span class="line">     resources:</span><br><span class="line">             static-locations: classpath:&#x2F;static&#x2F;,classpath:&#x2F;views&#x2F;</span><br><span class="line"> # Mybatis配置</span><br><span class="line"> mybatis:</span><br><span class="line">     mapperLocations: classpath:mapper&#x2F;**&#x2F;*.xml</span><br></pre></td></tr></table></figure>
+
+<p>选择需要生成的数据库表，执行完成后，会生成对应的代码文件。内部包含后台以及前端代码，分别加入对应的文件夹即可。前端列表出现无文字的菜单是因为未命名，在菜单管理处添加名称即可。</p>
+<h1 id="项目发布"><a href="#项目发布" class="headerlink" title="项目发布"></a>项目发布</h1><p>项目发布我在另一篇<a href="https://hejianjie.github.io/2020/10/05/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83-Spring-boot-Vue/">文章</a>有写，需要注意的是项目的后台接口需要开启代理解决跨域问题。</p>
+<p>此外，在上述文章中未提及的是，在前端执行项目打包时可能会报以下错误：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fs.js:35 &#125; &#x3D; primordials; </span><br><span class="line">ReferenceError: primordials is not defined</span><br></pre></td></tr></table></figure>
+
+<p>这个问题gulp版本导致的，可以查看<code>package.json</code>，发现gulp版本是3.9.1，我个人的node是12，因此会出现版本不匹配引起的报错，可以选择升级gulp版本到4以上，或node回退到10版本。</p>
+<p>此外，在网上找到有不用升级或回退的方法，个人并未实践，在此附上</p>
+<p>在renren-fast-vue目录，新建<code>npm-shrinkwrap.json</code>文件，输入以下内容：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;dependencies&quot;: &#123;</span><br><span class="line">        &quot;graceful-fs&quot;: &#123;</span><br><span class="line">            &quot;version&quot;: &quot;4.2.2&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>随后，执行以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install	#再次安装依赖</span><br><span class="line">npm run build	#打包</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>模板&amp;框架</category>
+      </categories>
+      <tags>
+        <tag>note</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>前后端分离项目发布(Spring-boot/Vue)</title>
     <url>/2020/10/05/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83-Spring-boot-Vue/</url>
     <content><![CDATA[<h1 id="基于Spring-boot与Vue的前后端分离项目发布"><a href="#基于Spring-boot与Vue的前后端分离项目发布" class="headerlink" title="基于Spring-boot与Vue的前后端分离项目发布"></a>基于Spring-boot与Vue的前后端分离项目发布</h1><p>项目源码为人人开源的Spring-boot/Vue项目，本文对项目完成后的项目部署实践进行学习记录。</p>
@@ -458,60 +596,30 @@
       </tags>
   </entry>
   <entry>
-    <title>renren-fast使用笔记</title>
-    <url>/2020/09/29/renren-fast%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>renren-fast是人人开源的一个快速开发平台的框架，实现了前后端分离，后台为Spring Boot，前端为Vue。整体分为三个部分：renren-fast（后台），renren-fast-vue（前端），renren-gennerator（代码生成器）。</p>
-<p>目前个人使用这套框架搭建了一个管理系统，当然仅仅是搭建起来了，对于项目中集成的多种技术以及整体的开发逻辑还在艰难学习中。谨以此文记录一下项目搭建过程中遇到的一些问题。</p>
-<p>同时附上一篇网上找到的<a href="https://blog.csdn.net/zd1007129657/article/details/82698854">踩坑记录</a>，里面有不少有用的解决方案。</p>
-<h1 id="renren-fast"><a href="#renren-fast" class="headerlink" title="renren-fast"></a>renren-fast</h1><h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>后端部署就是常规的git操作，环境要求是JDK1.8 、 MySQL5.5+，然后等待依赖导入完成就可以更改具体的配置了。</p>
-<p>项目的DB文件夹中是用于生成项目的SQL文件，自行创建数据库初始化数据，数据库编码为 UTF-8。创建完成后修改application-dev.yml配置文件 ，更新数据库账号和密码，然后运行 io.renren.RenrenApplication.java 的 main 方法，则可启动项目。总体来说，后端的部署基本不会出现什么问题，不能部署可以找一下项目环境相关的问题，例如jdk，maven，镜像之类的问题等。</p>
-<h2 id="开发时的接口测试"><a href="#开发时的接口测试" class="headerlink" title="开发时的接口测试"></a>开发时的接口测试</h2><p>我个人是前后端都搭建完成之后，前端验证后台接口的数据。除此之外，项目中提供了mock本地模拟数据，详情在上文提到的踩坑记录文章中有描述，我个人没有实践过。</p>
-<a id="more"></a>
+    <title>字符画收集</title>
+    <url>/2020/11/10/%E5%AD%97%E7%AC%A6%E7%94%BB%E6%94%B6%E9%9B%86/</url>
+    <content><![CDATA[<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">███████████████████████████████████████████████████████████████████████████████████████████████████████████████████</span><br><span class="line">█████████████████████████████████████████████ª~ ███████████████▓- &#123;████▓  ██████   █████████████████████████████████████</span><br><span class="line">████████████████████████████████▀▀▀▀ⁿ^      ~~▓███   ████████████████   ████▀=  ▀▀▀▀▀▀  ▀▀▀ ██████████████████████████████████</span><br><span class="line">████████████████████████████████,      _▄▄▄▄████|&#125;  █████████████▀   ^       █▄▄  ▄█████F  ▄▄▄██████████████████████████████████</span><br><span class="line">█████████████████████████████████,  ▄███  ▓██▀█&#125;   ▓███████████▄▄█▀   ▀███▀==  ==▀▀▀=  =▀█████████████████████████████████████</span><br><span class="line">█████████████████████████████████▀  ~^    ____   ▓██&#125;  ^▓██████████████▀  ▓███]  █ &#123;|███&#125; &#123;█  &#123;|███████████████████████████████████</span><br><span class="line">█████████████████████████████████▒   _▄███|] ███    ~▀███████████▀▀` ▄    ▓██&#125;  █ &#123;███&#125; &#123;█   &#123;███████████████████████████████████</span><br><span class="line">█████████████████████████████████▀ ▓█▀▀ⁿ~^    ███&#125;        ~▀████████  ╔██   ▄  -█&#125;▄▄▄▄▄▄▄▄▄▄&#123;███████████████████████████████████</span><br><span class="line">█████████████████████████████████&#125;   _▄▄Γ██████&#125;  g▄▄_    ▀███████████  &#123;██████████████████████████████████████████████████</span><br><span class="line">█████████████████████████████████&#x27;╔███▀     ▀███²  ▓███▄▄██████████|&#125;  ▓███~~~~~~~~~~~~~~~~~~~&#123;███████████████████████████████████</span><br><span class="line">█████████████████████████████████ ╚▀ª^  _▄▄▄████&#x27;  ████████████████|&#125;  ████&#125;  ▀▀▀▀▀▀▀▀  ████████████████████████████████████</span><br><span class="line">████████████████████████████████  ▄███████████    ███████████████||   ▓███&#125;  ▀▀▀▀▀▀▀▀  ████████████████████████████████████</span><br><span class="line">█████████████████████████████████████████████__▄████████████████  ▄████▄▄▄▄▄▄▄▄▄▄████████████████████████████████████</span><br><span class="line">███████████████████████████████████████████████████████████████████████████████████████████████████████████████████</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<h1 id="renren-fast-1"><a href="#renren-fast-1" class="headerlink" title="renren-fast"></a>renren-fast</h1><p>前端的环境要求是node.js，npm等，开发工具我个人使用的是VS Code。</p>
-<p>官方的文档为github仓库的<a href="https://github.com/renrenio/renren-fast-vue/wiki">wiki</a>，一些常规的问题都有描述，此外项目中的其他问题大多可以在项目的ithub仓库或者gitee仓库的Issues中找到，我会在下文给出一些常见的问题，未给出的可以自行去查找</p>
-<p>前端部署依旧是常规的git操作，然后安装依赖，启动服务：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 克隆项目</span><br><span class="line">git clone https:&#x2F;&#x2F;github.com&#x2F;daxiongYang&#x2F;renren-fast-vue.git</span><br><span class="line"># 安装依赖</span><br><span class="line">npm install</span><br><span class="line"># 启动服务</span><br><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
-
-<p>可能会出现的问题：</p>
-<ul>
-<li>node版本和sass的对应问题</li>
-</ul>
-<p>node是8以上，可以把vue项目中package.json中的sass依赖版本改为4.14.1</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i node-sass --sass_binary_site&#x3D;https:&#x2F;&#x2F;npm.taobao.org&#x2F;mirrors&#x2F;node-sass&#x2F;	</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>chromedriver ERR</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install chromedriver --chromedriver_cdnurl&#x3D;http:&#x2F;&#x2F;cdn.npm.taobao.org&#x2F;dist&#x2F;chromedriver</span><br></pre></td></tr></table></figure>
-
-<p>我个人只遇到了上述问题，其他问题可以自己去Issues中查找一下。</p>
-<p>项目启动后会进入登录界面，如果没有同时部署后台，验证码图片不会加载，后端接口的配置在config/index.js中修改，官方wiki中有具体介绍。</p>
-<h1 id="renren-generator"><a href="#renren-generator" class="headerlink" title="renren-generator"></a>renren-generator</h1><p>代码生成器用于快速搭建符合框架整体风格的代码，在<a href="https://www.renren.io/guide#func">官方文档</a>有具体描述，这里直接截取官方文档中的相关内容。</p>
-<p>代码生成器是Spring Boot开发的项目，通过git clone把项目下载到本地后，直接运行main方法，就可以通过<a href="http://localhost打开，配置文件如下所示：">http://localhost打开，配置文件如下所示：</a></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#配置文件：generator.properties</span><br><span class="line">    #包名</span><br><span class="line">    package&#x3D;io.renren.modules.generator</span><br><span class="line">    #作者</span><br><span class="line">    author&#x3D;chenshun</span><br><span class="line">    #Email</span><br><span class="line">    email&#x3D;sunlightcs@gmail.com</span><br><span class="line">    #表前缀(类名不会包含表前缀)</span><br><span class="line">    tablePrefix&#x3D;tb_</span><br><span class="line">    #类型转换，配置信息</span><br><span class="line">    tinyint&#x3D;Integer</span><br><span class="line">    smallint&#x3D;Integer</span><br><span class="line">    mediumint&#x3D;Integer</span><br><span class="line">    int&#x3D;Integer</span><br><span class="line">    integer&#x3D;Integer</span><br><span class="line">    bigint&#x3D;Long</span><br><span class="line">    float&#x3D;Float</span><br><span class="line">    double&#x3D;Double</span><br><span class="line">    decimal&#x3D;BigDecimal</span><br><span class="line">    bit&#x3D;Boolean</span><br><span class="line">    char&#x3D;String</span><br><span class="line">    varchar&#x3D;String</span><br><span class="line">    tinytext&#x3D;String</span><br><span class="line">    text&#x3D;String</span><br><span class="line">    mediumtext&#x3D;String</span><br><span class="line">    longtext&#x3D;String</span><br><span class="line">    date&#x3D;Date</span><br><span class="line">    datetime&#x3D;Date</span><br><span class="line">    timestamp&#x3D;Date</span><br></pre></td></tr></table></figure>
-
-<p>上面的配置文件，可以配置包名、作者信息、表前缀、类型转换。其中，类型转换是指，MySQL中的类型与JavaBean中的类型，是怎么一个对应关系。如果有缺少的类型，可自行在generator.properties文件中补充。</p>
-<p>再看看application.yml配置文件，只要修改数据库名、账号、密码，就可以了。其中，数据库名是指待生成的表，所在的数据库。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Tomcat</span><br><span class="line"> server:</span><br><span class="line">     tomcat:</span><br><span class="line">         max-threads: 10</span><br><span class="line">         min-spare-threads: 10</span><br><span class="line">     port: 80</span><br><span class="line"> # mysql</span><br><span class="line"> spring:</span><br><span class="line">     datasource:</span><br><span class="line">         type: com.alibaba.druid.pool.DruidDataSource</span><br><span class="line">         driverClassName: com.mysql.jdbc.Driver</span><br><span class="line">         url: jdbc:mysql:&#x2F;&#x2F;localhost:3306&#x2F;renren_fast?useUnicode&#x3D;true&amp;characterEncoding&#x3D;UTF-8</span><br><span class="line">         username: renren</span><br><span class="line">         password: 123456</span><br><span class="line">     jackson:</span><br><span class="line">         time-zone: GMT+8</span><br><span class="line">         date-format: yyyy-MM-dd HH:mm:ss</span><br><span class="line">     resources:</span><br><span class="line">             static-locations: classpath:&#x2F;static&#x2F;,classpath:&#x2F;views&#x2F;</span><br><span class="line"> # Mybatis配置</span><br><span class="line"> mybatis:</span><br><span class="line">     mapperLocations: classpath:mapper&#x2F;**&#x2F;*.xml</span><br></pre></td></tr></table></figure>
-
-<p>选择需要生成的数据库表，执行完成后，会生成对应的代码文件。内部包含后台以及前端代码，分别加入对应的文件夹即可。前端列表出现无文字的菜单是因为未命名，在菜单管理处添加名称即可。</p>
-<h1 id="项目发布"><a href="#项目发布" class="headerlink" title="项目发布"></a>项目发布</h1><p>项目发布我在另一篇<a href="https://hejianjie.github.io/2020/10/05/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83-Spring-boot-Vue/">文章</a>有写，需要注意的是项目的后台接口需要开启代理解决跨域问题。</p>
-<p>此外，在上述文章中未提及的是，在前端执行项目打包时可能会报以下错误：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fs.js:35 &#125; &#x3D; primordials; </span><br><span class="line">ReferenceError: primordials is not defined</span><br></pre></td></tr></table></figure>
-
-<p>这个问题gulp版本导致的，可以查看<code>package.json</code>，发现gulp版本是3.9.1，我个人的node是12，因此会出现版本不匹配引起的报错，可以选择升级gulp版本到4以上，或node回退到10版本。</p>
-<p>此外，在网上找到有不用升级或回退的方法，个人并未实践，在此附上</p>
-<p>在renren-fast-vue目录，新建<code>npm-shrinkwrap.json</code>文件，输入以下内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;dependencies&quot;: &#123;</span><br><span class="line">        &quot;graceful-fs&quot;: &#123;</span><br><span class="line">            &quot;version&quot;: &quot;4.2.2&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>随后，执行以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install	#再次安装依赖</span><br><span class="line">npm run build	#打包</span><br></pre></td></tr></table></figure>]]></content>
+]]></content>
       <categories>
-        <category>模板&amp;框架</category>
+        <category>学习</category>
       </categories>
       <tags>
-        <tag>note</tag>
+        <tag>其他</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>等距划分css</title>
+    <url>/2020/11/06/%E7%AD%89%E8%B7%9D%E5%88%92%E5%88%86css/</url>
+    <content><![CDATA[<p>父组件样式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.parent&#123;</span><br><span class="line">	display:flex;</span><br><span class="line">	flex-wrap:wrap;&#x2F;&#x2F;包裹样式</span><br><span class="line">	justify-content:space-around;&#x2F;&#x2F;等距间隔</span><br><span class="line">&#125;</span><br><span class="line">.children&#123;</span><br><span class="line">	position:relative;</span><br><span class="line">	width:40%;&#x2F;&#x2F;宽度设置为百分比可动态响应</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -846,114 +954,6 @@
       </categories>
       <tags>
         <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Vue插槽</title>
-    <url>/2020/10/27/Vue%E6%8F%92%E6%A7%BD/</url>
-    <content><![CDATA[<h1 id="Vue插槽"><a href="#Vue插槽" class="headerlink" title="Vue插槽"></a>Vue插槽</h1><p>组件的插槽让封装的组件具有扩展性</p>
-<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p>使用slot封装一类组件：具有共性，又有所不同。在封装组件时，抽取共性于组件中，对不同的部分预留为插槽，后续使用时按需填入。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;template id&#x3D;&quot;&quot;&gt;&#x2F;&#x2F;使用id绑定要使用的组件</span><br><span class="line">	&lt;div&gt;</span><br><span class="line">		&lt;slot&gt;&lt;&#x2F;slot&gt; </span><br><span class="line">	&lt;&#x2F;div&gt;</span><br><span class="line">&lt;template&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="具名插槽"><a href="#具名插槽" class="headerlink" title="具名插槽"></a>具名插槽</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;slot name&#x3D;&quot;&quot;&gt;&lt;&#x2F;slot&gt; &#x2F;&#x2F;使用name命名插槽</span><br><span class="line"></span><br><span class="line">&lt;mycpn slot&#x3D;&quot;&quot;&gt;&lt;&#x2F;mycpn&gt;&#x2F;&#x2F;使用时必须对写入对应的名称方  可填入指定内容</span><br></pre></td></tr></table></figure>
-
-<h2 id="作用域插槽"><a href="#作用域插槽" class="headerlink" title="作用域插槽"></a>作用域插槽</h2><p>编译作用域：父组件模板的所有东西都在父子作用域内编译；子组件模板的所有东西都会在自己作用域编译。</p>
-<p>作用域插槽的目的：父组件替换插槽的标签，但内容由子组件提供，即作用域插槽需要拿到子组件提供的数据，使用父组件的模板进行展示。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;slot :data&#x3D;&quot;&quot;&gt;&lt;&#x2F;slot&gt; &#x2F;&#x2F;使用data绑定子组建的数据，可使用自定义名称绑定</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;template slot-scope&#x3D;&quot;&quot;&gt;&#x2F;&#x2F;父组件中使用slot-scope绑定接收的数据，命名自定义，但在内部保持命名一致</span><br><span class="line">&lt;&#x2F;template&gt;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Webpack</title>
-    <url>/2020/10/16/Webpack/</url>
-    <content><![CDATA[<h1 id="Webpack"><a href="#Webpack" class="headerlink" title="Webpack"></a>Webpack</h1><p>Webpack 是一个基于Node.js的前端资源加载/打包工具。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。</p>
-<p>在使用时，需要先全局安装，再在项目中安装。 </p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install webpack -g  &#x2F;&#x2F;全局</span><br><span class="line">npm install webpack-dev-server -g  &#x2F;&#x2F;本地</span><br></pre></td></tr></table></figure>
-
-<p>Webpack默认打包处理js文件，在webpack.config.js配置文件中的module对象中的rules属性，存放了所有第三方文件的匹配预处理规则。</p>
-<blockquote>
-<p>Webpack与Gulp：</p>
-<p>​    Gulp是基于task任务的</p>
-<p>​    Webpack是基于整个项目构建的</p>
-</blockquote>
-<h2 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h2><p>使用webpack-dev-server工具自动打包编译</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm i webpack-dev-server -D</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;查看webpack 版本信息</span><br><span class="line">$ npm info webpack</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>依赖webpack运行，使用时需要在项目本地安装webpack</p>
-<p>webpack-dev-server打包生成的bundle.js并未存放到实际的物理磁盘上，而是直接托管到了电脑内存中</p>
-</blockquote>
-<h3 id="webpack-dev-server常用指令"><a href="#webpack-dev-server常用指令" class="headerlink" title="webpack-dev-server常用指令"></a>webpack-dev-server常用指令</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">--open &#x2F;&#x2F;自动打开浏览器到根目录</span><br><span class="line"></span><br><span class="line">--port 3000 &#x2F;&#x2F;用哪个端口打开</span><br><span class="line"></span><br><span class="line">--contentBase src &#x2F;&#x2F;自动跳转根目录下某个目录</span><br><span class="line"></span><br><span class="line">--hot &#x2F;&#x2F;让更新的内容作为补丁，而非重新生成缓存文件</span><br></pre></td></tr></table></figure>
-
-<p>webpack-dev-server有两种模式支持自动刷新——iframe模式和inline模式</p>
-<ul>
-<li>在iframe模式下：页面是嵌套在一个iframe下的，在代码发生改动的时候，这个iframe会重新加载</li>
-<li>在inline模式下：一个小型的webpack-dev-server客户端会作为入口文件打包，这个客户端会在后端代码改变的时候刷新页面</li>
-</ul>
-<p>使用iframe模式，无需额外配置，只需在浏览器输入</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080&#x2F;webpack-dev-server&#x2F;index.html</span><br></pre></td></tr></table></figure>
-
-<p>使用inline模式有两种方式：命令行和nodejs API</p>
-<ol>
-<li><p>命令行： 在运行时，加上 –inline 选项</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">$ webpack-dev-server --inline</span><br></pre></td></tr></table></figure>
-
-<p>访问，通过<code>http://localhost:8080</code> 就可以访问</p>
-</li>
-<li><p>nodejs API 方式 ，需要手动把 webpack-dev-server/client?<a href="http://localhost:8080/">http://localhost:8080</a> 加到配置文件的入口文件处</p>
-</li>
-</ol>
-<h2 id="html-webpack-plugin"><a href="#html-webpack-plugin" class="headerlink" title="html-webpack-plugin"></a>html-webpack-plugin</h2><p>自动在内存中根据页面生成一个内存的页面</p>
-<p>自动把打包好的bundle.js追加到页面中去安装</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install --save-dev html-webpack-plugin</span><br></pre></td></tr></table></figure>
-
-<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>该插件将为你生成一个 HTML5 文件， 其中包括使用 <code>script</code> 标签的 body 中的所有 webpack 包。 只需添加插件到你的 webpack 配置如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var HtmlWebpackPlugin &#x3D; require(&#39;html-webpack-plugin&#39;);</span><br><span class="line">var path &#x3D; require(&#39;path&#39;);</span><br><span class="line"></span><br><span class="line">var webpackConfig &#x3D; &#123;</span><br><span class="line">  entry: &#39;index.js&#39;,</span><br><span class="line">  output: &#123;</span><br><span class="line">    path: path.resolve(__dirname, &#39;.&#x2F;dist&#39;),</span><br><span class="line">    filename: &#39;index_bundle.js&#39;</span><br><span class="line">  &#125;,</span><br><span class="line">  plugins: [new HtmlWebpackPlugin()]</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-<p>这将会产生一个包含以下内容的文件 <code>dist/index.html</code>：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">  &lt;head&gt;</span><br><span class="line">    &lt;meta charset&#x3D;&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;webpack App&lt;&#x2F;title&gt;</span><br><span class="line">  &lt;&#x2F;head&gt;</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">    &lt;script src&#x3D;&quot;index_bundle.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">  &lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如果你有多个 webpack 入口点， 他们都会在生成的HTML文件中的 <code>script</code> 标签内。</p>
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-        <tag>webpack</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>字符画收集</title>
-    <url>/2020/11/10/%E5%AD%97%E7%AC%A6%E7%94%BB%E6%94%B6%E9%9B%86/</url>
-    <content><![CDATA[<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">███████████████████████████████████████████████████████████████████████████████████████████████████████████████████</span><br><span class="line">█████████████████████████████████████████████ª~ ███████████████▓- &#123;████▓  ██████   █████████████████████████████████████</span><br><span class="line">████████████████████████████████▀▀▀▀ⁿ^      ~~▓███   ████████████████   ████▀=  ▀▀▀▀▀▀  ▀▀▀ ██████████████████████████████████</span><br><span class="line">████████████████████████████████,      _▄▄▄▄████|&#125;  █████████████▀   ^       █▄▄  ▄█████F  ▄▄▄██████████████████████████████████</span><br><span class="line">█████████████████████████████████,  ▄███  ▓██▀█&#125;   ▓███████████▄▄█▀   ▀███▀==  ==▀▀▀=  =▀█████████████████████████████████████</span><br><span class="line">█████████████████████████████████▀  ~^    ____   ▓██&#125;  ^▓██████████████▀  ▓███]  █ &#123;|███&#125; &#123;█  &#123;|███████████████████████████████████</span><br><span class="line">█████████████████████████████████▒   _▄███|] ███    ~▀███████████▀▀` ▄    ▓██&#125;  █ &#123;███&#125; &#123;█   &#123;███████████████████████████████████</span><br><span class="line">█████████████████████████████████▀ ▓█▀▀ⁿ~^    ███&#125;        ~▀████████  ╔██   ▄  -█&#125;▄▄▄▄▄▄▄▄▄▄&#123;███████████████████████████████████</span><br><span class="line">█████████████████████████████████&#125;   _▄▄Γ██████&#125;  g▄▄_    ▀███████████  &#123;██████████████████████████████████████████████████</span><br><span class="line">█████████████████████████████████&#x27;╔███▀     ▀███²  ▓███▄▄██████████|&#125;  ▓███~~~~~~~~~~~~~~~~~~~&#123;███████████████████████████████████</span><br><span class="line">█████████████████████████████████ ╚▀ª^  _▄▄▄████&#x27;  ████████████████|&#125;  ████&#125;  ▀▀▀▀▀▀▀▀  ████████████████████████████████████</span><br><span class="line">████████████████████████████████  ▄███████████    ███████████████||   ▓███&#125;  ▀▀▀▀▀▀▀▀  ████████████████████████████████████</span><br><span class="line">█████████████████████████████████████████████__▄████████████████  ▄████▄▄▄▄▄▄▄▄▄▄████████████████████████████████████</span><br><span class="line">███████████████████████████████████████████████████████████████████████████████████████████████████████████████████</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>其他</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>等距划分css</title>
-    <url>/2020/11/06/%E7%AD%89%E8%B7%9D%E5%88%92%E5%88%86css/</url>
-    <content><![CDATA[<p>父组件样式</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.parent&#123;</span><br><span class="line">	display:flex;</span><br><span class="line">	flex-wrap:wrap;&#x2F;&#x2F;包裹样式</span><br><span class="line">	justify-content:space-around;&#x2F;&#x2F;等距间隔</span><br><span class="line">&#125;</span><br><span class="line">.children&#123;</span><br><span class="line">	position:relative;</span><br><span class="line">	width:40%;&#x2F;&#x2F;宽度设置为百分比可动态响应</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -2125,104 +2125,6 @@
 <blockquote>
 </blockquote>
 ]]></content>
-      <categories>
-        <category>学习</category>
-      </categories>
-      <tags>
-        <tag>Springboot</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>SpringBoot高级学习笔记</title>
-    <url>/2020/11/15/SpringBoot%E9%AB%98%E7%BA%A7%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h1 id="SpringBoot与缓存"><a href="#SpringBoot与缓存" class="headerlink" title="SpringBoot与缓存"></a>SpringBoot与缓存</h1><h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>缓存用于提升系统的性能，特别适用于一些对资源需求比较高的操作。例如一些高频访问的热点数据或是一些临时性的数据等。</p>
-<h2 id="Jsr107缓存规范"><a href="#Jsr107缓存规范" class="headerlink" title="Jsr107缓存规范"></a>Jsr107缓存规范</h2><p>Java Caching定义了5个核心接口，分别是<strong>CachingProvider</strong>, <strong>CacheManager</strong>, <strong>Cache</strong>, <strong>Entry</strong>和 <strong>Expiry</strong>。 </p>
-<p>• <strong>CachingProvider</strong>定义了创建、配置、获取、管理和控制多个<strong>CacheManager</strong>。一个应用可以在运行期访问多个CachingProvider。 </p>
-<p>• <strong>CacheManager</strong>定义了创建、配置、获取、管理和控制多个唯一命名的<strong>Cache</strong>，这些Cache存在于CacheManager的上下文中。一个CacheManager仅被一个CachingProvider所拥有。</p>
-<p>• <strong>Cache</strong>是一个类似Map的数据结构并临时存储以Key为索引的值。一个Cache仅被一个CacheManager所拥有。</p>
-<p>• <strong>Entry</strong>是一个存储在Cache中的key-value对。</p>
-<p>• <strong>Expiry</strong> 每一个存储在Cache中的条目有一个定义的有效期。一旦超过这个时间，条目为过期的状态。一旦过期，条目将不可访问、更新和删除。缓存有效期可以通过ExpiryPolicy设置。</p>
-<a id="more"></a>
-
-<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/cache20201116093836.png" alt="image-20201116093832051"></p>
-<p>若要使用jsr07缓存规范需要使用依赖；</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.cache<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>cache-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="Spring缓存抽象"><a href="#Spring缓存抽象" class="headerlink" title="Spring缓存抽象"></a>Spring缓存抽象</h2><p>Spring从3.1开始定义了org.springframework.cache.Cache和org.springframework.cache.CacheManager接口来统一不同的缓存技术；并支持使用JCache（JSR-107）注解简化我们开发；</p>
-<ul>
-<li><p>Cache接口为缓存的组件规范定义，包含缓存的各种操作集合；</p>
-</li>
-<li><p>Cache接口下Spring提供了各种xxxCache的实现；如RedisCache，EhCacheCache , ConcurrentMapCache等；</p>
-</li>
-<li><p>每次调用需要缓存功能的方法时，Spring会检查检查指定参数的指定的目标方法是否已经被调用过；如果有就直接从缓存中获取方法调用后的结果，如果没有就调用方法并缓存结果后返回给用户。下次调用直接从缓存中获取。</p>
-</li>
-<li><p>使用Spring缓存抽象时我们需要关注以下两点；</p>
-<p>1、确定方法需要被缓存以及他们的缓存策略</p>
-<p>2、从缓存中读取之前缓存存储的数据</p>
-</li>
-</ul>
-<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/c20201116094300.png" alt="image-20201116094105391"></p>
-<h3 id="几个重要概念-amp-缓存注解"><a href="#几个重要概念-amp-缓存注解" class="headerlink" title="几个重要概念&amp;缓存注解"></a>几个重要概念&amp;缓存注解</h3><p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/c20201116095057.png" alt="image-20201116094939445"></p>
-<ul>
-<li><p>@Cacheable：声明标注一个方法，则方法返回给的结果会被缓存起来</p>
-</li>
-<li><p>@CacheEvict：声明标注一个方法，则清空对应缓存</p>
-</li>
-<li><p>@CachePut：声明标注一个方法，更新缓存，方法总会被调用，且结果会被缓存</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/c20201116094826.png" alt="image-20201116094825022"></p>
-<p>SpEL表达式;</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/c20201116102958.png" alt="image-20201116102956747"></p>
-</li>
-</ul>
-<h2 id="缓存使用"><a href="#缓存使用" class="headerlink" title="缓存使用"></a>缓存使用</h2><ul>
-<li><h3 id="引入spring-boot-starter-cache模块"><a href="#引入spring-boot-starter-cache模块" class="headerlink" title="引入spring-boot-starter-cache模块"></a>引入spring-boot-starter-cache模块</h3></li>
-<li><h3 id="EnableCaching开启缓存"><a href="#EnableCaching开启缓存" class="headerlink" title="@EnableCaching开启缓存"></a>@EnableCaching开启缓存</h3></li>
-<li><h3 id="使用缓存注解"><a href="#使用缓存注解" class="headerlink" title="使用缓存注解"></a>使用缓存注解</h3><h5 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h5><p><code>CacheName/value</code>：指定缓存组件的名字，将方法的返回结果放在指定缓存中，是以数组的方式，故可同时指定多个缓存</p>
-<p><code>key</code>：指定方法的参数，默认使用方法参数的值，也可以使用SqEL表达式进行逻辑判断    </p>
-<p><code>keyGenerator</code>：key的生成器（使用默认参数需要key生成器），可以自行指定key的生成器的组件id</p>
-<blockquote>
-<p>key与keyGenerator二选一使用</p>
-</blockquote>
-<p><code>cacheManager</code>：指定缓存管理器</p>
-<p><code>cacheResolver</code>：指定缓存解析器</p>
-<blockquote>
-<p>cacheManager与cacheResolver二者均返回一个缓存集合，二选一使用</p>
-</blockquote>
-<p><code>condition</code>：条件，指定符合条件的情况才进行缓存</p>
-<p><code>unless</code>：条件，指定符合条件的情况不进行缓存，此外可以使用获取到的结果进行判断，例如，<code>unless=&quot;#result=null&quot;</code></p>
-<p><code>sync</code>：指定是否使用异步模式</p>
-<h5 id="CachePut"><a href="#CachePut" class="headerlink" title="@CachePut"></a>@CachePut</h5><p>既调用方法，又更新缓存数据，由于缓存数据使用Map存储，为保证缓存数据的一致性，应当保证缓存查询以及缓存更新时指定的key保持一致，否则会存储两条数据进而导致缓存数据失去一致性</p>
-<h5 id="CacheEvict"><a href="#CacheEvict" class="headerlink" title="@CacheEvict"></a>@CacheEvict</h5><p>调用方法并根据指定key删除对应缓存数据，或者使用<code>allEntrise=true</code>属性清除指定缓存组件的所有缓存数据</p>
-<p>对于缓存与方法的执行顺序由属性<code>beforeInvocation</code>决定，<code>beforeInvocation</code>默认为false，默认不在方法之前执行，即在方法执行完成之后清除缓存。这种处理方式可以保证方法出错时，缓存会保留，不被清除。</p>
-<h5 id="Caching"><a href="#Caching" class="headerlink" title="@Caching"></a>@Caching</h5><p>组合注解，指定多个缓存规则，用于复杂操作</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/c20201116184941.png" alt="image-20201116184939926"></p>
-<p>示例：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/c20201116191418.png" alt="2"></p>
-<h5 id="CacheConfig"><a href="#CacheConfig" class="headerlink" title="@CacheConfig"></a>@CacheConfig</h5><p>抽取缓存的公共配置，对多个具有相同配置的缓存方法，可以在类上添加该注解用于配置相同的属性</p>
-</li>
-<li><h3 id="切换为其他缓存"><a href="#切换为其他缓存" class="headerlink" title="切换为其他缓存"></a>切换为其他缓存</h3><p><a href="">redis配置整合</a></p>
-</li>
-</ul>
-<h2 id="原理与步骤"><a href="#原理与步骤" class="headerlink" title="原理与步骤"></a>原理与步骤</h2><h3 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h3><ul>
-<li><p>自动配置类CacheAutoConfiguration</p>
-</li>
-<li><p>缓存的配置类</p>
-<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/c20201116145058.png" alt="image-20201116145055362"></p>
-</li>
-<li><p>默认SimpleCacheConfiguration配置类生效</p>
-<p>给容器中注册一个CacheManager，ConcurrentMapCacheManager，可以用于获取和创建ConcurrentMapCache类型的缓存组件，其作用是将数据保存在ConcurrentMap中</p>
-</li>
-</ul>
-<h3 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a>步骤：</h3><ul>
-<li>方法运行之前，先去查询Cache（缓存组件），按照cacheNames指定的名字获取（cacheManager先获取相应的缓存），第一次获取缓存如果没有cache组件会自动创建</li>
-<li>去cache中查找缓存的内容，使用一个key，默认就是方法的参数，key是按照某种策略生成的（默认使用keyGenerator生成的，通过SimpleKeyGenerator生成key，其生成策略为，如果没有参数，key为默认生成的<code>new SimpleKey()</code>对象，若有参数，则key为参数的值，若有多个参数，则为包装了多个参数的<code>new SimpleKey()</code>对象）</li>
-<li>若未查询到缓存则调用目标方法</li>
-<li>调用完成后将目标方法的返回值放入缓存中</li>
-</ul>
-<blockquote>
-<p>@Cacheable标注的方法执行之前先检查缓存中有没有这个数据，默认按照参数的值作为key去查询缓存，如果没有就运行方法并将结果放入缓存中，以后调用可以直接使用缓存中的数据</p>
-</blockquote>
-<h1 id="SpringBoot与消息"><a href="#SpringBoot与消息" class="headerlink" title="SpringBoot与消息"></a>SpringBoot与消息</h1>]]></content>
       <categories>
         <category>学习</category>
       </categories>
