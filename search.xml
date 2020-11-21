@@ -859,9 +859,13 @@
 <li>测试ElasticSearch</li>
 </ul>
 <h1 id="Spring-Boot与任务"><a href="#Spring-Boot与任务" class="headerlink" title="Spring Boot与任务"></a>Spring Boot与任务</h1><h2 id="异步任务"><a href="#异步任务" class="headerlink" title="异步任务"></a>异步任务</h2><p>在Java应用中，绝大多数情况下都是通过同步的方式来实现交互处理的；但是在处理与第三方系统交互的时候，容易造成响应迟缓的情况，之前大部分都是使用多线程来完成此类任务，其实，在Spring 3.x之后，就已经内置了@Async来完美解决这个问题。</p>
-<p>两个注解：@EnableAysnc、@Aysnc</p>
+<p>两个注解：</p>
+<p>@EnableAysnc：开启异步注解</p>
+<p>@Aysnc：标记为异步方法</p>
 <h2 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h2><p>项目开发中经常需要执行一些定时任务，比如需要在每天凌晨时候，分析一次前一天的日志信息。Spring为我们提供了异步执行任务调度的方式，提供TaskExecutor 、TaskScheduler 接口。</p>
-<p>两个注解：@EnableScheduling、@Scheduled</p>
+<p>两个注解：</p>
+<p>@EnableScheduling：开启定时任务</p>
+<p>@Scheduled：标注为定时方法</p>
 <p>cron表达式：</p>
 <p>![YOMSHVZVY@Y88M`II{GHF4R](<a href="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/t20201118100538.png">https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/t20201118100538.png</a>)</p>
 <h2 id="邮件任务"><a href="#邮件任务" class="headerlink" title="邮件任务"></a>邮件任务</h2><ul>
@@ -878,11 +882,17 @@
 <p>@EnableWebSecurity：开启WebSecurity模式</p>
 <p>应用程序的两个主要区域是“认证”和“授权”（或者访问控制）。这两个主要区域是Spring Security 的两个目标。 </p>
 <ul>
-<li><p>“认证”（Authentication），是建立一个他声明的主体的过程（一个”主体”一般是指用户，设备或一些可以在你的应用程序中执行动作的其他系统）。 </p>
+<li>“认证”（Authentication），是建立一个他声明的主体的过程（一个”主体”一般是指用户，设备或一些可以在你的应用程序中执行动作的其他系统）。 </li>
+<li>“授权”（Authorization）指确定一个主体是否允许在你的应用程序执行一个动作的过程。为了抵达需要授权的店，主体的身份已经有认证过程建立。 </li>
+<li>这个概念是通用的而不只在Spring Security中</li>
+</ul>
+<h2 id="整合使用"><a href="#整合使用" class="headerlink" title="整合使用"></a>整合使用</h2><ul>
+<li><p>引入SpringSecurity</p>
 </li>
-<li><p>“授权”（Authorization）指确定一个主体是否允许在你的应用程序执行一个动作的过程。为了抵达需要授权的店，主体的身份已经有认证过程建立。 </p>
+<li><p>缩写SpringSecurity的配置类</p>
+<p>@EnableWebSecurity extends WebSecurityConfigureAdapter</p>
 </li>
-<li><p>这个概念是通用的而不只在Spring Security中</p>
+<li><p>控制请求的访问权限</p>
 </li>
 </ul>
 <h2 id="Web-amp-安全"><a href="#Web-amp-安全" class="headerlink" title="Web&amp;安全"></a>Web&amp;安全</h2><ul>
@@ -937,7 +947,7 @@
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.spring.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>dubbo-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="Spring-Boot和Spring-Cloud"><a href="#Spring-Boot和Spring-Cloud" class="headerlink" title="Spring Boot和Spring Cloud"></a>Spring Boot和Spring Cloud</h2><p><strong>Spring Cloud</strong></p>
-<p>Spring Cloud是一个分布式的整体解决方案。Spring Cloud 为开发者提供了在分布式系统（配置管理，服务发现，熔断，路由，微代理，控制总线，一次性token，全局琐，leader选举，分布式session，集群状态）中快速构建的工具，使用Spring Cloud的开发者可以快速的启动服务或构建应用、同时能够快速和云平台资源进行对接。</p>
+<p>Spring Cloud是一个分布式的整体解决方案。Spring Cloud 为开发者提供了在分布式系统（配置管理，服务发现，熔断，路由，微代理，控制总线，一次性token，全局锁，leader选举，分布式session，集群状态）中快速构建的工具，使用Spring Cloud的开发者可以快速的启动服务或构建应用、同时能够快速和云平台资源进行对接。</p>
 <p><strong>SpringCloud分布式开发五大常用组件</strong></p>
 <ul>
 <li>服务发现——Netflix Eureka</li>
@@ -2524,6 +2534,147 @@
       </categories>
       <tags>
         <tag>Springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Spring注解</title>
+    <url>/2020/11/19/Spring%E6%B3%A8%E8%A7%A3/</url>
+    <content><![CDATA[<h1 id="组件注解"><a href="#组件注解" class="headerlink" title="组件注解"></a>组件注解</h1><h2 id="Configuration"><a href="#Configuration" class="headerlink" title="@Configuration"></a>@Configuration</h2><p><code>@Configuration</code>等价于<code>&lt;Beans&gt;&lt;/Beans&gt;</code></p>
+<p>@Configuration用于定义配置类，可替换xml配置文件，被注解的类内部包含有一个或多个被@Bean注解的方法，这些方法将会被AnnotationConfigApplicationContext或AnnotationConfigWebApplicationContext类进行扫描，并用于构建bean定义，初始化Spring容器。</p>
+<blockquote>
+<p>注意：@Configuration注解的配置类有如下要求：</p>
+<ul>
+<li>@Configuration不可以是final类型；</li>
+<li>@Configuration不可以是匿名类；</li>
+<li>嵌套的configuration必须是静态类。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><a href="https://blog.csdn.net/qiuz1024/article/details/100530260">https://blog.csdn.net/qiuz1024/article/details/100530260</a></p>
+<p><a href="https://www.cnblogs.com/muxi0407/p/11599377.html">https://www.cnblogs.com/muxi0407/p/11599377.html</a></p>
+<p><a href="https://www.cnblogs.com/yourbatman/archive/2004/01/13/13266371.html">https://www.cnblogs.com/yourbatman/archive/2004/01/13/13266371.html</a></p>
+</blockquote>
+<hr>
+<h2 id="Bean"><a href="#Bean" class="headerlink" title="@Bean"></a>@Bean</h2><p><code>@Bean</code>等价于<code>&lt;Bean&gt;&lt;/Bean&gt;</code></p>
+<p>@Bean注解用于告诉方法，产生一个Bean对象，然后这个Bean对象交给Spring管理。产生这个Bean对象的方法Spring只会调用一次，随后这个Spring将会将这个Bean对象放在自己的IOC容器中。</p>
+<p>SpringIOC 容器管理一个或者多个bean，这些bean都需要在@Configuration注解下进行创建，在一个方法上使用@Bean注解就表明这个方法需要交给Spring进行管理。</p>
+<p>@Bean不仅可以作用在方法上，也可以作用在注解类型上，在运行时提供注册。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.METHOD, ElementType.ANNOTATION_TYPE&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Bean &#123;</span><br><span class="line">    <span class="meta">@AliasFor(&quot;name&quot;)</span></span><br><span class="line">    String[] value() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor(&quot;value&quot;)</span></span><br><span class="line">    String[] name() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** <span class="doctag">@deprecated</span> */</span></span><br><span class="line">    <span class="meta">@Deprecated</span></span><br><span class="line">    <span class="function">Autowire <span class="title">autowire</span><span class="params">()</span> <span class="keyword">default</span> Autowire.NO</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">autowireCandidate</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">true</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">initMethod</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">destroyMethod</span><span class="params">()</span> <span class="keyword">default</span> &quot;<span class="params">(inferred)</span>&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>value</code>： name属性的别名，在不需要其他属性时使用，也就是说value 就是默认值</p>
+</li>
+<li><p><code>name</code>： 此bean 的名称，或多个名称，主要的bean的名称加别名。如果未指定，则bean的名称是带注解方法的名称。如果指定了，方法的名称就会忽略，如果没有其他属性声明的话，bean的名称和别名可能通过value属性配置</p>
+</li>
+<li><p><code>autowire</code> ： 此注解的方法表示自动装配的类型，返回一个<code>Autowire</code>类型的枚举。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 枚举确定自动装配状态：即，bean是否应该使用setter注入由Spring容器自动注入其依赖项。</span></span><br><span class="line"><span class="comment">// 这是Spring DI的核心概念</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Autowire</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 常量，表示根本没有自动装配。</span></span><br><span class="line">    NO(<span class="number">0</span>),</span><br><span class="line">    <span class="comment">// 常量，通过名称进行自动装配</span></span><br><span class="line">    BY_NAME(<span class="number">1</span>),</span><br><span class="line">    <span class="comment">// 常量，通过类型进行自动装配</span></span><br><span class="line">    BY_TYPE(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> value;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Autowire</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">value</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isAutowire</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span> == BY_NAME || <span class="keyword">this</span> == BY_TYPE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>autowire的默认值为<code>No</code>，默认表示不通过自动装配。</p>
+</li>
+<li><p><code>autowire-candidate</code>：设置当前bean在被其他对象作为自动注入对象的时候，是否作为候选bean，默认值是true。</p>
+</li>
+<li><p><code>initMethod</code>: 这个可选择的方法在bean实例化的时候调用，<code>InitializationBean</code>接口允许bean在合适的时机通过设置注解的初始化属性从而调用初始化方法，InitializationBean 接口有一个定义好的初始化方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">afterPropertiesSet</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
+
+<p><em>Spring不推荐使用InitializationBean 来调用其初始化方法，因为它不必要地将代码耦合到Spring。Spring推荐使用<code>@PostConstruct</code>注解或者为POJO类指定其初始化方法这两种方式来完成初始化。</em></p>
+</li>
+<li><p><code>destroyMethod</code>: 方法的可选择名称在调用bean示例在关闭上下文的时候，例如JDBC的close()方法，或者SqlSession的close()方法。<code>DisposableBean</code> 接口的实现允许在bean销毁的时候进行回调调用，DisposableBean 接口之后一个单个的方法</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br></pre></td></tr></table></figure>
+
+<p><em>Spring不推荐使用DisposableBean 的方式来初始化其方法，因为它会将不必要的代码耦合到Spring。作为替代性的建议，Spring 推荐使用<code>@PreDestory</code>注解或者为<code>@Bean</code>注解提供 destroyMethod 属性</em></p>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://www.cnblogs.com/cxuanBlog/p/11179439.html">https://www.cnblogs.com/cxuanBlog/p/11179439.html</a></p>
+<p><a href="https://blog.csdn.net/sundacheng1989/article/details/92783515">https://blog.csdn.net/sundacheng1989/article/details/92783515</a></p>
+</blockquote>
+<hr>
+<h2 id="ComponentScan"><a href="#ComponentScan" class="headerlink" title="@ComponentScan"></a>@ComponentScan</h2><p><code>@ComponentScan</code>等价于<code>&lt;context:component-scan base-package=&quot;&quot;/&gt;</code></p>
+<p>@ComponentScan根据指定的配置自动扫描package，将符合条件的组件加入到IOC容器中；</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE&#125;)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="meta">@Repeatable(ComponentScans.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> ComponentScan &#123;</span><br><span class="line">    <span class="meta">@AliasFor(&quot;basePackages&quot;)</span></span><br><span class="line">    String[] value() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor(&quot;value&quot;)</span></span><br><span class="line">    String[] basePackages() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    Class&lt;?&gt;[] basePackageClasses() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    Class&lt;? extends BeanNameGenerator&gt; nameGenerator() <span class="keyword">default</span> BeanNameGenerator.class;</span><br><span class="line"></span><br><span class="line">    Class&lt;? extends ScopeMetadataResolver&gt; scopeResolver() <span class="keyword">default</span> AnnotationScopeMetadataResolver.class;</span><br><span class="line"></span><br><span class="line">    <span class="function">ScopedProxyMode <span class="title">scopedProxy</span><span class="params">()</span> <span class="keyword">default</span> ScopedProxyMode.DEFAULT</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">resourcePattern</span><span class="params">()</span> <span class="keyword">default</span> &quot;**<span class="comment">/*.class&quot;;</span></span></span><br><span class="line"><span class="function"><span class="comment"></span></span></span><br><span class="line"><span class="function"><span class="comment">    boolean useDefaultFilters() default true;</span></span></span><br><span class="line"><span class="function"><span class="comment"></span></span></span><br><span class="line"><span class="function"><span class="comment">    ComponentScan.Filter[] includeFilters() default &#123;&#125;;</span></span></span><br><span class="line"><span class="function"><span class="comment"></span></span></span><br><span class="line"><span class="function"><span class="comment">    ComponentScan.Filter[] excludeFilters() default &#123;&#125;;</span></span></span><br><span class="line"><span class="function"><span class="comment"></span></span></span><br><span class="line"><span class="function"><span class="comment">    boolean lazyInit() default false;</span></span></span><br><span class="line"><span class="function"><span class="comment">&#125;</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>value</code>：<code>basePackages</code>的别名，扫描指定包，使用默认扫描规则，即被@Component, @Repository, @Service, @Controller或者已经声明过@Component自定义注解标记的组件；对应的包扫描路径 可以是单个路径，也可以是扫描的路径数组；</p>
+</li>
+<li><p><code>basePackages</code>：和value一样是对应的包扫描路径，一种类型安全的替代基于字符串的包名</p>
+</li>
+<li><p><code>basePackageClasses</code>：指定具体的扫描的类</p>
+</li>
+<li><p><code>nameGenerator</code>：对应的bean名称的生成器 默认的是BeanNameGenerator</p>
+</li>
+<li><p><code>scopeResolver</code>：处理检测到的bean的scope范围</p>
+</li>
+<li><p><code>scopedProxy</code>：是否为检测到的组件生成代理</p>
+</li>
+<li><p><code>resourcePattern</code>：控制符合组件检测条件的类文件，默认为”*<em>/</em>.class”</p>
+</li>
+<li><p><code>useDefaultFilters</code>：是否对带有@Component 、@Repository、@Service、@Controller注解的类开启检测，默认开启</p>
+</li>
+<li><p><code>includeFilters</code>：指定某些定义Filter满足条件的组件；</p>
+<p>FilterType有5种类型：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Target(&#123;&#125;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Filter &#123;</span><br><span class="line">    <span class="comment">//ANNOTATION, 注解类型 默认</span></span><br><span class="line">    <span class="comment">//ASSIGNABLE_TYPE,指定固定类</span></span><br><span class="line">    <span class="comment">//ASPECTJ,ASPECTJ类型</span></span><br><span class="line">    <span class="comment">//REGEX,正则表达式</span></span><br><span class="line">    <span class="comment">//CUSTOM,自定义类型</span></span><br><span class="line">    <span class="function">FilterType <span class="title">type</span><span class="params">()</span> <span class="keyword">default</span> FilterType.ANNOTATION</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor(&quot;classes&quot;)</span></span><br><span class="line">    Class&lt;?&gt;[] value() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor(&quot;value&quot;)</span></span><br><span class="line">    Class&lt;?&gt;[] classes() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line"></span><br><span class="line">    String[] pattern() <span class="keyword">default</span> &#123;&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>excludeFilters</code>：排除某些过来器扫描到的类</li>
+<li><code>lazyInit</code>：扫描到的类是都开启懒加载 ，默认是不开启的</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p><a href="https://www.cnblogs.com/jpfss/p/11171655.html">https://www.cnblogs.com/jpfss/p/11171655.html</a></p>
+<p><a href="https://blog.csdn.net/luojinbai/article/details/85877956">https://blog.csdn.net/luojinbai/article/details/85877956</a></p>
+</blockquote>
+<hr>
+<h2 id="Scope"><a href="#Scope" class="headerlink" title="@Scope"></a>@Scope</h2><p>@Scope，字面意思是范围，标志一个注入器/对象的使用范围（作用域）。</p>
+<p>在 Spring IoC 容器中具有以下几种作用域：</p>
+<ul>
+<li>基本作用域singleton（单例）:　全局有且仅有一个实例</li>
+<li>prototype(多例)：每次获取Bean的时候会有一个新的实例</li>
+<li>Web 作用域（reqeust、session、globalsession）<ul>
+<li>request表示该针对每一次HTTP请求都会产生一个新的bean，同时该bean仅在当前HTTP request内有效</li>
+<li>session作用域表示该针对每一次HTTP请求都会产生一个新的bean，同时该bean仅在当前HTTP session内有效</li>
+<li>global session作用域类似于标准的HTTP Session作用域，不过它仅仅在基于portlet的web应用中才有意义。Portlet规范定义了全局Session的概念，它被所有构成某个 portlet web应用的各种不同的portlet所共享。在global session作用域中定义的bean被限定于全局portlet Session的生命周期范围内。如果你在web中使用global session作用域来标识bean，那么web会自动当成session类型来使用。</li>
+</ul>
+</li>
+<li>自定义作用域</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Scope &#123;</span><br><span class="line">    <span class="meta">@AliasFor(&quot;scopeName&quot;)</span></span><br><span class="line">    <span class="function">String <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@AliasFor(&quot;value&quot;)</span></span><br><span class="line">    <span class="function">String <span class="title">scopeName</span><span class="params">()</span> <span class="keyword">default</span> &quot;&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">ScopedProxyMode <span class="title">proxyMode</span><span class="params">()</span> <span class="keyword">default</span> ScopedProxyMode.DEFAULT</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://blog.csdn.net/xx326664162/article/details/67640509">https://blog.csdn.net/xx326664162/article/details/67640509</a></p>
+</blockquote>
+<hr>
+<h2 id="Lazy"><a href="#Lazy" class="headerlink" title="@Lazy"></a>@Lazy</h2><p>Spring IoC （ApplicationContext） 容器一般都会在启动的时候实例化所有单实例 bean 。如果我们想要 Spring 在启动的时候延迟加载 bean，即在调用某个 bean 的时候再去初始化，那么就可以使用 @Lazy 注解。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE, ElementType.METHOD, ElementType.CONSTRUCTOR, ElementType.PARAMETER, ElementType.FIELD&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Lazy &#123;</span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">value</span><span class="params">()</span> <span class="keyword">default</span> <span class="keyword">true</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://www.cnblogs.com/yangxiaohui227/p/10523025.html">https://www.cnblogs.com/yangxiaohui227/p/10523025.html</a></p>
+</blockquote>
+<hr>
+<h2 id="Conditional"><a href="#Conditional" class="headerlink" title="@Conditional"></a>@Conditional</h2><p>@Conditional是Spring4新提供的注解，它的作用是按照一定的条件进行判断，满足条件给容器注册bean。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Target(&#123;ElementType.TYPE, ElementType.METHOD&#125;)</span></span><br><span class="line"><span class="meta">@Retention(RetentionPolicy.RUNTIME)</span></span><br><span class="line"><span class="meta">@Documented</span></span><br><span class="line"><span class="keyword">public</span> <span class="meta">@interface</span> Conditional &#123;</span><br><span class="line">    Class&lt;? extends Condition&gt;[] value();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><a href="https://www.cnblogs.com/zhixiang-org-cn/p/9703736.html">https://www.cnblogs.com/zhixiang-org-cn/p/9703736.html</a></p>
+</blockquote>
+<h1 id="扩展原理"><a href="#扩展原理" class="headerlink" title="扩展原理"></a>扩展原理</h1><h1 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h1>]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>Springboot</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>无用的收集增加了？！</title>
+    <url>/2020/11/19/%E6%97%A0%E7%94%A8%E7%9A%84%E6%94%B6%E9%9B%86%E5%A2%9E%E5%8A%A0%E4%BA%86%EF%BC%9F%EF%BC%81/</url>
+    <content><![CDATA[<p>网页视频倍速</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">&#x27;video&#x27;</span>).playbackRate = <span class="number">3</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>学习</category>
+      </categories>
+      <tags>
+        <tag>其他</tag>
       </tags>
   </entry>
 </search>
