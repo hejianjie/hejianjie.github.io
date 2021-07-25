@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.2k 字
+      6.3k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      48
+      69
        分钟
     </span>
   
@@ -487,7 +487,70 @@
 </blockquote>
 </li>
 </ul>
-<h2 id="多态-Polymorphism"><a href="#多态-Polymorphism" class="headerlink" title="多态(Polymorphism)"></a><strong>多态(Polymorphism)</strong></h2><p>多态就是<strong>对象的多种形态。</strong></p>
+<h2 id="多态-Polymorphism"><a href="#多态-Polymorphism" class="headerlink" title="多态(Polymorphism)"></a><strong>多态(Polymorphism)</strong></h2><p>多态就是<strong>相同的行为，不同的实现</strong>。多态是方法的多态，不是属性的多态（多态与属性无关）。</p>
+<p>多态的存在要有3个必要条件：<strong>继承，方法重写，父类引用指向子类对象</strong>。</p>
+<blockquote>
+<p>如果我们在子类中编写一个独有的方法（没有继承父类的方法），此时就不能通过父类的引用创建的子类对象来调用该方法</p>
+</blockquote>
+<h3 id="静态多态与动态多态"><a href="#静态多态与动态多态" class="headerlink" title="静态多态与动态多态"></a>静态多态与动态多态</h3><p>动静之分主要是表现在程序是在运行期还是编译期，通过被绑定的对象类型来决定到底执行的是哪个方法。<br><strong>静态多态是在编译期就确定了对象以及对象行为的绑定关系</strong>，所以运行起来以后就固定为编译期确定的效果；<br>而<strong>动态多态是在编译期未知绑定关系，运行进行以后才进行绑定</strong>，所以具有更大的灵活性；很明显，动态多态具有更大的灵活性和可扩展性。</p>
+<h4 id="静态多态"><a href="#静态多态" class="headerlink" title="静态多态"></a>静态多态</h4><p>静态多态是在编译期间就可以确定要执行的是何种类型的对象以及该对象的何种行为，运行期不会有改变的情况。所以 <strong>方法重载</strong> 或 <strong>单独使用方法重写</strong> 都是它的具体表现形式。</p>
+<blockquote>
+<p>方法重载：<br>在一个类当中，具有多个同名方法，参数列表不同（包括：参数个数、参数类型、参数顺序的不同），从而各有各的实现。</p>
+<p>方法重写：<br>在继承关系中，不同的子类都拥有继承于父类的某个共有方法，但是各有各的实现。</p>
+</blockquote>
+<h4 id="动态多态"><a href="#动态多态" class="headerlink" title="动态多态"></a>动态多态</h4><p><strong>父类的引用指向子类的对象</strong>。当绑定一个父类引用的时候，它既有可能指向父类的对象，也有可能是指向该父类的某个子类的对象。它是可变的，具体指向谁不是由编码期的声明决定的，而是可以通过在运行时传入不同的对象，从而形成所谓的<strong>“动态绑定”</strong>。</p>
+<p>当父类引用指向子类对象以后，在使用这个引用调用方法的时候会发生什么呢？其实无非就三种情况</p>
+<ol>
+<li><p>使用父类引用调用父类定义的方法；</p>
+<blockquote>
+<p>其本质就是本类的引用调用本类的方法，所以也就没有任何编译或运行的问题；</p>
+</blockquote>
+</li>
+<li><p>使用父类引用调用子类定义的方法；</p>
+<blockquote>
+<p>在调用的时候会发现根本调用不到，编译就会马上报错。其道理也很简单：虽然对象是子类对象，其中当然包含有子类自己定义的内容，但是由于我们的引用是父类类型（即我们是站在父类的层面去看待它），当然就看不到这些子类定义的内容了。如果想访问，那么必须进行“向下转型”。</p>
+</blockquote>
+</li>
+<li><p>使用父类引用调用父类定义，但被子类重写了的方法。</p>
+<blockquote>
+<p>由于这个方法是重写方法，首先说明它的定义就是在父类当中，所以利用父类的引用当然可以看到有这个方法，保证能够使用引用调用得到；其次该方法被子类对象重写了，而且不同的子类可以各有各的实现，那么具体的运行效果，就要依赖于这个父类引用运行起来以后，到底是指向哪种子类的对象了（指向谁，就执行谁的重写后效果）。</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="引用类型转换"><a href="#引用类型转换" class="headerlink" title="引用类型转换"></a><strong>引用类型转换</strong></h3><h4 id="向上类型转换-隐式-自动类型转换"><a href="#向上类型转换-隐式-自动类型转换" class="headerlink" title="向上类型转换(隐式/自动类型转换)"></a>向上类型转换(隐式/自动类型转换)</h4><p>将子类对象赋给父类引用，称为向上转型（upcasting），自动进行类型转换。向上转型可以调用的子类继承的方法，但不能调用子类特有的方法。需要特别理解的是如果子类重写了父类的方法，向上转型后通过父类引用调用的却是真实子类重写的方法。</p>
+<h4 id="向下类型转换-强制类型转换"><a href="#向下类型转换-强制类型转换" class="headerlink" title="向下类型转换(强制类型转换)"></a>向下类型转换(强制类型转换)</h4><p>将父类的引用变量转换为子类类型，称为向下转型（downcasting）。向下转型后就可以调用子类特有的方法了。</p>
+<ul>
+<li>需要进行强制转换;</li>
+<li>强制转换不是做手术，必须转换成真实子类型，否则ClassCastException；</li>
+<li>向下转型之前肯定发生了向上转型；</li>
+<li>为了避免ClassCastException,向下转型之前使用instanceof先判断一下</li>
+</ul>
+<h4 id="instanceof运算符"><a href="#instanceof运算符" class="headerlink" title="instanceof运算符"></a>instanceof运算符</h4><p><strong>instanceof</strong>是Java的一个二元操作符，和==，&gt;，&lt;属于同一类。由于它是由字母组成的，所以也是Java的保留关键字。<strong>它的作用是测试它左边的对象是否是它右边的类的实例</strong>，返回boolean类型的数据。</p>
+<p>在写程序的时候，如果要进行类型转换，我们最好使用instanceof运算符来判断它左边的对象是否是它右边的类的实例，再进行强制转换。</p>
+<blockquote>
+<p>使用instancof的前提：左边的对象和右边的类型在继承树上有上下级关系</p>
+</blockquote>
+<blockquote>
+<p>在比较一个对象是否和另一个对象属于同一个类实例的时候，我们通常可以采用instanceof和getClass两种方法通过两者是否相等来判断，但是两者在判断上面是有差别的。Instanceof进行类型检查规则是:<strong>你属于该类吗？或者你属于该类的派生类吗？</strong>而通过getClass获得类型信息<strong>采用==来进行检查是否相等</strong>的操作是<strong>严格的判断</strong>,<strong>不会存在继承方面的考虑</strong>；</p>
+</blockquote>
+<h3 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h3><p>抽象类前使用abstract关键字修饰，则该类为抽象类。</p>
+<p>抽象类是约束子类必须有什么方法，而并不关注子类如何实现这些方法。抽象类定义抽象方法，只有声明，不需要实现。抽象方法没有方法体以分号结束，抽象方法必须用abstract关键字来修饰。包含抽象方法的类是抽象类。抽象类中可以包含普通的方法，也可以没有抽象方法。抽象类不能直接创建，可以定义引用变量来指向子类对象，来实现抽象方法。</p>
+<p>抽象类应用场景：</p>
+<ol>
+<li>在某些情况下，某个父类只是知道其子类应该包含怎样的方法，但无法准确知道这些子类如何实现这些方法(可实现动态多态)。</li>
+<li>从多个具有相同特征的类中抽象出一个抽象类，以这个抽象类作为子类的模板，从而避免子类设计的随意性。</li>
+</ol>
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><p>　接口可以理解为一种特殊的类，由<strong>全局常量</strong>和公共的<strong>抽象方法</strong>所组成。也可理解为一个特殊的抽象类，因为它含有抽象方法。</p>
+<p>如果说类是一种具体实现体，而接口定义了某一批类所需要遵守的规范，接口不关心这些类的内部数据，也不关心这些类里方法的实现细节，它只规定这些类里必须提供的某些方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">[修饰符] [<span class="hljs-keyword">abstract</span>] <span class="hljs-class"><span class="hljs-keyword">interface</span> 接口名 [<span class="hljs-keyword">extends</span>父接口1,2....]（多继承）</span>&#123;<br>	<span class="hljs-number">0</span>…n常量 (<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span>)<br>	<span class="hljs-number">0</span>…n 抽象方法(<span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span>)                                     　&#125;       <br><span class="hljs-comment">//其中[ ]里的内容表示可选项，可以写也可以不写;</span><br><span class="hljs-comment">//接口中的属性都是常量，即使定义时不添加public static final 修饰符，系统也会自动加上；</span><br><span class="hljs-comment">//接口中的方法都是抽象方法，即使定义时不添加public abstract修饰符，系统也会自动加上。</span><br></code></pre></td></tr></table></figure>
+
+<p>接口的使用：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">[修饰符] <span class="hljs-class"><span class="hljs-keyword">class</span> 类名 <span class="hljs-keyword">extends</span> 父类 <span class="hljs-keyword">implements</span> 接口1，接口2...</span>&#123;<br>	类体部分<br>	<span class="hljs-comment">//如果继承了抽象类，需要实现继承的抽象方法；</span><br>	<span class="hljs-comment">//要实现接口中的抽象方法</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果要继承父类，继承父类必须在实现接口之前,即extends关键字必须在implements关键字前</p>
+<p>通常我们在命名一个接口时，经常以I开头，用来区分普通的类。如：IPlayGame</p>
+</blockquote>
 
             </div>
             <hr>
