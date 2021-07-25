@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.6k 字
+      2.3k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18
+      25
        分钟
     </span>
   
@@ -319,11 +319,52 @@
 <blockquote>
 <p>匿名内部类没有构造方法。也是唯一没有构造方法的内部类。<strong>匿名内部类和局部内部类一样只能访问外部类的final变量。</strong></p>
 </blockquote>
-<h2 id="继承-Inherit"><a href="#继承-Inherit" class="headerlink" title="继承(Inherit)"></a>继承(Inherit)</h2><p>​    继承实际上也是为了<strong>提高代码的复用性和可扩展性</strong>，在定义不同类的时候存在一些相同属性，为了方便使用可以将这些共同属性抽象成一个父类，在定义其他子类时可以继承自该父类，减少代码的重复定义，子类可以使用父类中<strong>非私有</strong>的成员。</p>
+<h2 id="继承-Inherit"><a href="#继承-Inherit" class="headerlink" title="继承(Inherit)"></a>继承(Inherit)</h2><p>继承实际上也是为了<strong>提高代码的复用性和可扩展性</strong>，在定义不同类的时候存在一些相同属性，为了方便使用可以将这些共同属性抽象成一个父类，在定义其他子类时可以继承自该父类，减少代码的重复定义，子类可以使用父类中<strong>非私有</strong>的成员。</p>
 <blockquote>
 <p>java中的继承是<strong>单继承</strong>，即<strong>一个类只有一个父类。</strong></p>
 </blockquote>
-<h2 id="多态-Polymorphism"><a href="#多态-Polymorphism" class="headerlink" title="多态(Polymorphism)"></a>多态(Polymorphism)</h2>
+<h3 id="重载和重写"><a href="#重载和重写" class="headerlink" title="重载和重写"></a>重载和重写</h3><p>方法重载：在同一个类中处理不同数据的多个相同方法名的多态手段。</p>
+<p>方法重写：相对继承而言，子类中对父类已经存在的方法进行区别化的修改。</p>
+<blockquote>
+<p>重写需要保证方法的返回值类型、方法名、参数类型及个数都要与父类继承的方法相同</p>
+</blockquote>
+<h3 id="继承的初始化顺序"><a href="#继承的初始化顺序" class="headerlink" title="继承的初始化顺序"></a>继承的初始化顺序</h3><p>　1、初始化父类再初始化子类</p>
+<p>　2、先执行初始化对象中的属性，再执行构造方法中的初始化。</p>
+<p>　基于上面两点，可以知道实例化一个子类，java程序的执行顺序是：</p>
+<p>　<strong>父类对象属性初始化==&gt;父类对象构造方法==&gt;子类对象属性初始化==&gt;子类对象构造方法</strong>　　　</p>
+<h3 id="final关键字"><a href="#final关键字" class="headerlink" title="final关键字"></a>final关键字</h3><p>使用final关键字做标识有“最终的”含义。</p>
+<table>
+<thead>
+<tr>
+<th>final修饰对象</th>
+<th align="center">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>类</td>
+<td align="center">该类不允许被继承</td>
+</tr>
+<tr>
+<td>方法</td>
+<td align="center">该方法不允许被覆盖(重写)。</td>
+</tr>
+<tr>
+<td>属性</td>
+<td align="center">该类的该属性不会进行隐式的初始化，即 该final 属性的初始化属性必须有值，或在构造方法中赋值(但只能选其一，且必须选其一，因为没有默认值！)，且初始化之后就不能改了，只能赋值一次。</td>
+</tr>
+<tr>
+<td>变量</td>
+<td align="center">该变量的值只能赋一次值，在声明变量的时候才能赋值，即变为常量。</td>
+</tr>
+</tbody></table>
+<h3 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a>super关键字</h3><p>siper可以理解为是指向自己父（超）类对象的一个指针，而这个父类指的是离自己最近的一个父类。</p>
+<p>super用来访问父类内容，当子类中的成员变量或方法与父类中同名时可用super用于区分。</p>
+<p>super关键字在子类里调用父类的构造方法，则必须在子类的构造方法中的<strong>第一行</strong>。<strong>如果子类构造方法中既没有显示调用父类的构造方法，而父类没有无参的构造方法，则编译出错。</strong>（如果没有显示声明父类的无参的构造方法，系统会自动默认生成一个无参构造方法，但是，如果声明了一个有参的构造方法，而没有声明无参的构造方法，这时系统不会动默认生成一个无参构造方法，此时称为父类没有无参的构造方法。）</p>
+<blockquote>
+<p>子类的构造的过程当中必须调用父类的构造方法。其实这个过程已经隐式地使用了super关键字。</p>
+</blockquote>
+<h3 id="Object类"><a href="#Object类" class="headerlink" title="Object类"></a>Object类</h3><p>Object类是所有类的父类，如果一个类没有使用extends关键字明确标识继承另一个类，那么这个类默认继承Object类。<strong>Object类中的方法，适合所有子类。</strong></p>
+<h2 id="多态-Polymorphism"><a href="#多态-Polymorphism" class="headerlink" title="多态(Polymorphism)"></a><strong>多态(Polymorphism)</strong></h2>
             </div>
             <hr>
             <div>
@@ -348,7 +389,7 @@
               
                 <p class="note note-warning">
                   
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                    本博客所有文章仅做个人笔记使用，内容仅代表个人理解，信息多来源于网络，如造成侵权，请通过1805399513@qq.com邮箱进行沟通处理。<br/> 除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
                   
                 </p>
               
