@@ -233,10 +233,10 @@
 <p>SOLID原则仅仅具备指导意义，不能不考虑需求环境生硬遵循，需要结合具体场景。</p>
 </blockquote>
 <blockquote>
-<p>通常当一段代码破坏了一个SOLID原则时，它通常会打破一大堆。</p>
+<p>通常当一段代码破坏了一个SOLID原则时，它会打破一大堆。</p>
 </blockquote>
 <h2 id="单一职责原则SRP-Single-Responsibility-Principle"><a href="#单一职责原则SRP-Single-Responsibility-Principle" class="headerlink" title="单一职责原则SRP(Single Responsibility Principle)"></a>单一职责原则SRP(Single Responsibility Principle)</h2><p><strong>一个类只负责一个功能领域中的相应职责，或者可以定义为：就一个类而言，应该只有一个引起它变化的原因。</strong></p>
-<p>从定义中可以看出在定义类的时候要将职责划分清楚， 不能让一个类负责干多个事情。换句话说就是一个类只有一个引起它变化的点。如果一个类负责干多个事情那么就会有多个引起他变化的原因。那么这个类就不稳定了，这个类就容易变化，因为我们知道如果干的事情越少变化的诱因就愈少，如果干的事情越多变化的诱因就愈多。</p>
+<p>从定义中可以看出在定义类的时候要将职责划分清楚， 不能让一个类负责干多个事情。换句话说就是一个类只有一个引起它变化的点。如果一个类负责干多个事情那么就会有多个引起它变化的原因。那么这个类就不稳定了，这个类就容易变化，因为如果干的事情越少变化的诱因就愈少，如果干的事情越多变化的诱因就愈多。</p>
 <p>关于单一职责原则，<strong>重点是职责的划分！</strong>职责划分的粒度取决于需求的粒度，并不是在设计类或者函数一定要做到单一职责，这样也会带来类的数量会增多，代码复杂度提高。对成本和效率都会产生影响。</p>
 <h2 id="开放封闭原则OCP-Open－Close-Principle"><a href="#开放封闭原则OCP-Open－Close-Principle" class="headerlink" title="开放封闭原则OCP(Open－Close Principle)"></a>开放封闭原则OCP(Open－Close Principle)</h2><p><strong>软件实体（如类、模块、函数等）应该对扩展开放，对修改封闭。</strong></p>
 <p>需要注意对未发生的变化进行预设很容易踏入过渡设计的陷阱，而一旦需求开始发生变化，那它很可能会以相似的方式一变再变。此时就应该在代码循环开放封闭原则上多下功夫。</p>
