@@ -18,7 +18,7 @@
   <meta name="author" content="何熙">
   <meta name="keywords" content="">
   
-  <title>面向对象的五个基本原则 - Enkidu</title>
+  <title>面向对象的基本原则 - Enkidu</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
 
@@ -163,7 +163,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="面向对象的五个基本原则">
+            <span class="h2" id="subtitle" title="面向对象的基本原则">
               
             </span>
 
@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      64 字
+      2.5k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      25
        分钟
     </span>
   
@@ -225,10 +225,71 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">面向对象的五个基本原则</h1>
+            <h1 style="display: none">面向对象的基本原则</h1>
             
             <div class="markdown-body">
-              <h1 id="面向对象的五个基本原则"><a href="#面向对象的五个基本原则" class="headerlink" title="面向对象的五个基本原则"></a>面向对象的五个基本原则</h1><p>在程序设计领域，<strong>SOLID</strong>（<strong>单一功能、开闭原则、里氏替换、接口隔离</strong>以及<strong>依赖反转</strong>）指代了<strong>面向对象编程</strong>和<strong>面向对象设计</strong>的五个基本原则。</p>
+              <h1 id="面向对象的基本原则"><a href="#面向对象的基本原则" class="headerlink" title="面向对象的基本原则"></a>面向对象的基本原则</h1><p>在程序设计领域，<strong>SOLID</strong>（<strong>单一功能、开闭原则、里氏替换、接口隔离</strong>以及<strong>依赖反转</strong>）指代了<strong>面向对象编程</strong>和<strong>面向对象设计</strong>的五个基本原则。</p>
+<blockquote>
+<p>SOLID原则仅仅只具备指导意义。</p>
+</blockquote>
+<blockquote>
+<p>通常当一段代码破坏了一个SOLID原则时，它通常会打破一大堆。</p>
+</blockquote>
+<h2 id="单一职责原则SRP-Single-Responsibility-Principle"><a href="#单一职责原则SRP-Single-Responsibility-Principle" class="headerlink" title="单一职责原则SRP(Single Responsibility Principle)"></a>单一职责原则SRP(Single Responsibility Principle)</h2><p><strong>一个类只负责一个功能领域中的相应职责，或者可以定义为：就一个类而言，应该只有一个引起它变化的原因。</strong></p>
+<p>从定义中可以看出在定义类的时候要将职责划分清楚， 不能让一个类负责干多个事情。换句话说就是一个类只有一个引起它变化的点。如果一个类负责干多个事情那么就会有多个引起他变化的原因。那么这个类就不稳定了，这个类就容易变化，因为我们知道如果干的事情越少变化的诱因就愈少，如果干的事情越多变化的诱因就愈多。</p>
+<p>关于单一职责原则，<strong>重点是职责的划分！</strong>职责划分的粒度取决于需求的粒度，并不是在设计类或者函数一定要做到单一职责，这样也会带来类的数量会增多，代码复杂度提高。对成本和效率都会产生影响。</p>
+<h2 id="开放封闭原则OCP-Open－Close-Principle"><a href="#开放封闭原则OCP-Open－Close-Principle" class="headerlink" title="开放封闭原则OCP(Open－Close Principle)"></a>开放封闭原则OCP(Open－Close Principle)</h2><p><strong>软件实体（如类、模块、函数等）应该对扩展开放，对修改封闭。</strong></p>
+<p>需要注意对未发生的变化进行预设很容易踏入过渡设计的陷阱，而一旦需求开始发生变化，那它很可能会以相似的方式一变再变。此时就应该在代码循环开放封闭原则上多下功夫。</p>
+<p>开放封闭原则是相对的，没有完全完美的开放。</p>
+<blockquote>
+<p>开放封闭原则是编写一个好程序的目标，其他设计原则都是达到这个目标的过程。</p>
+<p>里氏替换原则<strong>基于抽象去编程，而不要基于具体。这样也就可以实现：对扩展（基于抽象）是开放的，对变更（基于具体）是禁止的。</strong></p>
+</blockquote>
+<h2 id="里氏替换原则-the-Liskov-Substitution-Principle-LSP"><a href="#里氏替换原则-the-Liskov-Substitution-Principle-LSP" class="headerlink" title="里氏替换原则(the Liskov Substitution Principle LSP)"></a>里氏替换原则(the Liskov Substitution Principle LSP)</h2><p><strong>子类应当可以替换父类并出现在父类能够出现的任何地方。</strong></p>
+<p>里氏替换原则通俗的来讲就是：<strong>子类可以扩展父类的功能，但不能改变父类原有的功能。</strong></p>
+<p>里氏替换原则有至少以下两种含义：</p>
+<ul>
+<li><p>里氏替换原则是针对继承而言的，如果继承是为了实现代码重用，也就是为了共享方法，那么共享的父类方法就应该保持不变，不能被子类重新定义。</p>
+<p>子类只能通过新添加方法来扩展功能，父类和子类都可以实例化，而子类继承的方法和父类是一样的，父类调用方法的地方，子类也可以调用同一个继承得来的，逻辑和父类一致的方法，这时用子类对象将父类对象替换掉时，当然逻辑一致，相安无事。</p>
+</li>
+<li><p>如果继承的目的是为了多态，而多态的前提就是子类覆盖并重新定义父类的方法，为了符合LSP，我们应该将父类定义为抽象类，并定义抽象方法，让子类重新定义这些方法，当父类是抽象类时，父类就是不能实例化，所以也不存在可实例化的父类对象在程序里。也就不存在子类替换父类实例（根本不存在父类实例了）时逻辑不一致的可能。</p>
+</li>
+</ul>
+<h3 id="多态与里氏替换原则"><a href="#多态与里氏替换原则" class="headerlink" title="多态与里氏替换原则"></a>多态与里氏替换原则</h3><p>里氏替换原则要求<strong>特殊性不可违背普遍性</strong>，这个违背是指<strong>子类修改父类</strong>。而<strong>多态是指子类本身就父类中的普遍性进行特殊化的继承，实际上并未修改父类</strong>。所以，两者不冲突，是一种补充关系。多态使得父类的普遍性能够在子类中进行特殊化继承。里氏代换原则要求继承关系必须符合普遍性与特殊性的规律。</p>
+<blockquote>
+<p>不符合 LSP 的最常见的情况是，父类和子类都是可实例化的非抽象类，且父类的方法被子类重新定义，这一类的实现继承会造成父类和子类间的强耦合，也就是实际上并不相关的属性和方法牵强附会在一起，不利于程序扩展和维护。</p>
+<p><strong>符合 LSP 的方法：尽量不要从可实例化的父类中继承，而是要使用基于抽象类和接口的继承。</strong></p>
+</blockquote>
+<blockquote>
+<p><strong>基于抽象去编程，而不要基于具体。这样也就可以实现：对扩展（基于抽象）是开放的，对变更（基于具体）是禁止的。</strong></p>
+</blockquote>
+<h2 id="接口分离原则-the-Interface-Segregation-Principle-ISP"><a href="#接口分离原则-the-Interface-Segregation-Principle-ISP" class="headerlink" title="接口分离原则(the Interface Segregation Principle ISP)"></a>接口分离原则(the Interface Segregation Principle ISP)</h2><p><strong>使用多个专门的接口比使用单一的总接口要好。不应该强行要求客户端依赖于它们不用的接口（接口属于客户，不属于它所在的类层次结构）。类之间的依赖应该建立在最小的接口上面。</strong></p>
+<h4 id="接口隔离原则和单一职责原则"><a href="#接口隔离原则和单一职责原则" class="headerlink" title="接口隔离原则和单一职责原则"></a>接口隔离原则和单一职责原则</h4><p>从功能上来看，接口隔离和单一职责两个原则具有一定的相似性。</p>
+<p>它们的区别在于观察角度或是侧重点不一样。单一职责是从模块、类或方法自身的角度来看的，接口隔离原则是从调用者的角度来看的。</p>
+<blockquote>
+<p>举个例子，有个聚合服务，为APP提供了一组相同标准的接口，但它们的功能不同，有些和商品相关，有些和用户相关，有些和订单相关。这看起来既不符合接口隔离原则，也不符合接口单一职责原则。其实，从APP的角度来看，这组接口是一个整体，多一个不行，缺一个不可，所以它是符合接口隔离原则的。从更粗粒度的服务层面来看，这个聚合服务本身只为APP服务，这也符合单一职责。</p>
+</blockquote>
+<h2 id="依赖倒置原则-the-Dependency-Inversion-Principle-DIP"><a href="#依赖倒置原则-the-Dependency-Inversion-Principle-DIP" class="headerlink" title="依赖倒置原则(the Dependency Inversion Principle DIP)"></a>依赖倒置原则(the Dependency Inversion Principle DIP)</h2><p><strong>上层模块不应该依赖下层模块，它们都应该依赖于抽象。抽象不应该依赖于细节，细节应该依赖于抽象。</strong></p>
+<p>这个原则听起来很像是“针对接口编程，不针对现实编程”，但更强调“抽象”。</p>
+<h4 id="在依赖倒置原则中的倒置指的是和一般OO设计的思考方式完全相反。"><a href="#在依赖倒置原则中的倒置指的是和一般OO设计的思考方式完全相反。" class="headerlink" title="在依赖倒置原则中的倒置指的是和一般OO设计的思考方式完全相反。"></a><strong>在依赖倒置原则中的倒置指的是和一般OO设计的思考方式完全相反。</strong></h4><p>举个例子，现在你需要实现一个比萨店，你第一件想到的事情是什么？我想到的是一个比萨店，里面有很多具体的比萨，如：芝士比萨、素食比萨、海鲜比萨……<br><strong>比萨店是上层模块，比萨是下层模块</strong>，如果把比萨店和它依赖的对象画成一张图，看起来是这样：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/a20210726201203.png" srcset="/img/loading.gif" lazyload alt="正常依赖-上层依赖下层"></p>
+<p>上图可以看出，先从顶端开始，然后往下到具体类，比萨店全都依赖这些具体类。</p>
+<p>现在<strong>将依赖关系倒置</strong>，不从上层模块发散，而是从下层模块开始尝试进行抽象化。</p>
+<p>显然，芝士比萨、素食比萨、海鲜比萨都是比萨，所以它们应该共享一个Pizza接口。抽象完成后回头重新思考如何设计比萨店。于是得到如下的依赖关系：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/a20210726201600.png" srcset="/img/loading.gif" lazyload alt="依赖倒置-上层下层均依赖抽象"></p>
+<p>从两图的对比可以看出，依赖由最初的<strong>上层依赖下层</strong>，转变为<strong>二者依赖于抽象</strong>，在依赖关系上确实发生了<strong>倒置</strong>。</p>
+<blockquote>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/c3ce6762257c">六大设计原则之依赖倒置原则（DIP）</a></p>
+</blockquote>
+<hr>
+<h2 id="迪米特法则-Law-of-Demeter-LoD"><a href="#迪米特法则-Law-of-Demeter-LoD" class="headerlink" title="迪米特法则(Law of Demeter, LoD)"></a>迪米特法则(Law of Demeter, LoD)</h2><p><strong>一个对象应该对其他对象有最少的了解</strong>，所以迪米特法则又叫做最少知识原则（Least Knowledge Principle, LKP）。</p>
+<p><strong>迪米特法则的意义在于降低类之间的耦合</strong>。由于每个对象尽量减少对其他对象的了解，因此，很容易使得系统的功能模块功能独立，相互之间不存在（或很少有）依赖关系。</p>
+<p>迪米特法则还有一个英文解释是：<strong>talk only to your immediate friends（只和直接的朋友交流）</strong>。什么是朋友呢？每个对象都必然会与其他的对象有耦合关系，两个对象之间的耦合就会成为朋友关系。那么什么又是直接的朋友呢？<strong>出现在成员变量、方法的输入输出参数中的类就是直接的朋友</strong>。迪米特法则要求只和直接的朋友通信。</p>
+<blockquote>
+<p>只出现在方法体内部的类就不是直接的朋友，如果一个类和不是直接的朋友进行交流，就属于违反迪米特法则。</p>
+</blockquote>
+<hr>
+<h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>solid原则包括迪米特法则具备指导意义的程序设计原则，个人认为所有的原则中最核心的就是开放封闭原则，其他设计原则都是达到这个目标的过程。单一职能原则、接口分离原则包括迪米特法则都是为了实现高内聚、低耦合，如此就确定了职能划分清晰的不修改部分，实现<strong>对修改封闭</strong>；另一方面，里氏替换原则与依赖倒置原则都是对抽象的约束与规范，指明程序应基于抽象而非具体，实现<strong>对扩展开放</strong>。通过以上两方面的规范，最终达到开放封闭原则要求的<strong>对扩展开放，对修改封闭</strong>。</p>
 
             </div>
             <hr>
