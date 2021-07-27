@@ -254,7 +254,7 @@
 <p>ArrayList在添加元素时，当长度不足触发扩容时，若数组为空则给一个默认为10的容量，若不为空则将数组的容量扩大1.5倍的容量。</p>
 <hr>
 <blockquote>
-<h3 id="ArrayList的扩容机制？"><a href="#ArrayList的扩容机制？" class="headerlink" title="ArrayList的扩容机制？"></a>ArrayList的扩容机制？</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">add</span><span class="hljs-params">(E e)</span> </span>&#123;<br><span class="hljs-comment">//扩容</span><br>ensureCapacityInternal(size + <span class="hljs-number">1</span>);  <span class="hljs-comment">// Increments modCount!!</span><br>elementData[size++] = e;<br><span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="ArrayList的扩容机制？"><a href="#ArrayList的扩容机制？" class="headerlink" title="ArrayList的扩容机制？"></a>ArrayList的扩容机制？</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">add</span><span class="hljs-params">(E e)</span> </span>&#123;<br><span class="hljs-comment">//扩容</span><br>ensureCapacityInternal(size + <span class="hljs-number">1</span>);  <span class="hljs-comment">// Increments modCount!!</span><br>elementData[size++] = e;<br><span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>ArrayList使用<code>add()</code>方法进行扩容，<code>add()</code>方法会先处理长度，再将元素添加到数组。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">calculateCapacity</span><span class="hljs-params">(Object[] elementData, <span class="hljs-keyword">int</span> minCapacity)</span> </span>&#123;<br><span class="hljs-keyword">if</span> (elementData == DEFAULTCAPACITY_EMPTY_ELEMENTDATA) &#123;<br><span class="hljs-keyword">return</span> Math.max(DEFAULT_CAPACITY, minCapacity);<br>&#125;<br><span class="hljs-keyword">return</span> minCapacity;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ensureExplicitCapacity</span><span class="hljs-params">(<span class="hljs-keyword">int</span> minCapacity)</span> </span>&#123;<br>modCount++;<br><span class="hljs-keyword">if</span> (minCapacity - elementData.length &gt; <span class="hljs-number">0</span>)<br>grow(minCapacity);<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -266,7 +266,7 @@
 <p>扩容后再判断新数组的容量是否足够，足够则完成扩容，否则就将数组长度设置为需要的长度，并检查是否大于默认的最大值出现溢出。</p>
 <p>完成容量处理后调用<code>Arrays.copyOf()</code>方法将elementData数组指向新的内存空间为newCapacity的连续空间， 并将elementData的数据复制到新的内存空间。</p>
 <hr>
-<h3 id="为什么说ArrayList是线程不安全的？"><a href="#为什么说ArrayList是线程不安全的？" class="headerlink" title="为什么说ArrayList是线程不安全的？"></a>为什么说ArrayList是线程不安全的？</h3><p>ArrayList 不是线程安全的。 线程不安全的两种体现：数组越界异常 <code>ArrayIndexOutOfBoundsException</code>、元素值覆盖和为空问题。</p>
+<h4 id="为什么说ArrayList是线程不安全的？"><a href="#为什么说ArrayList是线程不安全的？" class="headerlink" title="为什么说ArrayList是线程不安全的？"></a>为什么说ArrayList是线程不安全的？</h4><p>ArrayList 不是线程安全的。 线程不安全的两种体现：数组越界异常 <code>ArrayIndexOutOfBoundsException</code>、元素值覆盖和为空问题。</p>
 <p><strong>数组越界异常</strong> </p>
 <p>由于ArrayList添加元素是分先判断elementData数组容量是否满足需求，再在elementData对应位置上设置元素的值两步进行，可以看出一个不安全的隐患，<strong>在多个线程进行add操作时可能会导致elementData数组越界</strong>。</p>
 <p>具体逻辑如下：</p>
@@ -293,7 +293,7 @@
 </ol>
 <p>这样线程AB执行完毕后，理想中情况为size为2，elementData下标0的位置为A，下标1的位置为B。而实际情况变成了size为2，elementData下标为0的位置变成了B，下标1的位置上什么都没有。并且后续除非使用set方法修改此位置的值，否则将一直为null，因为size为2，添加元素时会从下标为2的位置上开始。</p>
 <hr>
-<h3 id="如何对ArrayList线程安全处理？"><a href="#如何对ArrayList线程安全处理？" class="headerlink" title="如何对ArrayList线程安全处理？"></a>如何对ArrayList线程安全处理？</h3><ul>
+<h4 id="如何对ArrayList线程安全处理？"><a href="#如何对ArrayList线程安全处理？" class="headerlink" title="如何对ArrayList线程安全处理？"></a>如何对ArrayList线程安全处理？</h4><ul>
 <li> <strong>Collections.synchronizedList</strong></li>
 </ul>
 <p>  最常用的方法是<strong>通过 Collections 的 synchronizedList 方法</strong>将 ArrayList 转换成线程安全的容器后再使用。</p>
@@ -314,7 +314,7 @@
 <p>LinkedList提供额外的get，remove，insert方法在LinkedList的首部或尾部。这些操作使LinkedList可被用作堆栈（stack），队列（queue）或双向队列（deque）。</p>
 <hr>
 <blockquote>
-<h3 id="LinkedList中offer-与add-的区别是什么？"><a href="#LinkedList中offer-与add-的区别是什么？" class="headerlink" title="LinkedList中offer()与add()的区别是什么？"></a>LinkedList中<code>offer()</code>与<code>add()</code>的区别是什么？</h3><p>offer属于 <code>offer in interface Deque&lt;E&gt;</code>，add 属于 <code>add in interface Collection&lt;E&gt;</code>。  </p>
+<h4 id="LinkedList中offer-与add-的区别是什么？"><a href="#LinkedList中offer-与add-的区别是什么？" class="headerlink" title="LinkedList中offer()与add()的区别是什么？"></a>LinkedList中<code>offer()</code>与<code>add()</code>的区别是什么？</h4><p>offer属于 <code>offer in interface Deque&lt;E&gt;</code>，add 属于 <code>add in interface Collection&lt;E&gt;</code>。  </p>
 <p>当队列为空时候，使用add方法会报错，而offer方法会返回false。</p>
 <ul>
 <li>作为List使用时，一般采用add / get方法来 压入/获取对象。</li>
