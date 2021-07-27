@@ -18,9 +18,25 @@
   <meta name="author" content="何熙">
   <meta name="keywords" content="">
   
-  <title>标签 - note - Enkidu</title>
+  <title>Java集合 - Enkidu</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <body>
-  <header style="height: 80vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -142,22 +158,55 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/tag.jpg') no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="标签 - note">
+            <span class="h2" id="subtitle" title="Java集合">
               
             </span>
 
             
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-07-27 17:12" pubdate>
+        2021年7月27日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      142 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
           </div>
 
-          
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
           
         </div>
       </div>
@@ -166,73 +215,103 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 6 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/07/27/Java%E9%9B%86%E5%90%88/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Java集合</span>
-      <time style="float: right;">07-27</time>
-    </a>
-  
-    
-    <a href="/2021/07/26/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%94%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">面向对象的基本原则</span>
-      <time style="float: right;">07-26</time>
-    </a>
-  
-    
-    <a href="/2021/07/23/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">面向对象三大特性</span>
-      <time style="float: right;">07-23</time>
-    </a>
-  
-    
-    <a href="/2021/07/22/Hexo%E4%B8%BB%E9%A2%98/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hexo主题</span>
-      <time style="float: right;">07-22</time>
-    </a>
-  
-    
-      
-      <p class="h5">2020</p>
-    
-    <a href="/2020/10/06/Hexo%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hexo插件</span>
-      <time style="float: right;">10-06</time>
-    </a>
-  
-    
-    <a href="/2020/09/28/Hexo%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hexo使用笔记</span>
-      <time style="float: right;">09-28</time>
-    </a>
-  
-</div>
 
-
-
-
-
-              </div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java集合</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Java集合框架"><a href="#Java集合框架" class="headerlink" title="Java集合框架"></a>Java集合框架</h1><p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/a20210727171333.gif" srcset="/img/loading.gif" lazyload alt="img"></p>
+<p>Java 中的集合框架可以划分为两类：</p>
+<ul>
+<li><p>集合 Collection：用来存储<strong>同一类型的数据</strong>，Collection 的子接口又分为 List、Set、Queue 三种；</p>
+<p>List：ArrayList、LinkedList、Stack；</p>
+<p>Set：HashSet、LinkedHashSet、TreeSet；</p>
+<p>Queue：PriorityQueue、ArrayDeque。</p>
+</li>
+<li><p>映射 Map：用来存储<strong>键值对数据</strong>。</p>
+<p>Map：HashMap、LinkedHashMap、TreeMap、Hashtable(没遵守驼峰命名)</p>
+</li>
+</ul>
+<h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>List表达一个有序的集合，List中的每个元素都有索引，使用此接口能够准确的控制每个元素插入的位置。用户也能够使用索引来访问List中的元素。</p>
+<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Java/">Java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/note/">note</a>
+                    
+                      <a class="hover-with-bg" href="/tags/java%E5%9F%BA%E7%A1%80/">java基础</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章仅做个人笔记使用，内容仅代表个人理解，信息多来源于网络，如造成侵权，请通过1805399513@qq.com邮箱进行沟通处理。<br/> 除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/07/27/Github%E5%BB%BA%E7%AB%8B%E5%9B%BE%E5%BA%8A/">
+                        <span class="hidden-mobile">Github建立图床</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -312,9 +391,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
