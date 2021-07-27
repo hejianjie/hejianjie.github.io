@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Github建立图床</title>
+    <link href="/2021/07/27/Github%E5%BB%BA%E7%AB%8B%E5%9B%BE%E5%BA%8A/"/>
+    <url>/2021/07/27/Github%E5%BB%BA%E7%AB%8B%E5%9B%BE%E5%BA%8A/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用markdown写文章嵌入图片会导入图片路径，在线上无法读取到本地的图片，因此需要建立图床来解决这个问题。</p><p>个人采用开源<strong>PicGO</strong>结合<strong>jsDelivr</strong>的免费cdn基于Github仓库搭建免费的图床。</p><h2 id="下载PicGo"><a href="#下载PicGo" class="headerlink" title="下载PicGo"></a>下载PicGo</h2><p><a href="https://github.com/Molunerfinn/PicGo/releases">PicGo</a>是一款用 <code>Electron-vue</code> 开发的软件，可以支持微博，七牛云，腾讯云COS，又拍云，GitHub，阿里云OSS，SM.MS，imgur 等8种常用图床，功能强大，简单易用。</p><h2 id="配置GitHub"><a href="#配置GitHub" class="headerlink" title="配置GitHub"></a>配置GitHub</h2><p>首先需要建立一个图片仓库，名称随意，后续配置的时候名称保持一致即可。</p><p>新建 Personal access tokens， 名称自定义，自己用的话全部钩上。（其实权限只要 repo 即可）。</p><p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/a20210727144339.png" alt="img"></p><h2 id="配置PicGo"><a href="#配置PicGo" class="headerlink" title="配置PicGo"></a>配置PicGo</h2><p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/a20210727145441.PNG" alt="配置信息"></p><p><strong>仓库名称：</strong> <code>&lt;用户名&gt;/&lt;preject&gt;</code><br><strong>分支：</strong> <code>master</code><br><strong>token：</strong> 生成的 <code>Personal access tokens</code><br><strong>指定存储路径：</strong> <code>images/</code>  </p><blockquote><p>PicGo上传文件时，将自动在Github仓库中创建此文件夹。注意末尾要加 <strong>/</strong></p></blockquote><p><strong>自定义域名：</strong> <code>https://cdn.jsdelivr.net/gh/用户名/图床仓库名</code></p><blockquote><p>如果设置了自定义域名，PicGo生成的访问链接，将是 <code>自定义域名+文件名</code> 的访问方式，这里使用 jsDelivr 加速访问。</p></blockquote><p>PicGO其他配置内容可以参照<a href="https://picgo.github.io/PicGo-Doc/zh/guide/">官方文档</a></p><h2 id="Typora的配置"><a href="#Typora的配置" class="headerlink" title="Typora的配置"></a>Typora的配置</h2><p>进入typra偏好设置-图像选项，如图配置PicGo路径即可。</p><p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/a20210727150312.png" alt="image-20210727150254524"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>图床</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>method</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>面向对象的基本原则</title>
     <link href="/2021/07/26/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%94%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/"/>
     <url>/2021/07/26/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%94%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/</url>
