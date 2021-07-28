@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.9k 字
+      5.8k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      56
+      66
        分钟
     </span>
   
@@ -396,10 +396,36 @@
 </blockquote>
 <h3 id="CopyOnWriteArrayList"><a href="#CopyOnWriteArrayList" class="headerlink" title="CopyOnWriteArrayList"></a>CopyOnWriteArrayList</h3><h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set是一种不包含重复的元素的Collection，即对Set中任意的两个元素<code>element1</code>和<code>element2</code>都有<code>elementl.equals(element2)= false</code>。Set最多有一个null元素。</p>
 <h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>HashSet底层数据结构采用哈希表实现，元素无序且唯一，线程不安全，效率高，可以存储null元素，元素的唯一性是靠所存储元素类型是否重写<code>hashCode()</code>和<code>equals()</code>方法来保证的，如果没有重写这两个方法，则无法保证元素的唯一性。</p>
+<p><strong><code>hashCode()</code>:</strong> 属性相同的对象返回值必须相同, 属性不同的返回值尽量不同(提高效率)；</p>
+<p><strong><code>equals()</code>:</strong> 属性相同返回true, 属性不同返回false,返回false的时候存储。</p>
+<p>HashSet默认构造函数是构建一个初始容量为16，负载因子为0.75 的HashMap。HashSet是通过组合模式，使用HashMap的key是不重复的来实现HashSet中的元素是不重复的，遍历时为该map对象的keySet()即map的key集合。</p>
 <blockquote>
 <p><strong>问题</strong>：</p>
-<h4 id="HashSet原理是什么？"><a href="#HashSet原理是什么？" class="headerlink" title="HashSet原理是什么？"></a>HashSet原理是什么？</h4></blockquote>
-<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><h3 id="CopyOnWriteArraySet"><a href="#CopyOnWriteArraySet" class="headerlink" title="CopyOnWriteArraySet"></a>CopyOnWriteArraySet</h3><h2 id="Queue："><a href="#Queue：" class="headerlink" title="Queue："></a>Queue：</h2><p>PriorityQueue、ArrayDeque。</p>
+<h4 id="HashSet原理是什么？"><a href="#HashSet原理是什么？" class="headerlink" title="HashSet原理是什么？"></a>HashSet原理是什么？</h4><p>HashSet封装了一个 HashMap 对象来存储所有的集合元素，所有放入 HashSet 中的集合元素实际上由 HashMap 的 key 来保存，而 HashMap 的 value 则存储了一个 PRESENT，它是一个静态的 Object 对象。</p>
+<p>HashSet在存元素时，会调用对象的hashCode方法计算出存储位置，然后和该位置上所有的元素进行equals比较，如果该位置没有其他元素或者比较的结果都为false就存进去，否则就不存。这样的原理注定了元素是按照哈希值来找存储位置，所有无序，而且可以保证无重复元素。</p>
+<h4 id="hashset存储的PRESENT的作用是什么？"><a href="#hashset存储的PRESENT的作用是什么？" class="headerlink" title="hashset存储的PRESENT的作用是什么？"></a>hashset存储的PRESENT的作用是什么？</h4><p>HashSet有一个全局唯一的PRESENT指向的Object对象，add的时候使用其作为map的value。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// Dummy value to associate with an Object in the backing Map</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Object PRESENT = <span class="hljs-keyword">new</span> Object();<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">add</span><span class="hljs-params">(E e)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> map.put(e, PRESENT)==<span class="hljs-keyword">null</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">remove</span><span class="hljs-params">(Object o)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> map.remove(o)==PRESENT;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>使用PRESENT的两个方法的返回值都是是boolean。</p>
+<p>map.put和remove方法的处理逻辑均是：key有关联的值则返回对应的值，否则返回null。</p>
+<p>以add为例，若当前无键值为<code>key</code>的键，则map.put返回null，<code>null==null</code>返回true；若已存在键值为<code>key</code>的键，则map.put返回PRESENT，<code>PRESENT!=null</code>返回false。可见使用PRESENT可以对key是否存在作出区分。</p>
+<p>如果用null来代替PRESENT则无论目标键是否存在都会返回null，<code>null==null</code>永远返回true，也就无法区分key在HashSet是否存在。</p>
+<p><strong>参考</strong>：<a target="_blank" rel="noopener" href="https://blog.csdn.net/fu250/article/details/106415918">https://blog.csdn.net/fu250/article/details/106415918</a></p>
+<hr>
+<h4 id="HashSet如何排序？"><a href="#HashSet如何排序？" class="headerlink" title="HashSet如何排序？"></a>HashSet如何排序？</h4><p>HashSet是无序的，如果一定需要对其中的元素进行排序可以转换为其他结构再进行排序。</p>
+<p>将HashSet转换为List，然后使用Collections.sort()进行排序；<br>将将Hashset转换为TreeSet。</p>
+</blockquote>
+<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><p>LinkedHashSet是HashSet的子类。</p>
+<p>LinkedHashSet内部使用的是LinkHashMap，具有可预知迭代顺序的 Set 接口的哈希表和链接列表实现，即遍历序和插入序是一致的。</p>
+<p>LinkedHashSet默认构造函数是构建一个初始容量为16，负载因子为0.75 的LinkHashMap。</p>
+<h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><p>TreeSet底层数据结构采用红黑树来实现，元素唯一且已经排好序；唯一性同样需要重写hashCode和equals()方法，二叉树结构保证了元素的有序性。</p>
+<p>TreeSet是用来排序的, 可以指定一个顺序, 对象存入之后会按照指定的顺序排列。</p>
+<p>根据构造方法不同，分为自然排序（无参构造）和比较器排序（有参构造）。</p>
+<p>**自然顺序(Comparable)**：自然排序要求元素必须实现Compareable接口，并重写里面的compareTo()方法，元素通过比较返回的int值来判断排序序列，返回0说明两个对象相同，不需要存储；</p>
+<p>**比较器顺序(Comparator)**：比较器排需要在TreeSet初始化是时候传入一个实现Comparator接口的比较器对象，或者采用匿名内部类的方式new一个Comparator对象，重写里面的compare()方法；</p>
+<h3 id="CopyOnWriteArraySet"><a href="#CopyOnWriteArraySet" class="headerlink" title="CopyOnWriteArraySet"></a>CopyOnWriteArraySet</h3><h2 id="Queue："><a href="#Queue：" class="headerlink" title="Queue："></a>Queue：</h2><p>PriorityQueue、ArrayDeque。</p>
 <h2 id="Map："><a href="#Map：" class="headerlink" title="Map："></a>Map：</h2><h3 id="HashMap、LinkedHashMap、TreeMap、Hashtable"><a href="#HashMap、LinkedHashMap、TreeMap、Hashtable" class="headerlink" title="HashMap、LinkedHashMap、TreeMap、Hashtable"></a>HashMap、LinkedHashMap、TreeMap、Hashtable</h3><h3 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h3><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h3 id="使用for循环遍历效率高还是foreach（增强式循环）？"><a href="#使用for循环遍历效率高还是foreach（增强式循环）？" class="headerlink" title="使用for循环遍历效率高还是foreach（增强式循环）？"></a>使用for循环遍历效率高还是foreach（增强式循环）？</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; integers.length; i++) &#123;<br>    System.out.println(intergers[i]);<br>&#125;<br><br><span class="hljs-keyword">for</span>(Integer in : integers)&#123;<br>    System.out.println(in);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
@@ -427,7 +453,7 @@
                     
                       <a class="hover-with-bg" href="/tags/note/">note</a>
                     
-                      <a class="hover-with-bg" href="/tags/java%E5%9F%BA%E7%A1%80/">java基础</a>
+                      <a class="hover-with-bg" href="/tags/java%E9%9B%86%E5%90%88/">java集合</a>
                     
                   </div>
                 
