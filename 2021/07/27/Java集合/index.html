@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4.7k 字
+      4.9k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      53
+      56
        分钟
     </span>
   
@@ -228,7 +228,8 @@
             <h1 style="display: none">Java集合</h1>
             
             <div class="markdown-body">
-              <h1 id="Java集合框架"><a href="#Java集合框架" class="headerlink" title="Java集合框架"></a>Java集合框架</h1><p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/a20210727171333.gif" srcset="/img/loading.gif" lazyload alt="img"></p>
+              <h1 id="Java集合框架"><a href="#Java集合框架" class="headerlink" title="Java集合框架"></a>Java集合框架</h1><p>图中实线边框的是实现类，折线边框的是抽象类，而点线边框的是接口。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/hejianjie/ImgForMD/blogimgs/a20210727171333.gif" srcset="/img/loading.gif" lazyload alt="img"></p>
 <p>Java 中的集合框架可以划分为两类：</p>
 <ul>
 <li><p>集合 Collection：用来存储<strong>同一类型的数据</strong>，Collection 的子接口又分为 List、Set、Queue 三种；</p>
@@ -247,7 +248,8 @@
 <p>每一种集合类返回的Iterator具体类型可能不同，但它们都实现了Iterator接口，因此，我们不需要关心到底是哪种Iterator，它只需要获得这个Iterator接口即可。</p>
 <p>要确保遍历过程顺利完成，必须保证遍历过程中不更改集合的内容（Iterator的<code>remove()</code>方法除外），所以，确保遍历可靠的原则是：只在一个线程中使用这个集合，或者在多线程中对遍历代码进行同步。</p>
 <h2 id="List"><a href="#List" class="headerlink" title="List"></a>List</h2><p>List表达一个有序的集合，List中的每个元素都有索引，使用此接口能够准确的控制每个元素插入的位置。用户也能够使用索引来访问List中的元素。</p>
-<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>ArrayList的底层数据结构是一个数组，查询通过数组下标查询，查询速度快，增删慢。允许所有元素，包括null。是非同步的（unsynchronized）。</p>
+<h3 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h3><p>ArrayList的底层数据结构是一个Object数组，查询通过数组下标查询，查询速度快，增删慢。允许所有元素，包括null。是非同步的（unsynchronized）。</p>
+<p>ArrayList 实现了<code>RandmoAccess</code> 接口，所以有随机访问功能。</p>
 <p>ArrayList在实例化时，有参则按参数确定创建数组大小，无参则创建空数组。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//无参构造</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ArrayList</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">this</span>.elementData = DEFAULTCAPACITY_EMPTY_ELEMENTDATA;<br>&#125;<br> <br><span class="hljs-comment">//有参构造：</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ArrayList</span><span class="hljs-params">(<span class="hljs-keyword">int</span> initialCapacity)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (initialCapacity &gt;<span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">this</span>.elementData =<span class="hljs-keyword">new</span> Object[initialCapacity];<br>    &#125;<span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (initialCapacity ==<span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">this</span>.elementData = EMPTY_ELEMENTDATA;<br>    &#125;<span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;Illegal Capacity: &quot;</span>+<br>                                           initialCapacity);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -307,10 +309,22 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;Object&gt; list1 = <span class="hljs-keyword">new</span> CopyOnWriteArrayList&lt;Object&gt;();<br></code></pre></td></tr></table></figure></li>
 <li><p><strong>使用ThreadLocal</strong></p>
 <p>使用ThreadLocal变量确保线程封闭性(封闭线程往往是比较安全的， 但由于使用ThreadLocal封装变量，相当于把变量丢进执行线程中去，每new一个新的线程，变量也会new一次，一定程度上会造成性能[内存]损耗，但其执行完毕就销毁的机制使得ThreadLocal变成比较优化的并发解决方案)。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">ThreadLocal&lt;List&lt;Object&gt;&gt; threadList = <span class="hljs-keyword">new</span> ThreadLocal&lt;List&lt;Object&gt;&gt;() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> List&lt;Object&gt; <span class="hljs-title">initialValue</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;Object&gt;();<br>    &#125;<br>&#125;;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">ThreadLocal&lt;List&lt;Object&gt;&gt; threadList = <span class="hljs-keyword">new</span> ThreadLocal&lt;List&lt;Object&gt;&gt;() &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-function"><span class="hljs-keyword">protected</span> List&lt;Object&gt; <span class="hljs-title">initialValue</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;Object&gt;();<br>    &#125;<br>&#125;;		<br></code></pre></td></tr></table></figure></li>
 </ul>
+<hr>
+<h4 id="为什么Arrays-asList-返回的list不能用add方法？"><a href="#为什么Arrays-asList-返回的list不能用add方法？" class="headerlink" title="为什么Arrays.asList()返回的list不能用add方法？"></a>为什么Arrays.asList()返回的list不能用add方法？</h4><p><code>Arrays.asList()</code>返回的list使用<code>add()</code>方法会抛出<code>UnsupportedOperationException</code>异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//Arrays.java部分源码</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArrayList</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractList</span>&lt;<span class="hljs-title">E</span>&gt; <span class="hljs-keyword">implements</span> <span class="hljs-title">RandomAccess</span>, <span class="hljs-title">java</span>.<span class="hljs-title">io</span>.<span class="hljs-title">Serializable</span></span>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">long</span> serialVersionUID = -<span class="hljs-number">2764017481108945198L</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">final</span> E[] a;<br>    <br>    ArrayList(E[] array) &#123;<br>        a = Objects.requireNonNull(array);<br>    &#125;<br>&#125;<br><br><span class="hljs-meta">@SafeVarargs</span><br><span class="hljs-meta">@SuppressWarnings(&quot;varargs&quot;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> &lt;T&gt; <span class="hljs-function">List&lt;T&gt; <span class="hljs-title">asList</span><span class="hljs-params">(T... a)</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> ArrayList&lt;&gt;(a);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//AbstractList.java部分源码</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">boolean</span> <span class="hljs-title">add</span><span class="hljs-params">(E e)</span> </span>&#123;<br>    add(size(), e);<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">add</span><span class="hljs-params">(<span class="hljs-keyword">int</span> index, E element)</span> </span>&#123;<br>    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> UnsupportedOperationException();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>由Arrays的源码可知，<code>Arrays.asList()</code>返回的是<code>java.util.Arrays.ArrayList</code>，不是<code>java.utils.ArrayList</code>，而是一个继承<code>AbstractList</code>的内部类<code>ArrayList</code>，且该内部类并没有重写AbstractList中的add、remove方法。因此asList返回的对象在调用add方法时，实际调用的是AbstractList中的add方法。且由AbstractList的源码可知，直接调用add方法会抛<code>UnsupportedOperationException</code>异常。</p>
+<p>因此<code>ArrayList.asList()</code>返回的对象不能用add方法，会抛<code>UnsupportedOperationException</code>异常。</p>
+<p><strong>解决方法</strong>：创建一个<code>java.utils.ArrayList</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">List&lt;String&gt; list  = <span class="hljs-keyword">new</span> ArrayList(Arrays.asList(items));<br></code></pre></td></tr></table></figure>
+
+<p><strong>参考</strong>：<a target="_blank" rel="noopener" href="https://blog.csdn.net/wuli_sanena/article/details/107426175">https://blog.csdn.net/wuli_sanena/article/details/107426175</a></p>
 </blockquote>
-<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p>LinkedList由双链表实现，增删只需要修改链表节点指针，对元素的插入和删除效率较高。LinkedList没有同步方法。 jdk1.6使用的是一个带有 <code>header</code>节头结点的双向循环链表， 头结点不存储实际数据 ，在1.6之后，就变更使用两个节点<code>first</code>、<code>last</code>指向首尾节点。</p>
+<h3 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h3><p>LinkedList由双链表实现，增删只需要修改链表节点指针，对元素的插入和删除效率较高。LinkedList没有同步方法。 jdk1.6使用的是一个带有 <code>header</code>节头结点的双向循环链表， 头结点不存储实际数据 ，在1.6之后，就变更为双向链表，使用两个节点<code>first</code>、<code>last</code>指向首尾节点。</p>
 <p>LinkedList提供额外的get，remove，insert方法在LinkedList的首部或尾部。这些操作使LinkedList可被用作堆栈（stack），队列（queue）或双向队列（deque）。</p>
 <blockquote>
 <p><strong>问题：</strong></p>
@@ -341,13 +355,11 @@
 
 <p>由于没有加锁操作，当两个线程并行运行时候同时向第四个节点处尾插加入第五个节点。</p>
 <ol>
-<li><p>第一个线程拿到第四个节点的引用地址last赋值给l，并创建新的节点，将新节点的prev指向第四个节点；</p>
-</li>
-<li><p>此时线程阻塞，第二个线程执行，并成功添加第五个节点；</p>
-</li>
-<li><p>然后第一个线程继续执行，将last赋值为刚刚新建的节点，并将l（第四个节点）的next域指向新节点；</p>
-</li>
-<li><p>此时链表里面共五个几点，第二个线程创建的节点会被第一个线程创建的节点覆盖。</p>
+<li>第一个线程拿到第四个节点的引用地址last赋值给l，并创建新的节点，将新节点的prev指向第四个节点；</li>
+<li>此时线程阻塞，第二个线程执行，并成功添加第五个节点；</li>
+<li>然后第一个线程继续执行，将last赋值为刚刚新建的节点，并将l（第四个节点）的next域指向新节点；</li>
+<li>此时链表里面共五个几点，第二个线程创建的节点会被第一个线程创建的节点覆盖。</li>
+</ol>
 <hr>
 <h4 id="如何对LinkedList线程安全处理？"><a href="#如何对LinkedList线程安全处理？" class="headerlink" title="如何对LinkedList线程安全处理？"></a>如何对LinkedList线程安全处理？</h4><p>参考ArrayList的处理方式。</p>
 <ul>
@@ -359,8 +371,6 @@
 <p>使用线程安全的ConcurrentLinkedQueue及进行替换。</p>
 </li>
 </ul>
-</li>
-</ol>
 </blockquote>
 <h3 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h3><p>Vector的底层数据结构也是一个数组，查询速度快。它的方法上加了synchronized关键字，所以它是线程安全的，但也因此，它的效率很低，几乎已经被淘汰了。</p>
 <p>由于<code>Collections.sychronizedList</code>方法Collections.sychronizedList，基本可以替代Vector。</p>
@@ -382,13 +392,15 @@
 <p><strong>参考：</strong><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/149244430">https://zhuanlan.zhihu.com/p/149244430</a></p>
 <hr>
 <h4 id="Stack作为Vector的一个子类，应该用什么代替呢？"><a href="#Stack作为Vector的一个子类，应该用什么代替呢？" class="headerlink" title="Stack作为Vector的一个子类，应该用什么代替呢？"></a>Stack作为Vector的一个子类，应该用什么代替呢？</h4><p>Java堆栈<code>Stack</code>类已经过时，Java官方推荐使用<code>Deque</code>替代<code>Stack</code>使用。</p>
-<p><code>Deque</code>是一个双端队列接口，继承自<code>Queue</code>接口，<code>Deque</code>的实现类是<code>LinkedList</code>、<code>ArrayDeque</code>、<code>LinkedBlockingDeque</code>，其中<code>LinkedList</code>是最常用的。</p>
+<p><code>Deque</code>是一个双端队列接口，继承自<code>Queue</code>接口，<code>Deque</code>的实现类是<code>LinkedList</code>、<code>ArrayDeque</code>、<code>LinkedBlockingDeque</code>，其中<code>LinkedList</code>是最常用的。(<code>LinkedList</code>是<code>Deque</code>和<code>List</code>两个的接口实现类)</p>
 </blockquote>
-<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h3 id="为什么Java-Vector（和Stack）类被认为已过时或已弃用？Stack作为Vector的一个子类，应该用什么代替呢？"><a href="#为什么Java-Vector（和Stack）类被认为已过时或已弃用？Stack作为Vector的一个子类，应该用什么代替呢？" class="headerlink" title="为什么Java Vector（和Stack）类被认为已过时或已弃用？Stack作为Vector的一个子类，应该用什么代替呢？"></a>为什么Java Vector（和Stack）类被认为已过时或已弃用？Stack作为Vector的一个子类，应该用什么代替呢？</h3><h3 id="Arrays-asList-返回的list不能用add方法。"><a href="#Arrays-asList-返回的list不能用add方法。" class="headerlink" title="Arrays.asList()返回的list不能用add方法。"></a>Arrays.asList()返回的list不能用add方法。</h3><h2 id="modCount在非线程安全集合中的作用？-1"><a href="#modCount在非线程安全集合中的作用？-1" class="headerlink" title="modCount在非线程安全集合中的作用？"></a><code>modCount</code>在非线程安全集合中的作用？</h2><p><code>modCount</code>属性代表为结构性修改（ 改变list的size大小、以其他方式改变他导致正在进行迭代时出现错误的结果）的次数，该属性被<code>Iterato</code>r以及<code>ListIterator</code>的实现类所使用，且很多非线程安全使用<code>modCount</code>属性。</p>
-<p>初始化迭代器时会给这个modCount赋值，如果在遍历的过程中，一旦发现这个对象的modCount和迭代器存储的modCount不一样，<code>Iterator</code>或者<code>ListIterator</code> 将抛出<code>ConcurrentModificationException</code>异常，</p>
-<p>这是jdk在面对迭代遍历的时候为了避免不确定性而采取的 fail-fast（快速失败）原则：</p>
-<p>在线程不安全的集合中，如果使用迭代器的过程中，发现集合被修改，会抛出<code>ConcurrentModificationExceptions</code>错误，这就是fail-fast机制。对集合进行结构性修改时，<code>modCount</code>都会增加，在初始化迭代器时，<code>modCount</code>的值会赋给<code>expectedModCount</code>，在迭代的过程中，只要<code>modCount</code>改变了，<code>int expectedModCount = modCount</code>等式就不成立了，迭代器检测到这一点，就会抛出错误：<code>urrentModificationExceptions</code>。</p>
-<h3 id="使用for循环遍历效率高还是foreach（增强式循环）？"><a href="#使用for循环遍历效率高还是foreach（增强式循环）？" class="headerlink" title="使用for循环遍历效率高还是foreach（增强式循环）？"></a>使用for循环遍历效率高还是foreach（增强式循环）？</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; integers.length; i++) &#123;<br>    System.out.println(intergers[i]);<br>&#125;<br><br><span class="hljs-keyword">for</span>(Integer in : integers)&#123;<br>    System.out.println(in);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="CopyOnWriteArrayList"><a href="#CopyOnWriteArrayList" class="headerlink" title="CopyOnWriteArrayList"></a>CopyOnWriteArrayList</h3><h2 id="Set"><a href="#Set" class="headerlink" title="Set"></a>Set</h2><p>Set是一种不包含重复的元素的Collection，即对Set中任意的两个元素<code>element1</code>和<code>element2</code>都有<code>elementl.equals(element2)= false</code>。Set最多有一个null元素。</p>
+<h3 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h3><p>HashSet底层数据结构采用哈希表实现，元素无序且唯一，线程不安全，效率高，可以存储null元素，元素的唯一性是靠所存储元素类型是否重写<code>hashCode()</code>和<code>equals()</code>方法来保证的，如果没有重写这两个方法，则无法保证元素的唯一性。</p>
+<blockquote>
+<p><strong>问题</strong>：</p>
+<h4 id="HashSet原理是什么？"><a href="#HashSet原理是什么？" class="headerlink" title="HashSet原理是什么？"></a>HashSet原理是什么？</h4></blockquote>
+<h3 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h3><h3 id="TreeSet"><a href="#TreeSet" class="headerlink" title="TreeSet"></a>TreeSet</h3><h3 id="CopyOnWriteArraySet"><a href="#CopyOnWriteArraySet" class="headerlink" title="CopyOnWriteArraySet"></a>CopyOnWriteArraySet</h3><h2 id="Queue："><a href="#Queue：" class="headerlink" title="Queue："></a>Queue：</h2><p>PriorityQueue、ArrayDeque。</p>
+<h2 id="Map："><a href="#Map：" class="headerlink" title="Map："></a>Map：</h2><h3 id="HashMap、LinkedHashMap、TreeMap、Hashtable"><a href="#HashMap、LinkedHashMap、TreeMap、Hashtable" class="headerlink" title="HashMap、LinkedHashMap、TreeMap、Hashtable"></a>HashMap、LinkedHashMap、TreeMap、Hashtable</h3><h3 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h3><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h3 id="使用for循环遍历效率高还是foreach（增强式循环）？"><a href="#使用for循环遍历效率高还是foreach（增强式循环）？" class="headerlink" title="使用for循环遍历效率高还是foreach（增强式循环）？"></a>使用for循环遍历效率高还是foreach（增强式循环）？</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; integers.length; i++) &#123;<br>    System.out.println(intergers[i]);<br>&#125;<br><br><span class="hljs-keyword">for</span>(Integer in : integers)&#123;<br>    System.out.println(in);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
 <li><p>for适合循环ArrayLIst以及数组，当大批量的循环LinkedList时程序将会卡死，它适合循环数组结构，通过下标去遍历。</p>
