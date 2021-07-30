@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8.9k 字
+      10.7k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      100
+      124
        分钟
     </span>
   
@@ -425,39 +425,248 @@
 <p>根据构造方法不同，分为自然排序（无参构造）和比较器排序（有参构造）。</p>
 <p>**自然顺序(Comparable)**：自然排序要求元素必须实现Compareable接口，并重写里面的compareTo()方法，元素通过比较返回的int值来判断排序序列，返回0说明两个对象相同，不需要存储；</p>
 <p>**比较器顺序(Comparator)**：比较器排需要在TreeSet初始化是时候传入一个实现Comparator接口的比较器对象，或者采用匿名内部类的方式new一个Comparator对象，重写里面的compare()方法；</p>
-<h3 id="CopyOnWriteArraySet"><a href="#CopyOnWriteArraySet" class="headerlink" title="CopyOnWriteArraySet"></a>CopyOnWriteArraySet</h3><h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><p>1、LinkedBlockingQueue：基于链接节点的可选限定的blocking queue 。 这个队列排列元素FIFO（先进先出）。 队列的头部是队列中最长的元素。 队列的尾部是队列中最短时间的元素。 新元素插入队列的尾部，队列检索操作获取队列头部的元素。 链接队列通常具有比基于阵列的队列更高的吞吐量，但在大多数并发应用程序中的可预测性能较低。</p>
-<p>blocking queue说明：不接受null元素；可能是容量有限的；实现被设计为主要用于生产者 - 消费者队列；不支持任何类型的“关闭”或“关闭”操作，表示不再添加项目实现是线程安全的；</p>
-<p>2、PriorityQueue：</p>
-<p>2.1、基于优先级堆的无限优先级queue 。 优先级队列的元素根据它们的有序natural ordering ，或由一个Comparator在队列构造的时候提供，这取决于所使用的构造方法。 优先队列不允许null元素。 依靠自然排序的优先级队列也不允许插入不可比较的对象（这样做可能导致ClassCastException ）。</p>
-<p>2.2、该队列的头部是相对于指定顺序的最小元素。 如果多个元素被绑定到最小值，那么头就是这些元素之一 - 关系被任意破坏。 队列检索操作poll ， remove ， peek和element访问在队列的头部的元件。</p>
-<p>2.3、优先级队列是无限制的，但是具有管理用于在队列上存储元素的数组的大小的内部容量 。 它始终至少与队列大小一样大。 当元素被添加到优先级队列中时，其容量会自动增长。 没有规定增长政策的细节。</p>
-<p>2.4、该类及其迭代器实现Collection和Iterator接口的所有可选方法。 方法iterator()中提供的迭代器不能保证以任何特定顺序遍历优先级队列的元素。 如果需要有序遍历，请考虑使用Arrays.sort(pq.toArray()) 。</p>
-<p>2.5、请注意，此实现不同步。 如果任何线程修改队列，多线程不应同时访问PriorityQueue实例。 而是使用线程安全的PriorityBlockingQueue类。</p>
-<p>实现注意事项：此实现提供了O（log(n)）的时间入队和出队方法（ offer ， poll ， remove()和add ）; remove(Object)和contains(Object)方法的线性时间; 和恒定时间检索方法（ peek ， element和size ）。</p>
-<p>3、ConcurrentLinkedQueue：基于链接节点的***并发deque(deque是双端队列) 。 并发插入，删除和访问操作可以跨多个线程安全执行。 A ConcurrentLinkedDeque是许多线程将共享对公共集合的访问的适当选择。像大多数其他并发集合实现一样，此类不允许使用null元素。</p>
-<p>常见非阻塞队列<br>ArrayDeque, （数组双端队列）<br>PriorityQueue, （优先级队列）<br>ConcurrentLinkedQueue, （基于链表的并发队列）<br>PriorityQueue 类实质上维护了一个有序列表。加入到 Queue 中的元素根据它们的天然排序（通过其 java.util.Comparable 实现）或者根据传递给构造函数的 java.util.Comparator 实现来定位。<br>ConcurrentLinkedQueue 是基于链接节点的、线程安全的队列。并发访问不需要同步。因为它在队列的尾部添加元素并从头部删除它们，所以只要不需要知道队列的大小，ConcurrentLinkedQueue 对公共集合的共享访问就可以工作得很好。收集关于队列大小的信息会很慢，需要遍历队列。</p>
-<p>常见阻塞队列BlockingQueue<br>ArrayBlockingQueue和LinkedBlockingQueue是两个最普通也是最常用的阻塞队列，一般情况下，在处理多线程间的生产者消费者问题，使用这两个类足以。</p>
-<p>DelayQueue, （延期阻塞队列）（阻塞队列实现了BlockingQueue接口）</p>
-<p>ArrayBlockingQueue, （基于数组的并发阻塞队列） 底层是数组，有界队列，如果我们要使用生产者-消费者模式，这是非常好的选择。</p>
-<p>LinkedBlockingQueue, （基于链表的FIFO阻塞队列） 底层是链表，可以当做无界和有界队列来使用，所以大家不要以为它就是无界队列。</p>
-<p>LinkedBlockingDeque, （基于链表的FIFO双端阻塞队列）</p>
-<p>PriorityBlockingQueue, （带优先级的无界阻塞队列） 是无界队列，基于数组，数据结构为二叉堆，数组第一个也是树的根节点总是最小值。</p>
-<p>SynchronousQueue （并发同步阻塞队列）本身不带有空间来存储任何元素，使用上可以选择公平模式和非公平模式。</p>
-<p>BlockingQueue的核心方法：</p>
-<p>BlockingQueue 对插入操作、移除操作、获取元素操作提供了四种不同的方法用于不同的场景中使用：</p>
-<p>1、抛出异常；</p>
-<p>2、返回特殊值（null 或 true/false，取决于具体的操作）；</p>
-<p>3、阻塞等待此操作，直到这个操作成功；</p>
-<p>4、阻塞等待此操作，直到成功或者超时指定时间。</p>
-<p>放入数据：</p>
-<p>offer(anObject):表示如果可能的话,将anObject加到BlockingQueue里,即如果BlockingQueue可以容纳,<br>　　　　则返回true,否则返回false.（本方法不阻塞当前执行方法的线程）<br>　　offer(E o, long timeout, TimeUnit unit),可以设定等待的时间，如果在指定的时间内，还不能往队列中<br>　　　　加入BlockingQueue，则返回失败。<br>　　put(anObject):把anObject加到BlockingQueue里,如果BlockQueue没有空间,则调用此方法的线程被阻断<br>　　　　直到BlockingQueue里面有空间再继续.<br>获取数据：<br>　　poll(time):取走BlockingQueue里排在首位的对象,若不能立即取出,则可以等time参数规定的时间,<br>　　　　取不到时返回null;<br>　　poll(long timeout, TimeUnit unit)：从BlockingQueue取出一个队首的对象，如果在指定时间内，<br>　　　　队列一旦有数据可取，则立即返回队列中的数据。否则知道时间超时还没有数据可取，返回失败。<br>　　take():取走BlockingQueue里排在首位的对象,若BlockingQueue为空,阻断进入等待状态直到<br>　　　　BlockingQueue有新的数据被加入;<br>　　drainTo():一次性从BlockingQueue获取所有可用的数据对象（还可以指定获取数据的个数），<br>　　　　通过该方法，可以提升获取数据效率；不需要多次分批加锁或释放锁。</p>
-<p>ArrayBlockingQueue<br>基于数组的阻塞队列实现，在ArrayBlockingQueue内部，维护了一个定长数组，以便缓存队列中的数据对象，这是一个常用的阻塞队列，除了 一个定长数组外，ArrayBlockingQueue内部还保存着两个整形变量，分别标识着队列的头部和尾部在数组中的位置。<br>　　 ArrayBlockingQueue在生产者放入数据和消费者获取数据，都是共用同一个锁对象，由此也意味着两者无法真正并行运行，这点尤其不同于 LinkedBlockingQueue；按照实现原理来分析，ArrayBlockingQueue完全可以采用分离锁，从而实现生产者和消费者操作的 完全并行运行。Doug Lea之所以没这样去做，也许是因为ArrayBlockingQueue的数据写入和获取操作已经足够轻巧，以至于引入独立的锁机制，除了给代码带来额外的复杂性外，其在性能上完全占不到任何便宜。 ArrayBlockingQueue和LinkedBlockingQueue间还有一个明显的不同之处在于，前者在插入或删除元素时不会产生或销毁任 何额外的对象实例，而后者则会生成一个额外的Node对象。这在长时间内需要高效并发地处理大批量数据的系统中，其对于GC的影响还是存在一定的区别。而 在创建ArrayBlockingQueue时，我们还可以控制对象的内部锁是否采用公平锁，默认采用非公平锁。</p>
-<p>LinkedBlockingQueue<br>基于链表的阻塞队列，同ArrayListBlockingQueue类似，其内部也维持着一个数据缓冲队列（该队列由一个链表构成），当生产者往队列 中放入一个数据时，队列会从生产者手中获取数据，并缓存在队列内部，而生产者立即返回；只有当队列缓冲区达到最大值缓存容量时 （LinkedBlockingQueue可以通过构造函数指定该值），才会阻塞生产者队列，直到消费者从队列中消费掉一份数据，生产者线程会被唤醒，反之对于消费者这端的处理也基于同样的原理。而LinkedBlockingQueue之所以能够高效的处理并发数据，还因为其对于生产者端和消费者端分别采用了独立的锁来控制数据同步，这也意味着在高并发的情况下生产者和消费者可以并行地操作队列中的数据，以此来提高整个队列的并发性能。<br>作为开发者，我们需要注意的是，如果构造一个LinkedBlockingQueue对象，而没有指定其容量大小，LinkedBlockingQueue会默认 一个类似无限大小的容量（Integer.MAX_VALUE），这样的话，如果生产者的速度一旦大于消费者的速度，也许还没有等到队列满阻塞产生，系统内存就有可能已被消耗殆尽了。</p>
-<p>DelayQueue<br>DelayQueue中的元素只有当其指定的延迟时间到了，才能够从队列中获取到该元素。DelayQueue是一个没有大小限制的队列，因此往队列中插入数据的操作（生产者）永远不会被阻塞，而只有获取数据的操作（消费者）才会被阻塞。<br>使用场景：<br>　　DelayQueue使用场景较少，但都相当巧妙，常见的例子比如使用一个DelayQueue来管理一个超时未响应的连接队列。</p>
-<p>PriorityBlockingQueue<br>基于优先级的阻塞队列（优先级的判断通过构造函数传入的Compator对象来决定），但需要注意的是PriorityBlockingQueue并不会阻塞数据生产者，而只会在没有可消费的数据时，阻塞数据的消费者。因此使用的时候要特别注意，生产者生产数据的速度绝对不能快于消费者消费数据的速度， 否则时间一长，会最终耗尽所有的可用堆内存空间。在实现PriorityBlockingQueue时，内部控制线程同步的锁采用的是公平锁。</p>
-<p>SynchronousQueue<br>一种无缓冲的等待队列，类似于无中介的直接交易，有点像原始社会中的生产者和消费者，生产者拿着产品去集市销售给产品的最终消费者，而消费者必须亲自去 集市找到所要商品的直接生产者，如果一方没有找到合适的目标，那么对不起，大家都在集市等待。相对于有缓冲的BlockingQueue来说，少了一个中 间经销商的环节（缓冲区），如果有经销商，生产者直接把产品批发给经销商，而无需在意经销商最终会将这些产品卖给那些消费者，由于经销商可以库存一部分商 品，因此相对于直接交易模式，总体来说采用中间经销商的模式会吞吐量高一些（可以批量买卖）；但另一方面，又因为经销商的引入，使得产品从生产者到消费者 中间增加了额外的交易环节，单个产品的及时响应性能可能会降低。<br>　　声明一个SynchronousQueue有两种不同的方式，它们之间有着不太一样的行为。公平模式和非公平模式的区别:<br>　　如果采用公平模式：SynchronousQueue会采用公平锁，并配合一个FIFO队列来阻塞多余的生产者和消费者，从而体系整体的公平策略；<br>　 但如果是非公平模式（SynchronousQueue默认）：SynchronousQueue采用非公平锁，同时配合一个LIFO（后进先出法 Last In First Out ）队列来管理多余的生产者和消费者，而后一种模式，如果生产者和消费者的处理速度有差距，则很容易出现饥渴的情况，即可能有某些生产者或者是消费者的数据永远都得不到处理。<br>————————————————<br>版权声明：本文为CSDN博主「猿起于此」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/bj_ameng/article/details/100008061">https://blog.csdn.net/bj_ameng/article/details/100008061</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0ae67b93e989">https://www.jianshu.com/p/0ae67b93e989</a></p>
-<p>PriorityQueue、ArrayDeque。</p>
+<h3 id="CopyOnWriteArraySet"><a href="#CopyOnWriteArraySet" class="headerlink" title="CopyOnWriteArraySet"></a>CopyOnWriteArraySet</h3><h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><h3 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a>PriorityQueue</h3><p>基于优先级堆的无界优先级queue (<strong>优先级队列</strong>）。</p>
+<p>优先级队列逻辑上使用堆结构（完全二叉树）实现，物理上使用动态数组实现，并非像TreeMap一样完全有序，但是如果按照指定方式出队，结果可以是有序的。</p>
+<p>优先级队列的元素根据它们默认的自然排序（natural ordering ），或由一个Comparator在队列实例化的时候排序，这取决于所使用的构造方法。</p>
+<p>优先队列不允许空值，而且不支持non-comparable（不可比较）的对象，比如用户自定义的类（不支持可比较的原因是因为在添加的时候会判断是否有Comparator，如果没有，会获取入参的Comparable，但是如果在构造的时候传入一个Comparator就可以）。优先队列要求使用Java Comparable和Comparator接口给对象排序，并且在排序时会按照优先级处理其中的元素。优先队列的大小是不受限制的，但在创建时可以指定初始大小。当我们向优先队列增加元素的时候，队列大小会自动增加。</p>
+<h3 id="ArrayDeque"><a href="#ArrayDeque" class="headerlink" title="ArrayDeque"></a>ArrayDeque</h3><p>ArrayDeque是Deque的实现类，是<strong>数组双端队列</strong>。</p>
+<p>Deque接口继承自Queue接口，其含义是”double ended queue”，即双端队列，它既可以当作栈使用(效率高于Stack)，也可以当作队列使用(效率高于LinkedList)。</p>
+<p>ArrayDeque不支持null值，不支持随机访问和随机插入数据</p>
+<p>ArrayDeque底层通过数组实现，为了满足可以同时在数组两端插入或删除元素的需求，该数组还必须是循环的，即<strong>循环数组（circular array）</strong>，也就是说数组的任何一点都可能被看作起点或者终点。ArrayDeque用两个int值head和tail来表示头部和尾部。需要注意的是tail并不是尾部元素的索引，而是尾部元素的下一位，即下一个将要被加入的元素的索引。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//用数组存储元素</span><br><span class="hljs-comment">//给element数组使用transient修饰，原因和ArrayList一样，就是防止扩容后网络传输没用的数据影响效率。</span><br><span class="hljs-keyword">transient</span> Object[] elements; <span class="hljs-comment">// non-private to simplify nested class access</span><br><span class="hljs-comment">//头部元素的索引</span><br><span class="hljs-keyword">transient</span> <span class="hljs-keyword">int</span> head;<br><span class="hljs-comment">//尾部下一个将要被加入的元素的索引</span><br><span class="hljs-keyword">transient</span> <span class="hljs-keyword">int</span> tail;<br><span class="hljs-comment">//最小容量，必须为2的幂次方</span><br><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> MIN_INITIAL_CAPACITY = <span class="hljs-number">8</span>;<br></code></pre></td></tr></table></figure>
+
+<p>ArrayDeque有三个构造函数来初始化，除了无参的构造函数使用了默认容量，其它两个构造函数会通过<code>allocateElements</code>来计算初始容量。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ArrayDeque</span><span class="hljs-params">()</span> </span>&#123;  <br>    elements = (E[]) <span class="hljs-keyword">new</span> Object[<span class="hljs-number">16</span>]; <span class="hljs-comment">// 默认的数组长度大小  </span><br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ArrayDeque</span><span class="hljs-params">(<span class="hljs-keyword">int</span> numElements)</span> </span>&#123;  <br>    allocateElements(numElements); <span class="hljs-comment">// 需要的数组长度大小  </span><br>&#125;  <br>  <br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ArrayDeque</span><span class="hljs-params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;  <br>    allocateElements(c.size()); <span class="hljs-comment">// 根据集合来分配数组大小  </span><br>    addAll(c); <span class="hljs-comment">// 把集合中元素放到数组中  </span><br>&#125;  <br></code></pre></td></tr></table></figure>
+
+<p>ArrayDeque对数组的大小(即队列的容量)有特殊的要求，必须是 2^n。</p>
+<p>从<code>allocateElements</code>方法源码可以看出，对于一个小于<code>2^30</code>的值，经过五次右移和位或操作后，可以得到一个<code>2^k - 1</code>的值。最后再将这个值<code>+1</code>，得到<code>2^k</code>。通过这个方法，可以将一个任意的初始值转化为<code>2^n</code>的值，不过有一点不足在于，如果本身传进来的值就是<code>2^n</code>的值，那么经过转化会变成<code>2^(n+1)</code>，所以我们在不用刻意去传入<code>2^n</code>的值。还有一点在于，如果传入的值大于等于<code>2^30</code>，那么经过转化会变成负值，即<code>&lt; 0</code>，此时会把初始值设置为<code>2^30</code>，即最大的容量只有<code>2^30</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">allocateElements</span><span class="hljs-params">(<span class="hljs-keyword">int</span> numElements)</span> </span>&#123;  <br>    <span class="hljs-keyword">int</span> initialCapacity = MIN_INITIAL_CAPACITY;  <br>    <span class="hljs-comment">// 找到大于需要长度的最小的2的幂整数。  </span><br>    <span class="hljs-comment">// Tests &quot;&lt;=&quot; because arrays aren&#x27;t kept full.  </span><br>    <span class="hljs-keyword">if</span> (numElements &gt;= initialCapacity) &#123;  <br>        initialCapacity = numElements;  <br>        initialCapacity |= (initialCapacity &gt;&gt;&gt;  <span class="hljs-number">1</span>);  <br>        initialCapacity |= (initialCapacity &gt;&gt;&gt;  <span class="hljs-number">2</span>);  <br>        initialCapacity |= (initialCapacity &gt;&gt;&gt;  <span class="hljs-number">4</span>);  <br>        initialCapacity |= (initialCapacity &gt;&gt;&gt;  <span class="hljs-number">8</span>);  <br>        initialCapacity |= (initialCapacity &gt;&gt;&gt; <span class="hljs-number">16</span>);  <br>        initialCapacity++;  <br>  <br>        <span class="hljs-keyword">if</span> (initialCapacity &lt; <span class="hljs-number">0</span>)   <span class="hljs-comment">// Too many elements, must back off  </span><br>            initialCapacity &gt;&gt;&gt;= <span class="hljs-number">1</span>;<span class="hljs-comment">// Good luck allocating 2 ^ 30 elements  </span><br>    &#125;  <br>    elements = (E[]) <span class="hljs-keyword">new</span> Object[initialCapacity];  <br>&#125;  <br></code></pre></td></tr></table></figure>
+
+<h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 在队头 添加元素</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addFirst</span><span class="hljs-params">(E e)</span> </span>&#123;<br>	<span class="hljs-comment">// 存入空数据时，抛出异常NullPointerException</span><br>    <span class="hljs-keyword">if</span> (e == <span class="hljs-keyword">null</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NullPointerException();<br>    elements[head = (head - <span class="hljs-number">1</span>) &amp; (elements.length - <span class="hljs-number">1</span>)] = e;<br>	<span class="hljs-comment">// 空间不足</span><br>    <span class="hljs-keyword">if</span> (head == tail)<br>        doubleCapacity(); <span class="hljs-comment">// 扩容</span><br>&#125;<br><br><span class="hljs-comment">// 在队尾 添加元素</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">addLast</span><span class="hljs-params">(E e)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (e == <span class="hljs-keyword">null</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NullPointerException();<br>    elements[tail] = e;<br>    <span class="hljs-keyword">if</span> ( (tail = (tail + <span class="hljs-number">1</span>) &amp; (elements.length - <span class="hljs-number">1</span>)) == head)<br>        doubleCapacity();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>下标越界的处理解决起来非常简单，以队头为例，<code>head = (head - 1) &amp; (elements.length - 1)</code>，这段代码相当于取余，同时解决了head为负值的情况。因为elements.length必需是2的指数倍，elements - 1就是二进制低位全1，跟head - 1相与之后就起到了取模的作用，如果head - 1为负数（其实只可能是-1），则相当于对其取相对于elements.length的补码。</p>
+<p><strong>ArrayDeque对数据的操作</strong></p>
+<table>
+<thead>
+<tr>
+<th>Queue 方法</th>
+<th>等效的Deque方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add(e)</td>
+<td>addLast(e)</td>
+<td>向队尾插入元素，失败则抛出异常</td>
+</tr>
+<tr>
+<td>offer(e)</td>
+<td>offerLast(e)</td>
+<td>向队尾插入元素，失败则返回false</td>
+</tr>
+<tr>
+<td>remove()</td>
+<td>removeFirst()</td>
+<td>获取并删除队首元素，失败则抛出异常</td>
+</tr>
+<tr>
+<td>poll()</td>
+<td>pollFirst()</td>
+<td>获取并删除队首元素，失败则返回null</td>
+</tr>
+<tr>
+<td>element()</td>
+<td>getFirst()</td>
+<td>获取但不删除队首元素，失败则抛出异常</td>
+</tr>
+<tr>
+<td>peek()</td>
+<td>peekFirst()</td>
+<td>获取但不删除队首元素，失败则返回null</td>
+</tr>
+</tbody></table>
+<p>注：因为Deque是Queue的实现类，所以以上12个方法Deque都有。</p>
+<table>
+<thead>
+<tr>
+<th>Stack 方法</th>
+<th>等效的Deque方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>push(e)</td>
+<td>addFirst(e)</td>
+<td>向栈顶插入元素，失败则抛出异常</td>
+</tr>
+<tr>
+<td>无</td>
+<td>offerFirst(e)</td>
+<td>向栈顶插入元素，失败则返回false</td>
+</tr>
+<tr>
+<td>pop()</td>
+<td>removeFirst()</td>
+<td>获取并删除栈顶元素，失败则抛出异常</td>
+</tr>
+<tr>
+<td>无</td>
+<td>pollFirst()</td>
+<td>获取并删除栈顶元素，失败则返回null</td>
+</tr>
+<tr>
+<td>peek()</td>
+<td>peekFirst()</td>
+<td>获取但不删除栈顶元素，失败则抛出异常</td>
+</tr>
+<tr>
+<td>无</td>
+<td>peekFirst()</td>
+<td>获取但不删除栈顶元素，失败则返回null</td>
+</tr>
+</tbody></table>
+<p>上面两个表共定义了Deque的12个接口。添加，删除，取值都有两套接口，它们功能相同，区别是对失败情况的处理不同。一套接口遇到失败就会抛出异常，另一套遇到失败会返回特殊值（false或null）。除非某种实现对容量有限制，大多数情况下，添加操作是不会失败的。 </p>
+<h3 id="ConcurrentLinkedQueue"><a href="#ConcurrentLinkedQueue" class="headerlink" title="ConcurrentLinkedQueue"></a>ConcurrentLinkedQueue</h3><p>ConcurrentLinkedQueue是一个基于链接节点的无界线程安全队列，即<strong>基于链表的并发队列</strong>。</p>
+<hr>
+<p>以上为常见的非阻塞队列，下面给出常见的阻塞队列（BlockingQueue）。</p>
+<h3 id="ArrayBlockingQueue"><a href="#ArrayBlockingQueue" class="headerlink" title="ArrayBlockingQueue"></a>ArrayBlockingQueue</h3><p>ArrayBlockingQueue是一个阻塞式的队列，即<strong>基于数组的并发阻塞队列</strong>，继承自AbstractBlockingQueue，间接的实现了Queue接口和Collection接口，同时基于 ReentrantLock 来实现线程安全，所以提供了 ReentrantLock 所能支持的公平性选择。</p>
+<p>ArrayBlockingQueue 是一个有界队列，有界也就意味着，它不能够存储无限多数量的对象。所以在创建 ArrayBlockingQueue 时，必须要给它指定一个队列的大小。</p>
+<p>ArrayBlockingQueue在生产者放入数据和消费者获取数据，都是共用同一个锁对象，由此也意味着两者无法真正并行运行，这点尤其不同于 LinkedBlockingQueue；ArrayBlockingQueue和LinkedBlockingQueue间还有一个明显的不同之处在于，前者在插入或删除元素时不会产生或销毁任何额外的对象实例，而后者则会生成一个额外的Node对象。这在长时间内需要高效并发地处理大批量数据的系统中，其对于GC的影响还是存在一定的区别。而在创建ArrayBlockingQueue时，还可以控制对象的内部锁是否采用公平锁，默认采用非公平锁。</p>
+<p><strong>构造方法</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//接收一个整型的参数，这个整型参数指的是队列的长度</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ArrayBlockingQueue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> capacity)</span> </span>&#123;<br>    <span class="hljs-keyword">this</span>(capacity, <span class="hljs-keyword">false</span>);<br>&#125;<br><br><span class="hljs-comment">//接收两个参数，队列的长度，boolean类型的参数是作为可重入锁的参数进行初始化，规定可重入锁是公平还是不公平，默认为false，另外初始化了notEmpty、notFull两个信号量。</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ArrayBlockingQueue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> capacity, <span class="hljs-keyword">boolean</span> fair)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (capacity &lt;= <span class="hljs-number">0</span>)<br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException();<br>    <span class="hljs-keyword">this</span>.items = <span class="hljs-keyword">new</span> Object[capacity];<br>    lock = <span class="hljs-keyword">new</span> ReentrantLock(fair);<br>    notEmpty = lock.newCondition();<br>    notFull =  lock.newCondition();<br>&#125;<br><br><span class="hljs-comment">//接收两三个参数，第一个整型，第二个boolean类型，第三个集合类型，此构造方法不常用</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">ArrayBlockingQueue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> capacity, <span class="hljs-keyword">boolean</span> fair,</span></span><br><span class="hljs-params"><span class="hljs-function">                              Collection&lt;? extends E&gt; c)</span> </span>&#123;<br>    <span class="hljs-keyword">this</span>(capacity, fair);<br><br>    <span class="hljs-keyword">final</span> ReentrantLock lock = <span class="hljs-keyword">this</span>.lock;<br>    lock.lock(); <span class="hljs-comment">// Lock only for visibility, not mutual exclusion</span><br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-keyword">for</span> (E e : c) &#123;<br>                checkNotNull(e);<br>                items[i++] = e;<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (ArrayIndexOutOfBoundsException ex) &#123;<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException();<br>        &#125;<br>        count = i;<br>        putIndex = (i == capacity) ? <span class="hljs-number">0</span> : i;<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        lock.unlock();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>方法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>队列满时处理方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>add(E e)</td>
+<td>抛出“Queue full”异常</td>
+<td>把 e 加到 BlockingQueue 里</td>
+</tr>
+<tr>
+<td>offer(E e)</td>
+<td>返回false</td>
+<td>如果可能的话，将 e 加到 BlockingQueue 里</td>
+</tr>
+<tr>
+<td>put(E e)</td>
+<td>线程阻塞，直到中断或被唤醒</td>
+<td>把 e 加到 BlockingQueue 里，如果 BlockQueue 没有空间，则调用此方法的线程被阻断直到 BlockingQueue 里面有空间再继续</td>
+</tr>
+<tr>
+<td>offer(E e, long timeout, TimeUnit unit)</td>
+<td>在规定时间内重试，超过规定时间返回false</td>
+<td>如果可能的话，将 e 加到 BlockingQueue 里，若不能立即加入，则可以等 time 参数规定的时间，失败时返回 null</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>队列空时处理方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>peek()</td>
+<td>返回null</td>
+<td>取走 BlockingQueue 里排在首位的对象</td>
+</tr>
+<tr>
+<td>poll()</td>
+<td>返回null</td>
+<td>取走 BlockingQueue 里排在首位的对象</td>
+</tr>
+<tr>
+<td>take()</td>
+<td>线程阻塞，指定中断或被唤醒</td>
+<td>取走 BlockingQueue 里排在首位的对象，若 BlockingQueue 为空，阻断进入等待状态直到 Blocking 有新的对象被加入为止</td>
+</tr>
+<tr>
+<td>poll(long timeout, TimeUnit unit)</td>
+<td>在规定时间内重试，超过规定时间返回null</td>
+<td>取走 BlockingQueue 里排在首位的对象，若不能立即取出，则可以等 time 参数规定的时间，取不到时返回 null</td>
+</tr>
+</tbody></table>
+<h3 id="LinkedBlockingQueue"><a href="#LinkedBlockingQueue" class="headerlink" title="LinkedBlockingQueue"></a>LinkedBlockingQueue</h3><p>LinkedBlockingQueue内部由<strong>单链表实现</strong>，只能从head取元素，从tail添加元素，即<strong>基于链表的FIFO阻塞队列</strong>。</p>
+<p>LinkedBlockingQueue如果不指定容量，默认为<code>Integer.MAX_VALUE</code>，也就是无界队列。所以为了避免队列过大造成机器负载或者内存爆满的情况出现，在使用的时候建议手动传一个队列的大小。</p>
+<p><strong>LinkedBlockingQueue是读写分离的</strong>，添加元素和获取元素都有独立的锁，读写操作可以并行执行。</p>
+<p>当生产者往队列中放入一个数据时，队列会从生产者手中获取数据，并缓存在队列内部，而生产者立即返回；只有当队列缓冲区达到最大值缓存容量时 （LinkedBlockingQueue可以通过构造函数指定该值），才会阻塞生产者队列，直到消费者从队列中消费掉一份数据，生产者线程会被唤醒，反之对于消费者这端的处理也基于同样的原理。LinkedBlockingQueue之所以能够高效的处理并发数据，还因为其对于生产者端和消费者端分别采用了独立的锁来控制数据同步，这也意味着在高并发的情况下生产者和消费者可以并行地操作队列中的数据，以此来提高整个队列的并发性能。</p>
+<p><strong>构造函数</strong>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//默认构造，设置容量为Integer.MAX</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LinkedBlockingQueue</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-comment">// 默认大小为Integer.MAX_VALUE</span><br>    <span class="hljs-keyword">this</span>(Integer.MAX_VALUE);<br>&#125;<br><br><span class="hljs-comment">//设置指定容量，初始化了last和head节点，让它们都指向了一个元素为null的节点</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LinkedBlockingQueue</span><span class="hljs-params">(<span class="hljs-keyword">int</span> capacity)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> (capacity &lt;= <span class="hljs-number">0</span>) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException();<br>    <span class="hljs-keyword">this</span>.capacity = capacity;<br>    last = head = <span class="hljs-keyword">new</span> Node&lt;E&gt;(<span class="hljs-keyword">null</span>);<br>&#125;；  <br><br><span class="hljs-comment">//传入一个容器，如果调用该构造器，容量默认也是Integer.MAX_VALUE  </span><br><span class="hljs-comment">//使用了putLock来进行加锁，但是这里并不是为了多线程的竞争而加锁，只是为了放入的元素能立即对其他线程可见</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">LinkedBlockingQueue</span><span class="hljs-params">(Collection&lt;? extends E&gt; c)</span> </span>&#123;<br>    <span class="hljs-keyword">this</span>(Integer.MAX_VALUE);<br>    <span class="hljs-keyword">final</span> ReentrantLock putLock = <span class="hljs-keyword">this</span>.putLock;<br>    putLock.lock();<br>    <span class="hljs-keyword">try</span> &#123;<br>        <span class="hljs-keyword">int</span> n = <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (E e : c) &#123;<br>            <span class="hljs-keyword">if</span> (e == <span class="hljs-keyword">null</span>)<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> NullPointerException();<br>            <span class="hljs-keyword">if</span> (n == capacity)<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalStateException(<span class="hljs-string">&quot;Queue full&quot;</span>);<br>            enqueue(<span class="hljs-keyword">new</span> Node&lt;E&gt;(e));<br>            ++n;<br>        &#125;<br>        count.set(n);<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        putLock.unlock();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p><strong>方法</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>队列满时处理方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>put(E e)</td>
+<td>阻塞等待</td>
+<td>创建一个node节点放入队列中，如果放完以后队列还有剩余空间，继续唤醒下一个添加线程进行添加。如果放之前队列中没有元素，放完以后要唤醒消费线程进行消费。</td>
+</tr>
+<tr>
+<td>offer(E e)</td>
+<td>直接返回false</td>
+<td>创建一个node节点放入队列中</td>
+</tr>
+<tr>
+<td>offer(E e, long timeout, TimeUnit unit)</td>
+<td>在规定时间内重试，超过规定时间返回false</td>
+<td>对offer方法进行了阻塞超时处理，使用了Condition的awaitNanos来进行超时等待</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>队列空时处理方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>take()</td>
+<td>阻塞等待</td>
+<td>从队首获取并移除一个元素，如果消费后还有元素在队列中，继续唤醒下一个消费线程进行元素移除。</td>
+</tr>
+<tr>
+<td>poll()</td>
+<td>直接返回false</td>
+<td>从队首获取并移除一个元素</td>
+</tr>
+<tr>
+<td>poll(long timeout, TimeUnit unit)</td>
+<td>在规定时间内重试，超过规定时间返回false</td>
+<td>对poll方法进行了阻塞超时处理，，利用了Condition的awaitNanos方法来进行阻塞等待直至超时。</td>
+</tr>
+</tbody></table>
+<h3 id="LinkedBlockingDeque"><a href="#LinkedBlockingDeque" class="headerlink" title="LinkedBlockingDeque"></a>LinkedBlockingDeque</h3><p>LinkedBlockingDeque是一个由链表结构组成的双向阻塞队列，即<strong>基于链表的FIFO双端阻塞队列</strong>，元素不允许为 null。双向队列因为多了一个操作队列的入口，在多线程同时入队时，也就减少了一半的竞争。一般多用于<strong>生产者消费者模式</strong>。</p>
+<p>相比于其他阻塞队列，LinkedBlockingDeque多了addFirst、addLast、peekFirst、peekLast等方法，以first结尾的方法，表示插入、获取获移除双端队列的第一个元素。以last结尾的方法，表示插入、获取获移除双端队列的最后一个元素。</p>
+<p>LinkedBlockingDeque是可选容量的，在初始化时可以设置容量防止其过度膨胀，如果不设置，默认容量大小为Integer.MAX_VALUE。</p>
+<h3 id="DelayQueue"><a href="#DelayQueue" class="headerlink" title="DelayQueue"></a>DelayQueue</h3><p>DelayQueue是一个无界的BlockingQueue，DelayQueue的底层存储是一个PriorityQueue，即<strong>延时阻塞队列</strong>。DelayQueue的特点就是插入Queue中的数据可以按照自定义的delay时间进行排序，只有delay时间小于0的元素才能够被取出。</p>
+<p>当生产者线程调用put之类的方法加入元素时，会触发Delayed接口中的compareTo方法进行排序，也就是说队列中元素的顺序是按到期时间排序的，而非它们进入队列的顺序。排在队列头部的元素是最早到期的，越往后到期时间赿晚。</p>
+<p>DelayQueue是Leader-Followr模式的变种，消费者线程处于等待状态时，总是等待最先到期的元素，而不是长时间的等待。消费者线程尽量把时间花在处理任务上，最小化空等的时间，以提高线程的利用效率。</p>
+<p>DelayQueue中的元素只有当其指定的延迟时间到了，才能够从队列中获取到该元素。DelayQueue是一个没有大小限制的队列，因此往队列中插入数据的操作（生产者）永远不会被阻塞，而只有获取数据的操作（消费者）才会被阻塞。</p>
+<h3 id="PriorityBlockingQueue"><a href="#PriorityBlockingQueue" class="headerlink" title="PriorityBlockingQueue"></a>PriorityBlockingQueue</h3><p>PriorityBlockingQueue是一个支持优先级的无界阻塞队列，即带<strong>优先级的无界阻塞队列</strong>。PriorityBlockingQueue线程不安全，队列的元素需要实现<strong>Comparable</strong>接口，完成队列的排序。</p>
+<p>PriorityBlockingQueue是基于最小二叉堆实现，使用基于CAS实现的自旋锁来控制队列的动态扩容，保证了扩容操作不会阻塞take操作的执行。</p>
+<p>PriorityBlockingQueue并不会阻塞数据生产者，而只会在没有可消费的数据时，阻塞数据的消费者。因此使用的时候要特别注意，生产者生产数据的速度绝对不能快于消费者消费数据的速度， 否则时间一长，会最终耗尽所有的可用堆内存空间。在实现PriorityBlockingQueue时，内部控制线程同步的锁采用的是公平锁。</p>
+<h3 id="SynchronousQueue"><a href="#SynchronousQueue" class="headerlink" title="SynchronousQueue"></a>SynchronousQueue</h3><p>SynchronousQueue没有容量，是无缓冲等待队列，是一个不存储元素的阻塞队列，即<strong>并发同步阻塞队列</strong>。</p>
+<p>SynchronousQueue类似于无中介的直接交易，有点像原始社会中的生产者和消费者，生产者拿着产品去集市销售给产品的最终消费者，而消费者必须亲自去 集市找到所要商品的直接生产者，如果一方没有找到合适的目标，那么对不起，大家都在集市等待。相对于有缓冲的BlockingQueue来说，少了一个中间经销商的环节（缓冲区），如果有经销商，生产者直接把产品批发给经销商，而无需在意经销商最终会将这些产品卖给那些消费者，由于经销商可以库存一部分商品，因此相对于直接交易模式，总体来说采用中间经销商的模式会吞吐量高一些（可以批量买卖）；但另一方面，又因为经销商的引入，使得产品从生产者到消费者 中间增加了额外的交易环节，单个产品的及时响应性能可能会降低。</p>
+<p>可以认为SynchronousQueue是一个缓存值为1的阻塞队列，但是 isEmpty()方法永远返回是true，remainingCapacity() 方法永远返回是0，remove()和removeAll() 方法永远返回是false，iterator()方法永远返回空，peek()方法永远返回null。</p>
+<p>声明一个SynchronousQueue有两种不同的方式：拥有公平（FIFO）和非公平(LIFO)策略。</p>
+<p><strong>公平模式</strong>：SynchronousQueue会采用公平锁，并配合一个FIFO队列来阻塞多余的生产者和消费者，从而体系整体的公平策略；</p>
+<p><strong>非公平模式</strong>（SynchronousQueue默认）：SynchronousQueue采用非公平锁，同时配合一个LIFO队列来管理多余的生产者和消费者，而后一种模式，如果生产者和消费者的处理速度有差距，则很容易出现饥渴的情况，即可能有某些生产者或者是消费者的数据永远都得不到处理。</p>
+<p>使用SynchronousQueue阻塞队列一般要求maximumPoolSizes为无界(Integer.MAX_VALUE)，避免线程拒绝执行操作。</p>
 <h2 id="Map："><a href="#Map：" class="headerlink" title="Map："></a>Map：</h2><h3 id="HashMap、LinkedHashMap、TreeMap、Hashtable"><a href="#HashMap、LinkedHashMap、TreeMap、Hashtable" class="headerlink" title="HashMap、LinkedHashMap、TreeMap、Hashtable"></a>HashMap、LinkedHashMap、TreeMap、Hashtable</h3><h3 id="ConcurrentHashMap"><a href="#ConcurrentHashMap" class="headerlink" title="ConcurrentHashMap"></a>ConcurrentHashMap</h3><h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h3 id="使用for循环遍历效率高还是foreach（增强式循环）？"><a href="#使用for循环遍历效率高还是foreach（增强式循环）？" class="headerlink" title="使用for循环遍历效率高还是foreach（增强式循环）？"></a>使用for循环遍历效率高还是foreach（增强式循环）？</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; integers.length; i++) &#123;<br>    System.out.println(intergers[i]);<br>&#125;<br><br><span class="hljs-keyword">for</span>(Integer in : integers)&#123;<br>    System.out.println(in);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ul>
@@ -466,6 +675,15 @@
 <li><p>foreach适合循环LinkedList，使用双链表结构实现的应当使用foreach循环。</p>
 </li>
 </ul>
+<h1 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h1><p>看源码的时候，我给自己抛出了一个问题。</p>
+<ul>
+<li>为什么dequeue里的h.next不指向null，而指向h？</li>
+<li>为什么unlink里没有p.next = null或者p.next = p这样的操作？<br>这个疑问一直困扰着我，直到我看了迭代器的部分源码后才豁然开朗，下面放出部分迭代器的源码：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">private</span> Node&lt;E&gt; current;<br><span class="hljs-keyword">private</span> Node&lt;E&gt; lastRet;<br><span class="hljs-keyword">private</span> E currentElement;<br><br>Itr() &#123;<br>    fullyLock();<br>    <span class="hljs-keyword">try</span> &#123;<br>        current = head.next;<br>        <span class="hljs-keyword">if</span> (current != <span class="hljs-keyword">null</span>)<br>            currentElement = current.item;<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        fullyUnlock();<br>    &#125;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">private</span> Node&lt;E&gt; <span class="hljs-title">nextNode</span><span class="hljs-params">(Node&lt;E&gt; p)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span> (;;) &#123;<br>        <span class="hljs-comment">// 解决了问题1</span><br>        Node&lt;E&gt; s = p.next;<br>        <span class="hljs-keyword">if</span> (s == p)<br>            <span class="hljs-keyword">return</span> head.next;<br>        <span class="hljs-keyword">if</span> (s == <span class="hljs-keyword">null</span> || s.item != <span class="hljs-keyword">null</span>)<br>            <span class="hljs-keyword">return</span> s;<br>        p = s;<br>    &#125;<br>&#125;<br><span class="hljs-number">1234567891011121314151617181920212223242526</span><br></code></pre></td></tr></table></figure>
+
+<p>迭代器的遍历分为两步，第一步加双锁把元素放入临时变量中，第二部遍历临时变量的元素。也就是说remove可能和迭代元素同时进行，很有可能remove的时候，有线程在进行迭代操作，而如果unlink中改变了p的next，很有可能在迭代的时候会造成错误，造成不一致问题。这个解决了问题2。</p>
+<p>而问题1其实在nextNode方法中也能找到，为了正确遍历，nextNode使用了 s == p的判断，当下一个元素是自己本身时，返回head的下一个节点。</p>
 
             </div>
             <hr>
