@@ -185,7 +185,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      13.1k 字
+      13.5k 字
     </span>
   
 
@@ -195,7 +195,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      154
+      160
        分钟
     </span>
   
@@ -673,10 +673,26 @@
 <p>当get()方法返回null值时，即可以表示HashMap中没有该key，也可以表示该key所对应的value为null。因此，在HashMap中不能由get()方法来判断HashMap中是否存在某个key，应该用<code>containsKey()</code>方法来判断。</p>
 <p>而在Hashtable中，无论是key还是value都不能为null。</p>
 <p>HashMap初始size为<strong>16</strong>，扩容：newsize = oldsize*2，size一定为<strong>2的n次幂</strong>。</p>
+<h4 id="HashMap在jdk1-7中的实现"><a href="#HashMap在jdk1-7中的实现" class="headerlink" title="HashMap在jdk1.7中的实现:"></a>HashMap在jdk1.7中的实现:</h4><ul>
+<li><p><strong>存储结构</strong></p>
+<p>HashMap 采用的数据结构 = <strong>数组（主） + 单链表（副）</strong>，这种数据结构也称为<strong>拉链法</strong>；</p>
+</li>
+<li><p><strong>基本属性</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//初始容量 16（1左移4位）</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> DEFAULT_INITIAL_CAPACITY = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">4</span>;<br><span class="hljs-comment">//最大容量 2^30</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> MAXIMUM_CAPACITY = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">30</span>;<br><span class="hljs-comment">//默认加载因子 0.75</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> DEFAULT_LOAD_FACTOR = <span class="hljs-number">0.75f</span>;<br><span class="hljs-comment">//实际加载因子</span><br><span class="hljs-keyword">final</span> <span class="hljs-keyword">float</span> loadFactor;<br><span class="hljs-comment">//扩容阈值（threshold），当哈希表的大小size ≥ 扩容阈值threshold时，就会扩容哈希表（即扩充 HashMap 的容量） </span><br><span class="hljs-comment">//扩容：对哈希表进行 resize 操作（即重建内部数据结构），从而哈希表将具有原来两倍的桶数</span><br><span class="hljs-comment">//threshold 扩容阈值 = 容量 * 加载因子</span><br><span class="hljs-keyword">int</span> threshold;<br><span class="hljs-comment">//空的 Entry 类型数组，参数未知</span><br><span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> Entry&lt;?,?&gt;[] EMPTY_TABLE = &#123;&#125;;<br><span class="hljs-comment">//存储数据的 Entry 类型数组，长度是 2 的幂</span><br><span class="hljs-keyword">transient</span> Entry&lt;K,V&gt;[] table = (Entry&lt;K,V&gt;[]) EMPTY_TABLE;<br><span class="hljs-comment">//HashMap 存储的结点数量</span><br><span class="hljs-keyword">transient</span> <span class="hljs-keyword">int</span> size;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>HashMap默认的负载极限为0.75。负载极限的默认值（0.75）是时间和空间成本上的一种折中：</p>
 <ul>
-<li><strong>HashMap在jdk1.7中的实现:</strong></li>
+<li><code>较高</code>的负载极限可以降低hash表所占用的内存空间，但会增加查询数据的时间开销，而查询是最频繁的操作（HashMap的get()与put()方法都要用到查询）；</li>
+<li><code>较低</code>的负载极限会提高查询数据的性能，但会增加hash表所占用的内存开销。</li>
 </ul>
-<p>HashMap底层维护的是数组+链表。</p>
+<p>因此在使用时可以根据实际情况来调整负载极限值。</p>
+</blockquote>
+</li>
+<li><h3 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//传入初始容量和加载因子</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">HashMap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> initialCapacity, <span class="hljs-keyword">float</span> loadFactor)</span> </span>&#123;<br>        <span class="hljs-comment">//小于 0 直接抛出异常</span><br>        <span class="hljs-keyword">if</span> (initialCapacity &lt; <span class="hljs-number">0</span>)<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;Illegal initial capacity: &quot;</span> +<br>                                               initialCapacity);<br>        <span class="hljs-comment">//如果初始容量大于最大容量，则就直接赋值为最大容量</span><br>        <span class="hljs-keyword">if</span> (initialCapacity &gt; MAXIMUM_CAPACITY)<br>            initialCapacity = MAXIMUM_CAPACITY;<br>        <span class="hljs-comment">//判断加载因子</span><br>        <span class="hljs-keyword">if</span> (loadFactor &lt;= <span class="hljs-number">0</span> || Float.isNaN(loadFactor))<br>            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> IllegalArgumentException(<span class="hljs-string">&quot;Illegal load factor: &quot;</span> +<br>                                               loadFactor);<br>        <span class="hljs-keyword">this</span>.loadFactor = loadFactor;<br>        threshold = initialCapacity;<br>        init();<br>    &#125;<br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">HashMap</span><span class="hljs-params">(<span class="hljs-keyword">int</span> initialCapacity)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>(initialCapacity, DEFAULT_LOAD_FACTOR);<br>    &#125;<br>	<span class="hljs-comment">//空参构造器，传入默认初始容量16和默认加载因子0.75</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">HashMap</span><span class="hljs-params">()</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>(DEFAULT_INITIAL_CAPACITY, DEFAULT_LOAD_FACTOR);<br>    &#125;<br>	<span class="hljs-comment">//传入一个Map集合并转化为该HashMap</span><br>	<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">HashMap</span><span class="hljs-params">(Map&lt;? extends K, ? extends V&gt; m)</span> </span>&#123;<br>        <span class="hljs-keyword">this</span>(Math.max((<span class="hljs-keyword">int</span>) (m.size() / DEFAULT_LOAD_FACTOR) + <span class="hljs-number">1</span>,<br>                      DEFAULT_INITIAL_CAPACITY), DEFAULT_LOAD_FACTOR);<br>        inflateTable(threshold);<br><br>        putAllForCreate(m);<br>    &#125;<br></code></pre></td></tr></table></figure></li>
+<li></li>
+<li></li>
+</ul>
 <p>HashMap各项属性 ：</p>
 <ul>
 <li><p>容量（capacity）：hash表中桶的数量；</p>
@@ -688,12 +704,6 @@
 <li><p>负载因子（load factor）：负载因子等于”size/capacity”。负载因子为0，表示空的hash表，0.5表示半满的散列表，依此类推。轻负载的散列表具有冲突少、适宜插入与查询的特点（但是使用Iterator迭代元素时比较慢）；</p>
 </li>
 <li><p>负载极限：负载极限是一个0～1的数值，“负载极限”决定了hash表的最大填满程度。当hash表中的负载因子达到指定的“负载极限”时，hash表会自动成倍地增加容量（桶的数量），并将原有的对象重新分配，放入新的桶内，这称为rehashing。</p>
-<p>HashMap默认的负载极限为0.75。负载极限的默认值（0.75）是时间和空间成本上的一种折中：</p>
-<ul>
-<li><code>较高</code>的负载极限可以降低hash表所占用的内存空间，但会增加查询数据的时间开销，而查询是最频繁的操作（HashMap的get()与put()方法都要用到查询）；</li>
-<li><code>较低</code>的负载极限会提高查询数据的性能，但会增加hash表所占用的内存开销。</li>
-</ul>
-<p>因此在使用时可以根据实际情况来调整负载极限值。</p>
 </li>
 </ul>
 <p>数组中的每一个元素其实就是<strong>Entry&lt;K,V&gt;[] table</strong>，Map中的key和value就是以Entry的形式存储的。Entry包含四个属性：key、value、hash值和用于单向链表的next。</p>
@@ -720,10 +730,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEntry</span><span class="hljs-params">(<span class="hljs-keyword">int</span> hash, K key, V value, <span class="hljs-keyword">int</span> bucketIndex)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span> ((size &gt;= threshold) &amp;&amp; (<span class="hljs-keyword">null</span> != table[bucketIndex])) &#123;<br>        resize(<span class="hljs-number">2</span> * table.length);<br>        hash = (<span class="hljs-keyword">null</span> != key) ? hash(key) : <span class="hljs-number">0</span>;<br>        bucketIndex = indexFor(hash, table.length);<br>    &#125;<br> <br>    createEntry(hash, key, value, bucketIndex);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>j<strong>dk1.7中resize，只有当 size&gt;=threshold并且 table中的那个槽中已经有Entry时，才会发生resize。</strong>即有可能虽然size&gt;=threshold，但是必须等到相应的槽至少有一个Entry时，才会扩容，可以通过上面的代码看到每次resize都会扩大一倍容量（2 * table.length）。</p>
-<ul>
-<li><strong>HashMap在jdk1.7中的实现:</strong></li>
-</ul>
-<p>在jdk1.8中HashMap的内部结构可以看作是数组(Node&lt;K,V&gt;[] table)和链表的复合结构，数组被分为一个个桶（bucket），通过哈希值决定了键值对在这个数组中的寻址（哈希值相同的键值对，则以链表形式存储。有一点需要注意，如果链表大小超过阈值（TREEIFY_THRESHOLD,8），图中的链表就会被改造为树形（红黑树）结构。Entry的名字变成了Node，原因是和红黑树的实现TreeNode相关联。</p>
+<h4 id="HashMap在jdk1-8中的实现"><a href="#HashMap在jdk1-8中的实现" class="headerlink" title="HashMap在jdk1.8中的实现:"></a>HashMap在jdk1.8中的实现:</h4><p>在jdk1.8中HashMap的内部结构可以看作是数组(Node&lt;K,V&gt;[] table)和链表的复合结构，数组被分为一个个桶（bucket），通过哈希值决定了键值对在这个数组中的寻址（哈希值相同的键值对，则以链表形式存储。有一点需要注意，如果链表大小超过阈值（TREEIFY_THRESHOLD,8），图中的链表就会被改造为树形（红黑树）结构。Entry的名字变成了Node，原因是和红黑树的实现TreeNode相关联。</p>
 <blockquote>
 <p>参考：</p>
 <p><a target="_blank" rel="noopener" href="https://yuanrengu.com/2020/ba184259.html">https://yuanrengu.com/2020/ba184259.html</a></p>
