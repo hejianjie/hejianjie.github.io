@@ -4,6 +4,91 @@
   
   
   <entry>
+    <title>Java虚拟机</title>
+    <link href="/2021/08/12/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/"/>
+    <url>/2021/08/12/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误." data-whm="抱歉, 这个文章不能被校验.">  <script id="hbeData" type="hbeData" data-hmacdigest="5976160e5657411a36f790486f1f925f4741d58211951f9da395a753a41f474f">ecb7ff20b4789b368fca42d567430c100936b3b77c55eb8a4f73d59c132d1bbc701dcd19f1683c2a14a769d3bd799f914c5065ff0acd17fdcfaed018a0126dca807b340c5a4d86ffa930ded6f3d8b8aa9cc1628619fd5adc858a5f7c24fe2d393417bceef714220156a4fd809cbebe5b6acd001b65364ae5a9289cd8a37dc0ed2ce74a92c2a1ce3bcc63b8eebd807736bea9792db8c20ae2fc90a4b93a3a98bea00cbe7b039ebfa8027e60dc0f797713f174db85d9265b497fd0eca2825891f2c0eb8dbf179f0049020bbdee9ff92027e97a30d328ef58212e05b000fedfd9bb0a8e4be85590ae5182856e3e5c6acee4c676968e3fc210c6902dd032c5f5c7c18be2e0236e950e2022a249017f7c762900fe5cbcc36df1ae66725c1a5d6dc2ed1e8242683e45eb17bf549d30bbb079d8d826d236ff0458c2fa7a275f48a77a113ad0d4690a80712827b339a774723b29b85ab8af2990c7004af5bcec48098b9b69e6bf4c71cde7c299e5667d1538acc3d45f1041f4f9106eb47f4320557fe7ce6eb04382e48beaeba95066a3dfa5c7556d42124425c93065b02d225de62aa63eab407b28c04587ef7ff539b55e2de4647b1d5126ecbb9b120fad51754bed4fdbeb460bba9d2bfa3f402bd53d6406a39a6bf006b740c4ec907359a66cb764005fef549731c0fdcc2745e9add13dbfa2b0b2e7f0ab331881082f07bcdc7fb653accaad703497bf6a3743dbce0e787a43af967a5e9c7353b0e5665cd6859cd983cf463d56082dc49c56b6f1fe324b4a0f7caa7b8d39e48bba7130e19304c59e0050f1b4123b52575df91b833cd645111c81b79f1d60f481ff33dc0d1e9b4e6040be484f4c1fcb8003d2ace2361e14cce3c8cf8f1d5f767d75c12b6e59ae1ff7d7a0fefefe31ce86e7831ca34235abdc96c8ffeb494379d4dfdecbdac299880985c8054c3e0939633cff59064283190e6f9b5e88d3602259c136fd66d4edf23dec847862732e3c76849485e188ce00ddf4efd5dd23dfe08aa4084034fca5bd5fd0ce43d142da2d1a51d7f94ddba94f4e9130439bc4abe808a9de70c109709c646d00d25a30bf0ce9baf9778f80aa8c771abfd4e7761dc9cae79d56286ad64876b7f274e8cc451245f653b3c90d332a1d580d11d2f47770dbb23470764dac937acef7675a61536e685ffb021ee49d985b1d61</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">输入密码.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>Java</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>note</tag>
+      
+      <tag>jvm</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java8 Stream</title>
+    <link href="/2021/08/12/Java8-Stream/"/>
+    <url>/2021/08/12/Java8-Stream/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误." data-whm="抱歉, 这个文章不能被校验.">  <script id="hbeData" type="hbeData" data-hmacdigest="7724e967d8fe28e6e40ad73226097cab6158cb8c579b9f388cf578b077e19cb7">ecb7ff20b4789b368fca42d567430c100936b3b77c55eb8a4f73d59c132d1bbc9604dd11667e22eb22d7011db73aec3c48b2892ab13e7cb4ee48de2c585505cb2e5fe9c672c6fb3949eaa5711f3622e3d032aa7b3e57612a68ced2d1770444fc246242b9564d5060623442425ec53064fed8f3d50d062b817a69df439cac59399c081b4fd71ca8cc168cfc5348bded51d444256bb9b7ca04bbc357b2196b8f0699cc6c12530718a11f3ff1736d69368cfb5f25b19876931aed433c6988987906b74a08126b75638c8d6e66f62e9a88f3c9e65b253382ae320e5014f930ad6ee45a7d499e73fcef3aebdcb860de0572bbf4c99f8ffcf6cf74330d43676a559788d96a87dd3e049588a62b333c23d24546555afa54525a4651a88dbae252897d2d85681017acab1f4c473507b72b36c856faa3988f9d26a182fdd0d21ad70a91823fc945368aca8bad6ae9a87b45d5b5c6611710ce36264600684fdcc719b9cad1e594cc056f08410d8ad225212b0703c2a389077473ccbb8be14a10aa6d8ed97bec382dda9f6cdc64ebfecbc2d108e996b5d85d79b664b2a738af0e02185f1c7d52e8f6460c78013e8edd2371e38a47ae6901d47197bc37dece2d672b96798a8c1686242a0dab68f57a06f5fd871b251a029ebf9b3a2d230b28d19aadc41c9285e6b84f14173e29475d32d8f1b41dc9484a71b4c0d0c49e1e16322d201ce96abbace5de24d6683a0fcfd01288321b67701035bacd5261bb6f6bca48e2586ac6668f6d093f32c6d33e0d454c0e27494076c2adea8b7e1c2e4649d7107d631418be8aa36ff3a9a8ec6a40cc9be7c8707134d38a665ed011acd0579418a5ad7fa84e4f996cd0fc7e246e9ec5a1c2992ad8bc871c18ecfb90dd8e025f7c4df3fd1a86ef1c7bfa78ded7e38130a9c926bb1f54f0db1bd0e98052fb99b04c9e158f40b7256f78dad1a1444f6f132f91fcb1c46c9b4001630f89084c187d80a8943392fdab5269d0c5c75bc09f273801ea981bfd753314c6086c7f428ef73b23b511d8f8bbb2eaa2d881fcdde323e8dcecce34b36b5d5fae283eab10d1eb596fbe830c1b6d45e0d85cff489d2705c16900c7cf4f3771e54d1832c0f5da6ef3f737a8dbf57c3cddfd26104b8c92f607dadf1f08df559bc9880c58a9a51a27942d449d5940560d6ee91721606e84049c4f5fa553c8</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">输入密码.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>Java</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>note</tag>
+      
+      <tag>java8</tag>
+      
+      <tag>stream</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Java多线程与并发</title>
+    <link href="/2021/08/12/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/"/>
+    <url>/2021/08/12/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/</url>
+    
+    <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误." data-whm="抱歉, 这个文章不能被校验.">  <script id="hbeData" type="hbeData" data-hmacdigest="38b4dae03550f53df26e811b879ac21782fabba5fb10b922312c3d43a4d840c6">ecb7ff20b4789b368fca42d567430c100936b3b77c55eb8a4f73d59c132d1bbcf383ced9da01fb1d3bc6b7c1d447bf02be86aa7e6fc434b784de6cda56486d41a49f03fab26c18a94ebefdba1fccaa8b4b7e511498739f50a66a6c9e2dae622fa65aa433d6174fa6b9bb0fbda6a01cc1575ec93042b1c1319cdd9752eb48f3acdfa071fe2f445a3c633add093eb5c4c0da2057ac6b0bff1f919ce1aaa602b764def2289e5a3f41663c512562677e9ca184d51d6fe625dc9d014b514d4d4e6e6b09a71859280be5ec049a1e3cea125a77303ce4929dad327dc8f5ffab4dd79a1f889d495eb587f1f329b6d43dce2272fb831d8584d467103e2f611d53b8734bc888aff455ec4258e12094e635c1d18c508de946c8d7a7663d95c4b1dba063c80e50ce352f66dde1c49cade93a6b8ad93f49966851b355151bde8a2d1a6ad86bb850379f820fb48e2e2276764d0b29d4b472065a67abbfec0652835247212dc84e20a56efa19a6bb57261c84f343ffdc8bb1efb2b138c0d5450892891d08a2c0a30bf8444d625414c6f2cd7ead6714b1ba7eca00f1a55efc409f908acbe35027a551ff01bf107e1ed88cfcdf99d46cb3a3a25c81d2bc1d7ba1999beb18aefac86000df38579cf92d84ee2f1d3e1bcbe4c8653efe326e34fd09e3cf9fb788ebdb49ed1fed5e5fc4ff637ea58ee183cd6b77327cc219bd941db6e3bb0432ab2aefd03a50a66229541f701f00b1ffb45a04734a593cf98a63f3260d2999c7cd9c8f9e6f8685de1bbcc7111479755df8ddce36f36490c441e4e7bea9038f61a6a2ddc740deabb15a95aeea611f8fff53a377a3d6969f0982e2d7c40b766842730619ae27dd9cea70dcd90d28cb9f131424be5307665bf116949510a30b32adf99b96f726df1fa1ac036a3f845a0e1ac1f4718e6e403da01166fe9bde5caa98b081057a7531c8efe76cc45e6d6c44c3de0c419c792b5f48ae0f8902565011acfe768926de4d0bd0b0fb1d5b109101cd5e5503c0216e0256856760106ad75977c6cedac7c73d5f9e1bdb3a712f561a027a08bf6b161cf092581c5880f537123b792fd7ff6e3213f3339ed7ad1a61497ac9edbc832adede8e7c4c0d32cc2da3b4d00a3e3c347b03ca4ab1c215d48ef39abb9b549529760a725a68221539f1ee6e1a871a34f0093bf79ff1065c30e37fca5f1a08c1f8099f75050daa4c04098a269735df646da9435ecdb5593ccd3b26ea9dde0aa5f9d1bb5e778b362f622f1e73986e0c9a</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">输入密码.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
+    
+    
+    <categories>
+      
+      <category>Java</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>note</tag>
+      
+      <tag>java并发</tag>
+      
+      <tag>java多线程</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Java集合</title>
     <link href="/2021/07/27/Java%E9%9B%86%E5%90%88/"/>
     <url>/2021/07/27/Java%E9%9B%86%E5%90%88/</url>

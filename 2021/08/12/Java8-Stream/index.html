@@ -14,13 +14,29 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="">
+  <meta name="description" content="加密内容.">
   <meta name="author" content="何熙">
   <meta name="keywords" content="">
   
-  <title>归档 - Enkidu</title>
+  <title>Java8 Stream - Enkidu</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
 
 
 
@@ -48,7 +64,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
@@ -142,14 +158,36 @@
 </nav>
 
     <div class="banner" id="banner" parallax=true
-         style="background: url('/img/archive.jpg') no-repeat center center;
+         style="background: url('/img/default.png') no-repeat center center;
            background-size: cover;">
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="Java8 Stream">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-08-12 19:22" pubdate>
+        2021年8月12日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -162,70 +200,132 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 11 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/07/27/Java%E9%9B%86%E5%90%88/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Java集合</span>
-      <time style="float: right;">07-27</time>
-    </a>
-  
-    
-    <a href="/2021/07/27/Github%E5%BB%BA%E7%AB%8B%E5%9B%BE%E5%BA%8A/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Github建立图床</span>
-      <time style="float: right;">07-27</time>
-    </a>
-  
-    
-    <a href="/2021/07/26/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%BA%94%E4%B8%AA%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">面向对象的基本原则</span>
-      <time style="float: right;">07-26</time>
-    </a>
-  
-    
-    <a href="/2021/07/23/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E4%B8%89%E5%A4%A7%E7%89%B9%E6%80%A7/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">面向对象三大特性</span>
-      <time style="float: right;">07-23</time>
-    </a>
-  
-    
-    <a href="/2021/07/22/%E8%B5%84%E6%BA%90/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">资源</span>
-      <time style="float: right;">07-22</time>
-    </a>
-  
-    
-    <a href="/2021/07/22/Hexo%E4%B8%BB%E9%A2%98/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Hexo主题</span>
-      <time style="float: right;">07-22</time>
-    </a>
-  
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java8 Stream</h1>
+            
+            <div class="markdown-body">
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="密码错误." data-whm="抱歉, 这个文章不能被校验.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="7724e967d8fe28e6e40ad73226097cab6158cb8c579b9f388cf578b077e19cb7">ecb7ff20b4789b368fca42d567430c100936b3b77c55eb8a4f73d59c132d1bbc9604dd11667e22eb22d7011db73aec3c48b2892ab13e7cb4ee48de2c585505cb2e5fe9c672c6fb3949eaa5711f3622e3d032aa7b3e57612a68ced2d1770444fc246242b9564d5060623442425ec53064fed8f3d50d062b817a69df439cac59399c081b4fd71ca8cc168cfc5348bded51d444256bb9b7ca04bbc357b2196b8f0699cc6c12530718a11f3ff1736d69368cfb5f25b19876931aed433c6988987906b74a08126b75638c8d6e66f62e9a88f3c9e65b253382ae320e5014f930ad6ee45a7d499e73fcef3aebdcb860de0572bbf4c99f8ffcf6cf74330d43676a559788d96a87dd3e049588a62b333c23d24546555afa54525a4651a88dbae252897d2d85681017acab1f4c473507b72b36c856faa3988f9d26a182fdd0d21ad70a91823fc945368aca8bad6ae9a87b45d5b5c6611710ce36264600684fdcc719b9cad1e594cc056f08410d8ad225212b0703c2a389077473ccbb8be14a10aa6d8ed97bec382dda9f6cdc64ebfecbc2d108e996b5d85d79b664b2a738af0e02185f1c7d52e8f6460c78013e8edd2371e38a47ae6901d47197bc37dece2d672b96798a8c1686242a0dab68f57a06f5fd871b251a029ebf9b3a2d230b28d19aadc41c9285e6b84f14173e29475d32d8f1b41dc9484a71b4c0d0c49e1e16322d201ce96abbace5de24d6683a0fcfd01288321b67701035bacd5261bb6f6bca48e2586ac6668f6d093f32c6d33e0d454c0e27494076c2adea8b7e1c2e4649d7107d631418be8aa36ff3a9a8ec6a40cc9be7c8707134d38a665ed011acd0579418a5ad7fa84e4f996cd0fc7e246e9ec5a1c2992ad8bc871c18ecfb90dd8e025f7c4df3fd1a86ef1c7bfa78ded7e38130a9c926bb1f54f0db1bd0e98052fb99b04c9e158f40b7256f78dad1a1444f6f132f91fcb1c46c9b4001630f89084c187d80a8943392fdab5269d0c5c75bc09f273801ea981bfd753314c6086c7f428ef73b23b511d8f8bbb2eaa2d881fcdde323e8dcecce34b36b5d5fae283eab10d1eb596fbe830c1b6d45e0d85cff489d2705c16900c7cf4f3771e54d1832c0f5da6ef3f737a8dbf57c3cddfd26104b8c92f607dadf1f08df559bc9880c58a9a51a27942d449d5940560d6ee91721606e84049c4f5fa553c8</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">输入密码.</span>
+      </label>
+    </div>
+  </div>
 </div>
-
-
-
-
-
-              </div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Java/">Java</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/note/">note</a>
+                    
+                      <a class="hover-with-bg" href="/tags/java8/">java8</a>
+                    
+                      <a class="hover-with-bg" href="/tags/stream/">stream</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章仅做个人笔记使用，内容仅代表个人理解，信息多来源于网络，如造成侵权，请通过1805399513@qq.com邮箱进行沟通处理。<br/> 除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/08/12/Java%E8%99%9A%E6%8B%9F%E6%9C%BA/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java虚拟机</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/12/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%B9%B6%E5%8F%91/">
+                        <span class="hidden-mobile">Java多线程与并发</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc" >
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+<script>
+  $(document).ready(function () {
+
+      var boardCtn = $('#board-ctn');
+      var boardTop = boardCtn.offset().top;
+      tocbot.init({
+        tocSelector: '#toc-body',
+        contentSelector: '#hexo-blog-encrypt',
+        linkClass: 'tocbot-link',
+        activeLinkClass: 'tocbot-active-link',
+        listClass: 'tocbot-list',
+        isCollapsedClass: 'tocbot-is-collapsed',
+        collapsibleClass: 'tocbot-is-collapsible',
+        scrollSmooth: true,
+        headingsOffset: -boardTop
+      });
+      if ($('.toc-list-item').length > 0) {
+        $('#toc').css('visibility', 'visible');
+      }
+  });
+</script>
+
+<!-- Custom -->
+
+
+
     
 
     
@@ -305,9 +405,15 @@
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
 
 
 
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
 
 
 
